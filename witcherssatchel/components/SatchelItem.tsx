@@ -1,6 +1,7 @@
 import React from "react";
 import { Alert, Text, TouchableOpacity, View, StyleSheet } from "react-native";
 import { theme } from "../theme";
+import Foundation from "@expo/vector-icons/Foundation";
 
 type Props = {
   name?: string;
@@ -42,7 +43,11 @@ const SatchelItem = ({ name, isCompleted }: Props) => {
         onPress={handleDelete}
         activeOpacity={0.7}
       >
-        <Text style={styles.buttonText}>Destroy</Text>
+        {isCompleted ? (
+          <Foundation name='skull' size={24} color={theme.colorBlack} />
+        ) : (
+          <Text style={styles.buttonText}>X</Text>
+        )}
       </TouchableOpacity>
     </View>
   );
