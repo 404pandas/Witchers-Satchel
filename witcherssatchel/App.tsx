@@ -1,7 +1,17 @@
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, Alert } from "react-native";
 import { theme } from "./theme";
 
 export default function App() {
+  const handleDelete = () => {
+    Alert.alert("Hmm...", "Are you sure you want to destroy this item?", [
+      {
+        text: "Yes",
+        onPress: () => console.log("Item destroyed"),
+        style: "destructive",
+      },
+      { text: "No", style: "cancel" },
+    ]);
+  };
   return (
     <>
       <View style={styles.container}>
@@ -10,10 +20,10 @@ export default function App() {
           <Text style={styles.itemText}>Potion</Text>
           <TouchableOpacity
             style={styles.button}
-            onPress={() => console.log("HEllo, world!")}
+            onPress={handleDelete}
             activeOpacity={0.7}
           >
-            <Text style={styles.buttonText}>Delete</Text>
+            <Text style={styles.buttonText}>Destroy</Text>
           </TouchableOpacity>
         </View>
       </View>
