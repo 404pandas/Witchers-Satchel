@@ -45,10 +45,10 @@ const SatchelItem = ({ name, isCompleted }: Props) => {
         activeOpacity={0.7}
       >
         {isCompleted ? (
-          <Foundation name='skull' size={24} color={theme.colorBlack} />
+          <Foundation name="skull" size={24} color={theme.colorBlack} />
         ) : (
           <MaterialIcons
-            name='delete-outline'
+            name="delete-outline"
             size={24}
             color={theme.colorWhite}
           />
@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+    width: "100%",
   },
   completedContainer: {
     backgroundColor: theme.colorLightRed,
@@ -86,12 +87,6 @@ const styles = StyleSheet.create({
     borderRadius: 6,
     minWidth: 40,
     alignItems: "center",
-  },
-  buttonText: {
-    color: theme.colorWhite,
-    fontWeight: "bold",
-    textTransform: "uppercase",
-    letterSpacing: 1,
   },
 });
 

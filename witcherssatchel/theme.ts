@@ -1,6 +1,44 @@
+import { ViewStyle } from "react-native";
+
 export const theme = {
   colorRed: "#ff0000",
   colorWhite: "#ffffff",
   colorBlack: "#000000",
   colorLightRed: "#ff4d4d",
+  colorDarkBlue: "#014285",
+  commonStyles: {
+    pageContainer: {
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+      backgroundColor: "#ffffff",
+      paddingHorizontal: 20,
+    } as ViewStyle,
+    link: {
+      textAlign: "center",
+      marginBottom: 18,
+      fontSize: 18,
+      color: "#014285",
+      fontStyle: "italic",
+    } as ViewStyle,
+    button: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: 6,
+      paddingVertical: 12,
+      paddingHorizontal: 14,
+      borderRadius: 8,
+    } as ViewStyle,
+    buttonText: {
+      fontSize: 16,
+      fontWeight: "600",
+      color: "#ffffff",
+    } as ViewStyle,
+    boldTitle: {
+      fontSize: 28,
+      fontWeight: "700",
+      marginBottom: 12,
+      color: "#000000",
+    } as ViewStyle,
+  },
 };
