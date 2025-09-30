@@ -2,6 +2,7 @@ import React from "react";
 import { Alert, Text, TouchableOpacity, View, StyleSheet } from "react-native";
 import { theme } from "../theme";
 import Foundation from "@expo/vector-icons/Foundation";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 
 type Props = {
   name?: string;
@@ -46,7 +47,11 @@ const SatchelItem = ({ name, isCompleted }: Props) => {
         {isCompleted ? (
           <Foundation name='skull' size={24} color={theme.colorBlack} />
         ) : (
-          <Text style={styles.buttonText}>X</Text>
+          <MaterialIcons
+            name='delete-outline'
+            size={24}
+            color={theme.colorWhite}
+          />
         )}
       </TouchableOpacity>
     </View>
@@ -79,6 +84,8 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colorBlack,
     padding: 8,
     borderRadius: 6,
+    minWidth: 40,
+    alignItems: "center",
   },
   buttonText: {
     color: theme.colorWhite,
