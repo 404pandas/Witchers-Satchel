@@ -1,40 +1,60 @@
 import React from "react";
-import { Alert, Text, TouchableOpacity, View, StyleSheet } from "react-native";
+import {
+  Alert,
+  Text,
+  TouchableOpacity,
+  View,
+  StyleSheet,
+  Pressable,
+} from "react-native";
 import { theme } from "../theme";
 import Foundation from "@expo/vector-icons/Foundation";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 
 type Props = {
   name?: string;
   isCompleted?: boolean;
+  onDelete: () => void;
 };
 
-const SatchelItem = ({ name, isCompleted }: Props) => {
+const SatchelItem = ({ name, isCompleted, onDelete }: Props) => {
   const handleDelete = () => {
     Alert.alert("Hmm...", `Are you sure you want to destroy ${name}?`, [
       {
         text: "Yes",
-        onPress: () => console.log(`${name} destroyed`),
+        onPress: () => onDelete(),
         style: "destructive",
       },
       { text: "No", style: "cancel" },
     ]);
   };
   return (
-    <View
+    <Pressable
       style={[
         styles.itemContainer,
         isCompleted ? styles.completedContainer : undefined,
       ]}
     >
-      <Text
-        style={[
-          styles.itemText,
-          isCompleted ? styles.completedText : undefined,
-        ]}
-      >
-        {name}
-      </Text>
+      <View style={{ flexDirection: "row", gap: 8, flex: 1, padding: 2 }}>
+        <MaterialCommunityIcons
+          name={
+            isCompleted
+              ? "checkbox-marked-circle-outline"
+              : "checkbox-blank-circle-outline"
+          }
+          size={24}
+          color="black"
+        />
+        <Text
+          style={[
+            styles.itemText,
+            isCompleted ? styles.completedText : undefined,
+          ]}
+        >
+          {name}
+        </Text>
+      </View>
       <TouchableOpacity
         style={[
           styles.button,
@@ -53,7 +73,7 @@ const SatchelItem = ({ name, isCompleted }: Props) => {
           />
         )}
       </TouchableOpacity>
-    </View>
+    </Pressable>
   );
 };
 
@@ -67,6 +87,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     width: "100%",
+    flex: 1,
   },
   completedContainer: {
     backgroundColor: theme.colorLightRed,
@@ -79,7 +100,7 @@ const styles = StyleSheet.create({
     textDecorationLine: "line-through",
     textDecorationColor: theme.colorBlack,
   },
-  itemText: { fontSize: 18, fontWeight: "200" },
+  itemText: { fontSize: 18, flex: 1, paddingHorizontal: 20, fontWeight: "200" },
   button: {
     backgroundColor: theme.colorBlack,
     padding: 8,
