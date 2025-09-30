@@ -40,5 +40,13 @@ export const theme = {
       marginBottom: 12,
       color: "#000000",
     } as ViewStyle,
+    textInput: {
+      borderWidth: 1,
+      borderColor: "#ff4d4d",
+      borderRadius: 8,
+      padding: 10,
+      width: "100%",
+      marginBottom: 20,
+    } as ViewStyle,
   },
 };

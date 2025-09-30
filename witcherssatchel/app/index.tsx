@@ -1,9 +1,38 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TextInput, View } from "react-native";
 import { theme } from "../theme";
 import SatchelItem from "../components/SatchelItem";
 import { Link } from "expo-router";
+import { useState } from "react";
+
+type SatchelItemType = {
+  id: string;
+  name: string;
+};
+
+const initialList: SatchelItem[] = [
+  { id: "1", name: "Potion", isCompleted: false },
+  { id: "2", name: "Antidote", isCompleted: true },
+  { id: "3", name: "Bomb", isCompleted: false },
+];
 
 export default function App() {
+  const [satchelItem, setSatchelItem] = useState("");
+  const [satchelList, setSatchelList] =
+    useState<SatchelItemType[]>(initialList);
+
+  const handleSubmit = () => {
+    if (satchelItem) {
+      const newSatchList = [
+        {
+          id: new Date().toTimeString(),
+          name: satchelItem,
+        },
+        ...satchelList,
+      ];
+      setSatchelList(newSatchList);
+      setSatchelItem("");
+    }
+  };
   return (
     <>
       <View style={theme.commonStyles.pageContainer}>
@@ -11,8 +40,16 @@ export default function App() {
         <Link href="/talley" style={theme.commonStyles.link}>
           Go to monster talley
         </Link>
-        <SatchelItem name={"potion"} isCompleted />
-        <SatchelItem name={"test"} />
+        <TextInput
+          style={theme.commonStyles.textInput}
+          placeholder="E.g. Potion"
+          value={satchelItem}
+          onChangeText={setSatchelItem}
+          onSubmitEditing={handleSubmit}
+        />
+        {satchelList.map((item) => (
+          <SatchelItem key={item.id} name={item.name} />
+        ))}
       </View>
     </>
   );
