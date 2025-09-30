@@ -9,7 +9,10 @@ import {
 import { theme } from "../theme";
 import SatchelItem from "../components/SatchelItem";
 import { Link } from "expo-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getFromStorage, saveToStorage } from "../utils/storage";
+
+const storageKey = "satchelItems";
 
 type SatchelItemType = {
   id: string;
@@ -22,6 +25,16 @@ export default function App() {
   const [satchelItem, setSatchelItem] = useState("");
   const [satchelList, setSatchelList] = useState<SatchelItemType[]>([]);
 
+  useEffect(() => {
+    const fetchInitial = async () => {
+      const data = await getFromStorage(storageKey);
+      if (data) {
+        setSatchelList(data);
+      }
+    };
+    fetchInitial();
+  }, []);
+
   const handleSubmit = () => {
     if (satchelItem) {
       const newSatchList = [
@@ -33,6 +46,7 @@ export default function App() {
         ...satchelList,
       ];
       setSatchelList(newSatchList);
+      saveToStorage(storageKey, newSatchList);
       setSatchelItem("");
     }
   };
@@ -40,6 +54,7 @@ export default function App() {
   const handleDelete = (id: string) => {
     const newSatchelList = satchelList.filter((item) => item.id !== id);
     setSatchelList(newSatchelList);
+    saveToStorage(storageKey, newSatchelList);
   };
 
   const handleToggleComplete = (id: string) => {
@@ -56,6 +71,7 @@ export default function App() {
       return item;
     });
     setSatchelList(newSatchelList);
+    saveToStorage(storageKey, newSatchelList);
   };
   return (
     <>
