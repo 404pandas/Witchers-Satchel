@@ -58,6 +58,7 @@ const SatchelItem = ({
             styles.itemText,
             isCompleted ? styles.completedText : undefined,
           ]}
+          numberOfLines={1}
         >
           {name}
         </Text>
@@ -105,7 +106,8 @@ const styles = StyleSheet.create({
   },
   completedText: {
     textDecorationLine: "line-through",
-    textDecorationColor: theme.colorBlack,
+    textDecorationColor: theme.colorGray,
+    color: theme.colorGray,
   },
   itemText: { fontSize: 18, flex: 1, paddingHorizontal: 20, fontWeight: "200" },
   button: {

@@ -6,6 +6,7 @@ export const theme = {
   colorBlack: "#000000",
   colorLightRed: "#ff4d4d",
   colorDarkBlue: "#014285",
+  colorGray: "#404040",
   commonStyles: {
     pageContainer: {
       flex: 1,

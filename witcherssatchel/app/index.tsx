@@ -15,24 +15,19 @@ type SatchelItemType = {
   id: string;
   name: string;
   completedAtTimeStamp?: number;
+  lastCompletedAtTimestamp?: number;
 };
-
-const initialList: SatchelItemType[] = [
-  { id: "1", name: "Potion" },
-  { id: "2", name: "Antidote" },
-  { id: "3", name: "Bomb" },
-];
 
 export default function App() {
   const [satchelItem, setSatchelItem] = useState("");
-  const [satchelList, setSatchelList] =
-    useState<SatchelItemType[]>(initialList);
+  const [satchelList, setSatchelList] = useState<SatchelItemType[]>([]);
 
   const handleSubmit = () => {
     if (satchelItem) {
       const newSatchList = [
         {
           id: new Date().toTimeString(),
+          lastUpdatedTimestamp: Date.now(),
           name: satchelItem,
         },
         ...satchelList,
@@ -55,6 +50,7 @@ export default function App() {
           completedAtTimeStamp: item.completedAtTimeStamp
             ? undefined
             : Date.now(),
+          lastUpdatedTimestamp: Date.now(),
         };
       }
       return item;
@@ -75,7 +71,7 @@ export default function App() {
         onSubmitEditing={handleSubmit}
       />
       <FlatList
-        data={satchelList}
+        data={orderSatchelList(satchelList)}
         ListEmptyComponent={<Text>No items</Text>}
         renderItem={({ item }) => (
           <SatchelItem
@@ -91,7 +87,28 @@ export default function App() {
   );
 }
 
+function orderSatchelList(satchelList: SatchelItemType[]) {
+  return satchelList.sort((item1, item2) => {
+    if (item1.completedAtTimeStamp && item2.completedAtTimeStamp) {
+      return item2.completedAtTimeStamp - item1.completedAtTimeStamp;
+    }
+
+    if (item1.completedAtTimeStamp && !item2.completedAtTimeStamp) {
+      return 1;
+    }
+
+    if (!item1.completedAtTimeStamp && item2.completedAtTimeStamp) {
+      return -1;
+    }
+
+    if (!item1.completedAtTimeStamp && !item2.completedAtTimeStamp) {
+      return item2.lastUpdatedTimestamp - item1.lastUpdatedTimestamp;
+    }
+
+    return 0;
+  });
+}
+
 const styles = StyleSheet.create({
   subtitle: { textAlign: "center", marginBottom: 18, fontSize: 24 },
-  contentContainer: { paddingBottom: 100 },
 });
