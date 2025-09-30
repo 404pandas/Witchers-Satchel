@@ -14,6 +14,7 @@ import { useState } from "react";
 type SatchelItemType = {
   id: string;
   name: string;
+  completedAtTimeStamp?: number;
 };
 
 const initialList: SatchelItemType[] = [
@@ -45,6 +46,21 @@ export default function App() {
     const newSatchelList = satchelList.filter((item) => item.id !== id);
     setSatchelList(newSatchelList);
   };
+
+  const handleToggleComplete = (id: string) => {
+    const newSatchelList = satchelList.map((item) => {
+      if (item.id === id) {
+        return {
+          ...item,
+          completedAtTimeStamp: item.completedAtTimeStamp
+            ? undefined
+            : Date.now(),
+        };
+      }
+      return item;
+    });
+    setSatchelList(newSatchelList);
+  };
   return (
     <>
       <Text style={styles.subtitle}>Need to talley your trophies?</Text>
@@ -66,6 +82,8 @@ export default function App() {
             key={item.id}
             name={item.name}
             onDelete={() => handleDelete(item.id)}
+            onToggleComplete={() => handleToggleComplete(item.id)}
+            isCompleted={Boolean(item.completedAtTimeStamp)}
           />
         )}
       />

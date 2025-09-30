@@ -16,9 +16,15 @@ type Props = {
   name?: string;
   isCompleted?: boolean;
   onDelete: () => void;
+  onToggleComplete: () => void;
 };
 
-const SatchelItem = ({ name, isCompleted, onDelete }: Props) => {
+const SatchelItem = ({
+  name,
+  isCompleted,
+  onDelete,
+  onToggleComplete,
+}: Props) => {
   const handleDelete = () => {
     Alert.alert("Hmm...", `Are you sure you want to destroy ${name}?`, [
       {
@@ -35,6 +41,7 @@ const SatchelItem = ({ name, isCompleted, onDelete }: Props) => {
         styles.itemContainer,
         isCompleted ? styles.completedContainer : undefined,
       ]}
+      onPress={onToggleComplete}
     >
       <View style={{ flexDirection: "row", gap: 8, flex: 1, padding: 2 }}>
         <MaterialCommunityIcons
