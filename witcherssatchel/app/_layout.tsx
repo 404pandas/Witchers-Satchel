@@ -1,18 +1,45 @@
-import { Stack } from "expo-router";
+import { Stack, Tabs } from "expo-router";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import { theme } from "../theme";
 
 export default function Routing() {
   return (
-    <Stack>
-      <Stack.Screen name="index" options={{ title: "Satchel" }} />
-      <Stack.Screen
-        name="idea"
+    <Tabs screenOptions={{ tabBarActiveTintColor: theme.colorRed }}>
+      <Tabs.Screen
+        name="index"
         options={{
-          title: "Idea",
-          presentation: "modal",
-          animation: "slide_from_bottom",
+          title: "Satchel",
+          tabBarIcon: ({ color, size }) => {
+            return <Ionicons name="bag" size={size} color={color} />;
+          },
+          tabBarShowLabel: false,
         }}
       />
-      <Stack.Screen name="talley" options={{ title: "Talley" }} />
-    </Stack>
+      <Tabs.Screen
+        name="bestiary"
+        options={{
+          title: "Bestiary",
+          tabBarIcon: ({ size, color }) => (
+            <FontAwesome5
+              name="wolf-pack-battalion"
+              size={size}
+              color={color}
+            />
+          ),
+          tabBarShowLabel: false,
+        }}
+      />
+      <Tabs.Screen
+        name="talley"
+        options={{
+          title: "Talley",
+          tabBarIcon: () => (
+            <MaterialIcons name="library-add" size={24} color="black" />
+          ),
+        }}
+      />
+    </Tabs>
   );
 }
