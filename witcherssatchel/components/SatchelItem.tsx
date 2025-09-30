@@ -27,7 +27,6 @@ const SatchelItem = ({ name, isCompleted }: Props) => {
         isCompleted ? styles.completedContainer : undefined,
       ]}
     >
-      {" "}
       <Text
         style={[
           styles.itemText,

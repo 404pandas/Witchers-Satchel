@@ -1,0 +1,938 @@
+[
+  {
+    "beastName": "alghoul",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/alghoul.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "arachas",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/arachas.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "armoredarachas",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/armoredarachas.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "bear",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/bear.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "beast_beauclair",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/beast_beauclair.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "berserker",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/berserker.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "botchling",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/botchling.png",
+    "stats": {
+      "vitality": 4,
+      "attack": 3,
+      "defense": 3,
+      "speed": 3,
+      "intelligence": 2,
+      "signVulnerability": "Axii",
+      "loot": ["Botchling Blood", "Essence of Death"]
+    }
+  },
+  {
+    "beastName": "bruxa",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/bruxa.png",
+    "stats": {
+      "vitality": 8,
+      "attack": 9,
+      "defense": 5,
+      "speed": 10,
+      "intelligence": 7,
+      "signVulnerability": "Yrden",
+      "loot": ["Vampire Fang", "Bruxa Blood", "Vampire Mutagen"]
+    }
+  },
+  {
+    "beastName": "caretaker",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/caretaker.png",
+    "stats": {
+      "vitality": 10,
+      "attack": 8,
+      "defense": 9,
+      "speed": 3,
+      "intelligence": 7,
+      "signVulnerability": "Quen",
+      "loot": ["Caretaker\u2019s Spade", "Ancient Essence"]
+    }
+  },
+  {
+    "beastName": "chort",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/chort.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "cloud_giant",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/cloud_giant.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "crones",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/crones.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "cyclops",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/cyclops.png",
+    "stats": {
+      "vitality": 9,
+      "attack": 9,
+      "defense": 8,
+      "speed": 4,
+      "intelligence": 2,
+      "signVulnerability": "Quen",
+      "loot": ["Cyclops Eye", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "dagonet",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/dagonet.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "dettlaff_vampire",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/dettlaff_vampire.png",
+    "stats": {
+      "vitality": 10,
+      "attack": 10,
+      "defense": 10,
+      "speed": 9,
+      "intelligence": 10,
+      "signVulnerability": "Yrden",
+      "loot": ["Higher Vampire Blood", "Dettlaff\u2019s Essence"]
+    }
+  },
+  {
+    "beastName": "devilbythewell",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/devilbythewell.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "drowner",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/drowner.png",
+    "stats": {
+      "vitality": 3,
+      "attack": 4,
+      "defense": 2,
+      "speed": 4,
+      "intelligence": 1,
+      "signVulnerability": "Igni",
+      "loot": ["Drowner Brain", "Monster Claw", "Monster Blood"]
+    }
+  },
+  {
+    "beastName": "earthelemental",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/earthelemental.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "ekhidna",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/ekhidna.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "ekimmara",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/ekimmara.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "endregadrone",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/endregadrone.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "endregawarrior",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/endregawarrior.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "endregaworker",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/endregaworker.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "erynia",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/erynia.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "fiend",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/fiend.png",
+    "stats": {
+      "vitality": 9,
+      "attack": 9,
+      "defense": 8,
+      "speed": 5,
+      "intelligence": 4,
+      "signVulnerability": "Moon Dust",
+      "loot": ["Fiend Mutagen", "Fiend Eye", "Monster Heart"]
+    }
+  },
+  {
+    "beastName": "fireelemental",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/fireelemental.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "foglet",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/foglet.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "forktail",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/forktail.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "fugas",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/fugas.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "gael",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/gael.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "gargoyle",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/gargoyle.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "ghoul",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/ghoul.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "godling",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/godling.png",
+    "stats": {
+      "vitality": 4,
+      "attack": 2,
+      "defense": 4,
+      "speed": 5,
+      "intelligence": 8,
+      "signVulnerability": "Axii",
+      "loot": ["Ancient Relic", "Godling Hair"]
+    }
+  },
+  {
+    "beastName": "golem",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/golem.png",
+    "stats": {
+      "vitality": 9,
+      "attack": 8,
+      "defense": 10,
+      "speed": 2,
+      "intelligence": 1,
+      "signVulnerability": "Dimeritium Bomb",
+      "loot": ["Golem\u2019s Heart", "Infused Shard"]
+    }
+  },
+  {
+    "beastName": "gravehag",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/gravehag.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "griffin",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/griffin.png",
+    "stats": {
+      "vitality": 8,
+      "attack": 7,
+      "defense": 6,
+      "speed": 7,
+      "intelligence": 3,
+      "signVulnerability": "Aard",
+      "loot": ["Griffin Feathers", "Griffin Mutagen", "Monster Heart"]
+    }
+  },
+  {
+    "beastName": "hagubman",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/hagubman.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "harpy",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/harpy.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "harrisi",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/harrisi.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "highervampire",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/highervampire.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "houndofthewildhunt",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/houndofthewildhunt.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "howler",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/howler.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "hym",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/hym.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "icegiant",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/icegiant.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "icetroll",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/icetroll.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "jennyothewoods",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/jennyothewoods.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "katakan",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/katakan.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "leshen",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/leshen.png",
+    "stats": {
+      "vitality": 10,
+      "attack": 9,
+      "defense": 9,
+      "speed": 6,
+      "intelligence": 8,
+      "signVulnerability": "Igni",
+      "loot": ["Leshen Resin", "Leshen Mutagen", "Ancient Leshen Heart"]
+    }
+  },
+  {
+    "beastName": "nekker",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/nekker.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "nightwraith",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/nightwraith.png",
+    "stats": {
+      "vitality": 7,
+      "attack": 7,
+      "defense": 5,
+      "speed": 7,
+      "intelligence": 5,
+      "signVulnerability": "Yrden",
+      "loot": ["Wraith Essence", "Specter Dust"]
+    }
+  },
+  {
+    "beastName": "noonwraith",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/noonwraith.png",
+    "stats": {
+      "vitality": 6,
+      "attack": 6,
+      "defense": 4,
+      "speed": 7,
+      "intelligence": 5,
+      "signVulnerability": "Yrden",
+      "loot": ["Wraith Essence", "Specter Dust"]
+    }
+  },
+  {
+    "beastName": "panther",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/panther.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "protofleder",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/protofleder.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "rocktroll",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/rocktroll.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "rotfiend",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/rotfiend.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "royalwyvern",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/royalwyvern.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "siren",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/siren.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "succubus",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/succubus.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "sylvan",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/sylvan.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "theapiarianphantom",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/theapiarianphantom.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "thedragonoffyresdal",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/thedragonoffyresdal.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "therazane",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/therazane.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "thewhitelady",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/thewhitelady.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "toad_prince",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/toad_prince.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "ulfhedinn",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/ulfhedinn.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "venomousarachas",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/venomousarachas.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "waterhag",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/waterhag.png",
+    "stats": {
+      "vitality": 7,
+      "attack": 6,
+      "defense": 5,
+      "speed": 6,
+      "intelligence": 4,
+      "signVulnerability": "Igni",
+      "loot": ["Water Hag Tooth", "Monster Saliva"]
+    }
+  },
+  {
+    "beastName": "werewolf",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/werewolf.png",
+    "stats": {
+      "vitality": 9,
+      "attack": 8,
+      "defense": 7,
+      "speed": 8,
+      "intelligence": 5,
+      "signVulnerability": "Moon Dust",
+      "loot": ["Werewolf Mutagen", "Werewolf Hide"]
+    }
+  },
+  {
+    "beastName": "whamawham",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/whamawham.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "wild_boar",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/wild_boar.png",
+    "stats": {
+      "vitality": 6,
+      "attack": 5,
+      "defense": 4,
+      "speed": 6,
+      "intelligence": 2,
+      "signVulnerability": "Igni",
+      "loot": ["Raw Meat", "Boar Hide", "Tusks"]
+    }
+  },
+  {
+    "beastName": "wolf",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/wolf.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  },
+  {
+    "beastName": "wyvern",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/wyvern.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 3,
+      "signVulnerability": "Igni",
+      "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
+    }
+  }
+]
