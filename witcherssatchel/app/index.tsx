@@ -5,12 +5,14 @@ import {
   View,
   ScrollView,
   FlatList,
+  LayoutAnimation,
 } from "react-native";
 import { theme } from "../theme";
 import SatchelItem from "../components/SatchelItem";
 import { Link } from "expo-router";
 import { useEffect, useState } from "react";
 import { getFromStorage, saveToStorage } from "../utils/storage";
+import * as Haptics from "expo-haptics";
 
 const storageKey = "satchelItems";
 
@@ -18,7 +20,7 @@ type SatchelItemType = {
   id: string;
   name: string;
   completedAtTimeStamp?: number;
-  lastCompletedAtTimestamp?: number;
+  lastUpdatedTimestamp: number;
 };
 
 export default function App() {
@@ -29,6 +31,7 @@ export default function App() {
     const fetchInitial = async () => {
       const data = await getFromStorage(storageKey);
       if (data) {
+        LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
         setSatchelList(data);
       }
     };
@@ -45,6 +48,8 @@ export default function App() {
         },
         ...satchelList,
       ];
+      LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+
       setSatchelList(newSatchList);
       saveToStorage(storageKey, newSatchList);
       setSatchelItem("");
@@ -53,13 +58,21 @@ export default function App() {
 
   const handleDelete = (id: string) => {
     const newSatchelList = satchelList.filter((item) => item.id !== id);
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     setSatchelList(newSatchelList);
+
     saveToStorage(storageKey, newSatchelList);
   };
 
   const handleToggleComplete = (id: string) => {
     const newSatchelList = satchelList.map((item) => {
       if (item.id === id) {
+        if (item.completedAtTimeStamp) {
+          Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+        } else {
+          Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+        }
         return {
           ...item,
           completedAtTimeStamp: item.completedAtTimeStamp
@@ -70,8 +83,9 @@ export default function App() {
       }
       return item;
     });
-    setSatchelList(newSatchelList);
     saveToStorage(storageKey, newSatchelList);
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+    setSatchelList(newSatchelList);
   };
   return (
     <>

@@ -1,19 +1,75 @@
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
-import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  Alert,
+  TextInput,
+  KeyboardAvoidingView,
+  Platform,
+} from "react-native";
 import { theme } from "../../theme";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { registerForPushNotificationsAsync } from "../../utils/registerForPushNotificationsAsync";
+import * as Device from "expo-device";
+import * as Notifications from "expo-notifications";
 
 export default function TalleyerScreen() {
   const router = useRouter();
   const [talley, setTalley] = useState(0);
+  const [seconds, setSeconds] = useState("");
+
+  const scheduleNotification = async () => {
+    const delay = parseInt(seconds, 10);
+
+    if (isNaN(delay) || delay <= 0) {
+      Alert.alert(
+        "Invalid input",
+        "Please enter a positive number of seconds."
+      );
+      return;
+    }
+
+    const result = await registerForPushNotificationsAsync();
+
+    if (result === "granted") {
+      await Notifications.scheduleNotificationAsync({
+        content: {
+          title: "Time to hunt!",
+          body: "Your Witcher's Satchel is ready to be filled again.",
+          sound: true,
+        },
+        trigger: {
+          seconds: delay,
+        },
+      });
+      Alert.alert(
+        "Notification scheduled",
+        `You'll be reminded in ${delay} seconds.`
+      );
+      setSeconds("");
+    } else {
+      if (Device.isDevice) {
+        Alert.alert(
+          "Uh oh... unable to get permission to notify you.",
+          "Please enable notifications in your settings."
+        );
+      }
+    }
+  };
 
   return (
-    <View style={theme.commonStyles.pageContainer}>
+    <KeyboardAvoidingView
+      style={theme.commonStyles.pageContainer}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+    >
       <TouchableOpacity onPress={() => router.navigate("/")}>
         <Text style={theme.commonStyles.link}>Return to the tavern</Text>
       </TouchableOpacity>
+
       <View style={styles.buttonRow}>
         <Text style={theme.commonStyles.boldTitle}>Monster Trophies</Text>
         <FontAwesome
@@ -38,7 +94,7 @@ export default function TalleyerScreen() {
         />
       </View>
 
-      <View style={styles.buttonRow}>
+      <View style={(styles.buttonRow, styles.talleyContainer)}>
         <TouchableOpacity
           style={[theme.commonStyles.button, styles.decrement]}
           onPress={() => setTalley((c) => Math.max(0, c - 1))}
@@ -70,7 +126,26 @@ export default function TalleyerScreen() {
           <Text style={theme.commonStyles.buttonText}>Slay More</Text>
         </TouchableOpacity>
       </View>
-    </View>
+      <Text style={theme.commonStyles.boldTitle}>Hunt Scheduler</Text>
+
+      <View style={styles.notificationContainer}>
+        <TextInput
+          style={styles.input}
+          placeholder="Seconds until reminder"
+          keyboardType="numeric"
+          value={seconds}
+          onChangeText={setSeconds}
+        />
+        <TouchableOpacity
+          style={[theme.commonStyles.button, styles.increment]}
+          onPress={scheduleNotification}
+        >
+          <Text style={theme.commonStyles.buttonText}>Schedule a Hunt</Text>
+        </TouchableOpacity>
+      </View>
+
+      <Text>Use this notification to get a reminder to hunt!</Text>
+    </KeyboardAvoidingView>
   );
 }
 
@@ -90,6 +165,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     gap: 12,
+    marginBottom: 12,
   },
   increment: {
     backgroundColor: theme.colorRed,
@@ -99,5 +175,20 @@ const styles = StyleSheet.create({
   },
   reset: {
     backgroundColor: theme.colorLightRed,
+  },
+  notificationContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 12,
+    marginTop: 24,
+    marginBottom: 24,
+  },
+  input: {
+    flex: 1,
+    borderWidth: 1,
+    borderColor: theme.colorDarkBlue,
+    borderRadius: 8,
+    padding: 12,
+    fontSize: 16,
   },
 });
