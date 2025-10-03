@@ -1,4 +1,4 @@
-# 🧙 Witcher’s Handy Tome (React Native Swiss Army Knife)
+# 🧙 Witcher’s Satchel (React Native Swiss Army Knife)
 
 ![React Native](https://img.shields.io/badge/React%20Native-0.81.4-blue?logo=react)
 ![Expo](https://img.shields.io/badge/Expo-54.0.10-black?logo=expo)
