@@ -1,13 +1,13 @@
 # 🧙 Witcher’s Handy Tome (React Native Swiss Army Knife)
 
 ![React Native](https://img.shields.io/badge/React%20Native-0.81.4-blue?logo=react)
-![Expo](https://img.shields.io/badge/Expo-~54.0.10-black?logo=expo)
-![TypeScript](https://img.shields.io/badge/TypeScript-~5.9.2-3178C6?logo=typescript)
-![ESLint](https://img.shields.io/badge/ESLint-^9.0.0-4B32C3?logo=eslint)
-![Prettier](https://img.shields.io/badge/Prettier-^3.6.2-F7B93E?logo=prettier)
-![Vector Icons](https://img.shields.io/badge/Vector%20Icons-^15.0.2-lightgrey)
+![Expo](https://img.shields.io/badge/Expo-54.0.10-black?logo=expo)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.9.2-3178C6?logo=typescript)
+![ESLint](https://img.shields.io/badge/ESLint-9.0.0-4B32C3?logo=eslint)
+![Prettier](https://img.shields.io/badge/Prettier-3.6.2-F7B93E?logo=prettier)
+![Vector Icons](https://img.shields.io/badge/Vector%20Icons-15.0.2-lightgrey)
 ![AsyncStorage](https://img.shields.io/badge/AsyncStorage-2.2.0-orange)
-![Expo Router](https://img.shields.io/badge/Expo%20Router-^6.0.8-lightblue)
+![Expo Router](https://img.shields.io/badge/Expo%20Router-6.0.8-lightblue)
 
 ---
 
@@ -72,9 +72,11 @@ npx expo start
 
 ---
 
-## 🐉 Screenshots
+## 🐉 Videos
 
-_(Screenshots coming soon – Geralt is still hunting the beasts!)_
+Stage 1 Completed 10/02/25
+
+https://github.com/user-attachments/assets/bc49c87e-dcc4-4c1b-83bf-8f5e2e5e7ed8
 
 ---
 
