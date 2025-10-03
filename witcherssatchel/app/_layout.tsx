@@ -40,6 +40,14 @@ export default function Routing() {
           ),
         }}
       />
+      <Tabs.Screen
+        name="countdownTimer"
+        options={{
+          title: "Timer",
+          tabBarIcon: () => <Ionicons name="timer" size={24} color="black" />,
+          tabBarShowLabel: false,
+        }}
+      />
     </Tabs>
   );
 }
