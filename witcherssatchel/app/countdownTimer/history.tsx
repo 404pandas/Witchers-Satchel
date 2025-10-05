@@ -5,12 +5,13 @@ import {
   FlatList,
   TouchableOpacity,
 } from "react-native";
-import { PersistedCountdownState, storageKey } from ".";
+import { PersistedCountdownState, storageKey, BrewRecord } from ".";
 import { useEffect, useState } from "react";
 import { getFromStorage, saveToStorage } from "../../utils/storage";
 import { format } from "date-fns";
 import { theme } from "../../theme";
 import Foundation from "@expo/vector-icons/Foundation";
+
 const fullDateFormat = `LLL d yyyy, h:mm aaa`;
 
 export default function HistoryScreen() {
@@ -18,16 +19,31 @@ export default function HistoryScreen() {
     useState<PersistedCountdownState>();
 
   const clearHistory = async () => {
-    await saveToStorage(storageKey, {
+    const cleared: PersistedCountdownState = {
       currentNotificationId: undefined,
-      completedAtTimestamps: [],
-    });
+      completedBrews: [],
+    };
+    await saveToStorage(storageKey, cleared);
+    setCountdownState(cleared);
   };
 
   useEffect(() => {
     const init = async () => {
       const value = await getFromStorage(storageKey);
-      setCountdownState(value);
+
+      if (value?.completedAtTimestamps && !value.completedBrews) {
+        const migrated: PersistedCountdownState = {
+          currentNotificationId: value.currentNotificationId,
+          completedBrews: value.completedAtTimestamps.map((t: number) => ({
+            completedAt: t,
+            duration: 0,
+          })),
+        };
+        setCountdownState(migrated);
+        await saveToStorage(storageKey, migrated);
+      } else {
+        setCountdownState(value);
+      }
     };
 
     init();
@@ -46,29 +62,29 @@ export default function HistoryScreen() {
         </Text>
         <TouchableOpacity
           style={[theme.commonStyles.button]}
-          onPress={() => {
-            clearHistory();
-            setCountdownState({
-              currentNotificationId: undefined,
-              completedAtTimestamps: [],
-            });
-          }}
+          onPress={clearHistory}
           activeOpacity={0.7}
         >
           <Text style={{ fontSize: 18, color: theme.colorRed }}>Clear</Text>
           <Foundation name="skull" size={24} color={theme.colorRed} />
         </TouchableOpacity>
       </View>
+
       <FlatList
         style={styles.list}
         contentContainerStyle={styles.listContentContainer}
-        data={countdownState?.completedAtTimestamps}
-        ListEmptyComponent={<Text>No items</Text>}
-        renderItem={({ item }) => {
+        data={countdownState?.completedBrews}
+        ListEmptyComponent={<Text>No potions brewed yet</Text>}
+        keyExtractor={(_, index) => index.toString()}
+        renderItem={({ item }: { item: BrewRecord }) => {
+          const brewSeconds = Math.round(item.duration / 1000);
           return (
             <View style={styles.listItem}>
               <Text style={styles.listItemText}>
-                {format(item, fullDateFormat)}
+                {format(item.completedAt, fullDateFormat)}
+              </Text>
+              <Text style={styles.durationText}>
+                ⏳ Brew Duration: {brewSeconds}s
               </Text>
             </View>
           );
@@ -94,6 +110,11 @@ const styles = StyleSheet.create({
   },
   listItemText: {
     fontSize: 24,
+    fontWeight: "600",
+  },
+  durationText: {
+    fontSize: 18,
+    color: theme.colorGray,
   },
   historyHeader: {
     flexDirection: "row",

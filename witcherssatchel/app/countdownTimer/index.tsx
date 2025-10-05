@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   Alert,
   ActivityIndicator,
+  TextInput,
 } from "react-native";
 import { theme } from "../../theme";
 import { Duration, intervalToDuration, isBefore } from "date-fns";
@@ -15,14 +16,16 @@ import * as Notifications from "expo-notifications";
 import { registerForPushNotificationsAsync } from "../../utils/registerForPushNotificationsAsync";
 import { getFromStorage, saveToStorage } from "../../utils/storage";
 
-// 10 seconds from now
-const frequency = 10 * 1000;
-
 export const storageKey = "witchers-satchel-countdown-state";
+
+export type BrewRecord = {
+  completedAt: number;
+  duration: number;
+};
 
 export type PersistedCountdownState = {
   currentNotificationId: string | undefined;
-  completedAtTimestamps: number[];
+  completedBrews: BrewRecord[];
 };
 
 type CountdownStatus = {
@@ -38,21 +41,41 @@ export default function CounterScreen() {
   });
   const [countdownState, setCountdownState] =
     useState<PersistedCountdownState>();
+  const [brewTime, setBrewTime] = useState("60");
+  const [brewDuration, setBrewDuration] = useState<number | null>(null);
 
-  const lastCompletedTimestamp = countdownState?.completedAtTimestamps[0];
+  const lastCompletedTimestamp =
+    countdownState?.completedBrews?.[0]?.completedAt ?? Date.now();
 
   useEffect(() => {
     const init = async () => {
       const value = await getFromStorage(storageKey);
-      if (value) {
-        setCountdownState(value);
-      } else {
-        const emptyState: PersistedCountdownState = {
-          currentNotificationId: undefined,
-          completedAtTimestamps: [],
+
+      let state: PersistedCountdownState;
+      if (value?.completedAtTimestamps && !value.completedBrews) {
+        state = {
+          currentNotificationId: value.currentNotificationId,
+          completedBrews: value.completedAtTimestamps.map((t: number) => ({
+            completedAt: t,
+            duration: 0,
+          })),
         };
-        setCountdownState(emptyState);
-        await saveToStorage(storageKey, emptyState);
+        await saveToStorage(storageKey, state);
+      } else if (value) {
+        state = value;
+      } else {
+        state = { currentNotificationId: undefined, completedBrews: [] };
+        await saveToStorage(storageKey, state);
+      }
+
+      setCountdownState(state);
+
+      if (state.completedBrews?.[0]?.duration) {
+        const lastBrew = state.completedBrews[0];
+        const elapsed = Date.now() - lastBrew.completedAt;
+        if (elapsed < lastBrew.duration) {
+          setBrewDuration(lastBrew.duration);
+        }
       }
 
       setIsLoading(false);
@@ -62,13 +85,10 @@ export default function CounterScreen() {
   }, []);
 
   useEffect(() => {
+    if (!brewDuration) return;
+
     const intervalId = setInterval(() => {
-      const timestamp = lastCompletedTimestamp
-        ? lastCompletedTimestamp + frequency
-        : Date.now();
-      if (lastCompletedTimestamp) {
-        setIsLoading(false);
-      }
+      const timestamp = lastCompletedTimestamp + (brewDuration ?? 0);
       const isOverdue = isBefore(timestamp, Date.now());
 
       const distance = intervalToDuration(
@@ -80,13 +100,13 @@ export default function CounterScreen() {
       setStatus({ isOverdue, distance });
     }, 1000);
 
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, [lastCompletedTimestamp]);
+    return () => clearInterval(intervalId);
+  }, [lastCompletedTimestamp, brewDuration]);
 
   const scheduleNotification = async () => {
     const latestState = await getFromStorage(storageKey);
+    const durationMs = parseInt(brewTime) * 1000;
+    setBrewDuration(durationMs);
 
     let pushNotificationId;
     const result = await registerForPushNotificationsAsync();
@@ -99,32 +119,34 @@ export default function CounterScreen() {
           sound: true,
         },
         trigger: {
-          seconds: frequency / 1000,
+          seconds: parseInt(brewTime),
         },
       });
       Alert.alert(
-        "Notification scheduled",
-        "You'll be reminded when the potion is done brewing."
+        "Potion brewing begun!",
+        `You'll be notified in ${brewTime} seconds.`
       );
-    } else {
-      if (Device.isDevice) {
-        Alert.alert(
-          "Uh oh... unable to get permission to notify you.",
-          "Please enable notifications in your settings."
-        );
-      }
+    } else if (Device.isDevice) {
+      Alert.alert(
+        "Notification permission denied",
+        "Please enable notifications in your settings."
+      );
     }
+
     if (latestState?.currentNotificationId) {
       await Notifications.cancelScheduledNotificationAsync(
-        latestState?.currentNotificationId
+        latestState.currentNotificationId
       );
     }
 
     const newCountdownState: PersistedCountdownState = {
       currentNotificationId: pushNotificationId,
-      completedAtTimestamps: latestState
-        ? [Date.now(), ...latestState.completedAtTimestamps]
-        : [Date.now()],
+      completedBrews: latestState?.completedBrews
+        ? [
+            { completedAt: Date.now(), duration: durationMs },
+            ...latestState.completedBrews,
+          ]
+        : [{ completedAt: Date.now(), duration: durationMs }],
     };
     setCountdownState(newCountdownState);
     await saveToStorage(storageKey, newCountdownState);
@@ -139,61 +161,90 @@ export default function CounterScreen() {
   }
 
   return (
-    <>
-      <View
-        style={[
-          theme.commonStyles.pageContainer,
-          status.isOverdue ? styles.containerLate : undefined,
-        ]}
-      >
-        {!status.isOverdue ? (
-          <Text style={[styles.heading]}>Potion brewing...</Text>
-        ) : (
-          <Text style={[styles.heading, styles.whiteText]}>
-            Potion has been brewed for...
-          </Text>
-        )}
-        <View style={styles.row}>
-          <TimeSegment
-            unit="Days"
-            number={status.distance?.days ?? 0}
-            textStyle={status.isOverdue ? styles.whiteText : undefined}
+    <View
+      style={[
+        theme.commonStyles.pageContainer,
+        status.isOverdue ? styles.containerLate : undefined,
+      ]}
+    >
+      {!brewDuration ? (
+        <>
+          <Text style={[styles.heading]}>Enter brewing time (seconds):</Text>
+          <TextInput
+            style={styles.input}
+            keyboardType="numeric"
+            placeholder="e.g. 30"
+            placeholderTextColor="#999"
+            value={brewTime}
+            onChangeText={setBrewTime}
           />
-          <TimeSegment
-            unit="Hours"
-            number={status.distance?.hours ?? 0}
-            textStyle={status.isOverdue ? styles.whiteText : undefined}
-          />
-          <TimeSegment
-            unit="Minutes"
-            number={status.distance?.minutes ?? 0}
-            textStyle={status.isOverdue ? styles.whiteText : undefined}
-          />
-          <TimeSegment
-            unit="Seconds"
-            number={status.distance?.seconds ?? 0}
-            textStyle={status.isOverdue ? styles.whiteText : undefined}
-          />
-        </View>
-        <TouchableOpacity
-          onPress={scheduleNotification}
-          style={styles.button}
-          activeOpacity={0.8}
-        >
+          <TouchableOpacity
+            onPress={scheduleNotification}
+            style={styles.button}
+            activeOpacity={0.8}
+          >
+            <Text style={styles.buttonText}>Start Brewing</Text>
+          </TouchableOpacity>
+        </>
+      ) : (
+        <>
           {!status.isOverdue ? (
-            <Text style={styles.buttonText}>One moment...</Text>
+            <Text style={[styles.heading]}>Potion brewing...</Text>
           ) : (
-            <Text style={styles.buttonText}>
-              Collect and Brew Another Potion
+            <Text style={[styles.heading, styles.whiteText]}>
+              Potion has been brewed for...
             </Text>
           )}
-        </TouchableOpacity>
-      </View>
-    </>
+          <View style={styles.row}>
+            <TimeSegment
+              unit="Days"
+              number={status.distance?.days ?? 0}
+              textStyle={status.isOverdue ? styles.whiteText : undefined}
+            />
+            <TimeSegment
+              unit="Hours"
+              number={status.distance?.hours ?? 0}
+              textStyle={status.isOverdue ? styles.whiteText : undefined}
+            />
+            <TimeSegment
+              unit="Minutes"
+              number={status.distance?.minutes ?? 0}
+              textStyle={status.isOverdue ? styles.whiteText : undefined}
+            />
+            <TimeSegment
+              unit="Seconds"
+              number={status.distance?.seconds ?? 0}
+              textStyle={status.isOverdue ? styles.whiteText : undefined}
+            />
+          </View>
+          <TouchableOpacity
+            onPress={() => {
+              setBrewDuration(null);
+              setStatus({ isOverdue: false, distance: {} });
+            }}
+            style={styles.button}
+            activeOpacity={0.8}
+          >
+            <Text style={styles.buttonText}>Brew Another Potion</Text>
+          </TouchableOpacity>
+        </>
+      )}
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
+  input: {
+    borderWidth: 1,
+    borderColor: "#ccc",
+    borderRadius: 6,
+    padding: 12,
+    fontSize: 18,
+    color: theme.colorBlack,
+    marginBottom: 16,
+    width: "80%",
+    textAlign: "center",
+  },
   button: {
     backgroundColor: theme.colorBlack,
     padding: 12,

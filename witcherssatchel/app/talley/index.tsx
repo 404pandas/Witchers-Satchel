@@ -21,9 +21,11 @@ export default function TalleyerScreen() {
   const router = useRouter();
   const [talley, setTalley] = useState(0);
   const [seconds, setSeconds] = useState("");
+  const [huntName, setHuntName] = useState("");
 
   const scheduleNotification = async () => {
     const delay = parseInt(seconds, 10);
+    const name = huntName.trim();
 
     if (isNaN(delay) || delay <= 0) {
       Alert.alert(
@@ -38,12 +40,14 @@ export default function TalleyerScreen() {
     if (result === "granted") {
       await Notifications.scheduleNotificationAsync({
         content: {
-          title: "Time to hunt!",
-          body: "Your Witcher's Satchel is ready to be filled again.",
+          title: `Time for your hunt: ${name}!`,
+          body: "Your hunt is ready to begin.",
           sound: true,
         },
         trigger: {
+          type: "timeInterval",
           seconds: delay,
+          repeats: false,
         },
       });
       Alert.alert(
@@ -131,7 +135,14 @@ export default function TalleyerScreen() {
       <View style={styles.notificationContainer}>
         <TextInput
           style={styles.input}
-          placeholder="Seconds until reminder"
+          placeholder="Name of hunt"
+          keyboardType="default"
+          value={huntName}
+          onChangeText={setHuntName}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Seconds"
           keyboardType="numeric"
           value={seconds}
           onChangeText={setSeconds}
@@ -140,7 +151,7 @@ export default function TalleyerScreen() {
           style={[theme.commonStyles.button, styles.increment]}
           onPress={scheduleNotification}
         >
-          <Text style={theme.commonStyles.buttonText}>Schedule a Hunt</Text>
+          <Text style={theme.commonStyles.buttonText}>Schedule</Text>
         </TouchableOpacity>
       </View>
 
