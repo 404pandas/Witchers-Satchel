@@ -58,5 +58,12 @@ export const theme = {
       width: "100%",
       marginBottom: 20,
     } as ViewStyle,
+    textShadow: {
+      shadowOffset: { width: 1, height: 1 },
+      shadowColor: "black",
+      shadowOpacity: 0.8,
+      shadowRadius: 2,
+      marginBottom: 12,
+    } as ViewStyle,
   },
 };

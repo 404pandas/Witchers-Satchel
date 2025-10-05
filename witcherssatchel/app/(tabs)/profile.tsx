@@ -17,9 +17,3 @@ export default function ProfileScreen() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  text: {
-    fontSize: 24,
-  },
-});

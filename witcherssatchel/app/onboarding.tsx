@@ -27,13 +27,22 @@ export default function OnboardingScreen() {
           { backgroundColor: theme.colorDarkerRed },
         ]}
       >
-        <Text style={[theme.commonStyles.boldTitle, styles.onboardingText]}>
-          Welcome to Witcher's Satchel!
+        <Text
+          style={[
+            theme.commonStyles.boldTitle,
+            styles.onboardingText,
+            theme.commonStyles.textShadow,
+          ]}
+        >
+          Welcome to Witcher&apos;s Satchel!
         </Text>
-        <Text style={styles.text}>
+        <Text style={[styles.text, theme.commonStyles.textShadow]}>
           This is an experimental app for me to learn React Native.
         </Text>
-        <Text style={styles.text}>Press the button to continue.</Text>
+
+        <Text style={[styles.text, theme.commonStyles.textShadow]}>
+          Press the button to continue.
+        </Text>
 
         <TouchableOpacity
           style={theme.commonStyles.buttonRed}
@@ -65,7 +74,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 16,
-    borderColor: theme.colorBlack,
+    borderColor: theme.colorGray,
     borderWidth: 1,
     padding: 24,
   },
