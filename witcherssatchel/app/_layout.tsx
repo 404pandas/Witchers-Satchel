@@ -1,10 +1,13 @@
-import { Link, Stack, Tabs } from "expo-router";
+import { Link, Stack, Tabs, usePathname } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { theme } from "../theme";
 
 export default function Routing() {
+  const pathname = usePathname();
+  const isCountdownHistory = pathname.startsWith("/countdownTimer/history");
+  const isTalleyHistory = pathname.startsWith("/talley/talleyHistory");
   return (
     <Tabs screenOptions={{ tabBarActiveTintColor: theme.colorRed }}>
       <Tabs.Screen
@@ -34,7 +37,7 @@ export default function Routing() {
       <Tabs.Screen
         name="talley"
         options={{
-          title: "Talley",
+          title: isTalleyHistory ? "History" : "Talley",
           headerLeft: () => {
             return (
               <Link href="/talley" asChild>
@@ -61,7 +64,7 @@ export default function Routing() {
       <Tabs.Screen
         name="countdownTimer"
         options={{
-          title: "Timer",
+          title: isCountdownHistory ? "History" : "Timer",
           headerLeft: () => {
             return (
               <Link href="/countdownTimer" asChild>

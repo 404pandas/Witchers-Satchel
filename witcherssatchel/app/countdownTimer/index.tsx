@@ -44,8 +44,20 @@ export default function CounterScreen() {
   useEffect(() => {
     const init = async () => {
       const value = await getFromStorage(storageKey);
-      setCountdownState(value);
+      if (value) {
+        setCountdownState(value);
+      } else {
+        const emptyState: PersistedCountdownState = {
+          currentNotificationId: undefined,
+          completedAtTimestamps: [],
+        };
+        setCountdownState(emptyState);
+        await saveToStorage(storageKey, emptyState);
+      }
+
+      setIsLoading(false);
     };
+
     init();
   }, []);
 
@@ -74,6 +86,8 @@ export default function CounterScreen() {
   }, [lastCompletedTimestamp]);
 
   const scheduleNotification = async () => {
+    const latestState = await getFromStorage(storageKey);
+
     let pushNotificationId;
     const result = await registerForPushNotificationsAsync();
 
@@ -100,16 +114,16 @@ export default function CounterScreen() {
         );
       }
     }
-    if (countdownState?.currentNotificationId) {
+    if (latestState?.currentNotificationId) {
       await Notifications.cancelScheduledNotificationAsync(
-        countdownState?.currentNotificationId
+        latestState?.currentNotificationId
       );
     }
 
     const newCountdownState: PersistedCountdownState = {
       currentNotificationId: pushNotificationId,
-      completedAtTimestamps: countdownState
-        ? [Date.now(), ...countdownState.completedAtTimestamps]
+      completedAtTimestamps: latestState
+        ? [Date.now(), ...latestState.completedAtTimestamps]
         : [Date.now()],
     };
     setCountdownState(newCountdownState);
@@ -169,7 +183,9 @@ export default function CounterScreen() {
           {!status.isOverdue ? (
             <Text style={styles.buttonText}>One moment...</Text>
           ) : (
-            <Text style={styles.buttonText}>Brew Another Potion</Text>
+            <Text style={styles.buttonText}>
+              Collect and Brew Another Potion
+            </Text>
           )}
         </TouchableOpacity>
       </View>
