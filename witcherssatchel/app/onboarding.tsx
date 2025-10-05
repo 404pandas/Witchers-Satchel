@@ -1,8 +1,8 @@
-import { Text, View, StyleSheet, Button, TouchableOpacity } from "react-native";
+import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import { theme } from "@/theme";
 import { useUserStore } from "@/store/userStore";
 import { useRouter } from "expo-router";
-
+import { WitcherSatchelButton } from "@/components/WitcherSatchelButton";
 export default function OnboardingScreen() {
   const router = useRouter();
   const toggleHasOnboarded = useUserStore((state) => state.toggleHasOnboarded);
@@ -28,6 +28,10 @@ export default function OnboardingScreen() {
           Continue
         </Text>
       </TouchableOpacity>
+      <WitcherSatchelButton
+        title="Continue, but prettier"
+        onPress={handlePress}
+      />
     </View>
   );
 }
