@@ -5,6 +5,8 @@ import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { theme } from "@/theme";
 import { useUserStore } from "@/store/userStore";
 
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import { Pressable } from "react-native";
 export default function Routing() {
   const pathname = usePathname();
   const hasFinishedOnboarding = useUserStore(
@@ -50,18 +52,22 @@ export default function Routing() {
           headerLeft: () => {
             return (
               <Link href="/talley" asChild>
-                <MaterialIcons name="library-add" size={24} color="black" />
+                <Pressable style={{ marginRight: 8 }} hitSlop={20}>
+                  <MaterialIcons name="library-add" size={24} color="black" />
+                </Pressable>
               </Link>
             );
           },
           headerRight: () => {
             return (
               <Link href="/talley/talleyHistory" asChild>
-                <MaterialIcons
-                  name="format-list-bulleted"
-                  size={24}
-                  color="black"
-                />
+                <Pressable style={{ marginRight: 8 }} hitSlop={20}>
+                  <MaterialIcons
+                    name="format-list-bulleted"
+                    size={24}
+                    color="black"
+                  />
+                </Pressable>
               </Link>
             );
           },
@@ -78,18 +84,22 @@ export default function Routing() {
           headerLeft: () => {
             return (
               <Link href="/countdownTimer" asChild>
-                <MaterialIcons name="timer" size={24} color="black" />
+                <Pressable style={{ marginRight: 8 }} hitSlop={20}>
+                  <MaterialIcons name="timer" size={24} color="black" />
+                </Pressable>
               </Link>
             );
           },
           headerRight: () => {
             return (
               <Link href="/countdownTimer/history" asChild>
-                <MaterialIcons
-                  name="format-list-bulleted"
-                  size={24}
-                  color="black"
-                />
+                <Pressable style={{ marginRight: 8 }} hitSlop={20}>
+                  <MaterialIcons
+                    name="format-list-bulleted"
+                    size={24}
+                    color="black"
+                  />
+                </Pressable>
               </Link>
             );
           },
@@ -103,6 +113,19 @@ export default function Routing() {
         name="profile"
         options={{
           title: "Profile",
+          headerRight: () => {
+            return (
+              <Link href="/new" asChild>
+                <Pressable style={{ marginRight: 8 }} hitSlop={20}>
+                  <MaterialCommunityIcons
+                    name="flask-plus-outline"
+                    size={24}
+                    color="black"
+                  />
+                </Pressable>
+              </Link>
+            );
+          },
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="person-circle" size={size} color={color} />
           ),
