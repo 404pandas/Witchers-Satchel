@@ -1,4 +1,11 @@
-import { Text, View, StyleSheet, TouchableOpacity, Alert } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  Alert,
+  ActivityIndicator,
+} from "react-native";
 import { theme } from "../../theme";
 import { Duration, intervalToDuration, isBefore } from "date-fns";
 import { TimeSegment } from "../../components/TimeSegment";
@@ -7,14 +14,13 @@ import * as Device from "expo-device";
 import * as Notifications from "expo-notifications";
 import { registerForPushNotificationsAsync } from "../../utils/registerForPushNotificationsAsync";
 import { getFromStorage, saveToStorage } from "../../utils/storage";
-import { push } from "../../eslint.config";
 
 // 10 seconds from now
 const frequency = 10 * 1000;
 
-const storageKey = "witchers-satchel-countdown-state";
+export const storageKey = "witchers-satchel-countdown-state";
 
-type PersistedCountdownState = {
+export type PersistedCountdownState = {
   currentNotificationId: string | undefined;
   completedAtTimestamps: number[];
 };
@@ -25,6 +31,7 @@ type CountdownStatus = {
 };
 
 export default function CounterScreen() {
+  const [isLoading, setIsLoading] = useState(true);
   const [status, setStatus] = useState<CountdownStatus>({
     isOverdue: false,
     distance: {},
@@ -47,12 +54,15 @@ export default function CounterScreen() {
       const timestamp = lastCompletedTimestamp
         ? lastCompletedTimestamp + frequency
         : Date.now();
-      const isOverdue = isBefore(frequency, Date.now());
+      if (lastCompletedTimestamp) {
+        setIsLoading(false);
+      }
+      const isOverdue = isBefore(timestamp, Date.now());
 
       const distance = intervalToDuration(
         isOverdue
-          ? { end: Date.now(), start: frequency }
-          : { start: Date.now(), end: frequency }
+          ? { end: Date.now(), start: timestamp }
+          : { start: Date.now(), end: timestamp }
       );
 
       setStatus({ isOverdue, distance });
@@ -80,7 +90,7 @@ export default function CounterScreen() {
       });
       Alert.alert(
         "Notification scheduled",
-        `You'll be reminded when the potion is done brewing.`
+        "You'll be reminded when the potion is done brewing."
       );
     } else {
       if (Device.isDevice) {
@@ -106,6 +116,14 @@ export default function CounterScreen() {
     await saveToStorage(storageKey, newCountdownState);
   };
 
+  if (isLoading) {
+    return (
+      <View style={theme.commonStyles.pageContainer}>
+        <ActivityIndicator />
+      </View>
+    );
+  }
+
   return (
     <>
       <View
@@ -118,7 +136,7 @@ export default function CounterScreen() {
           <Text style={[styles.heading]}>Potion brewing...</Text>
         ) : (
           <Text style={[styles.heading, styles.whiteText]}>
-            Potion has been brewed!
+            Potion has been brewed for...
           </Text>
         )}
         <View style={styles.row}>
@@ -148,7 +166,11 @@ export default function CounterScreen() {
           style={styles.button}
           activeOpacity={0.8}
         >
-          <Text style={styles.buttonText}>Pick up Potion</Text>
+          {!status.isOverdue ? (
+            <Text style={styles.buttonText}>One moment...</Text>
+          ) : (
+            <Text style={styles.buttonText}>Brew Another Potion</Text>
+          )}
         </TouchableOpacity>
       </View>
     </>

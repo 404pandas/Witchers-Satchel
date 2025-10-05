@@ -9,11 +9,8 @@ export default function TalleyRouting() {
         options={{ headerShown: false }}
       ></Stack.Screen>
       <Stack.Screen
-        name="talleyHistory"
-        options={{
-          title: "Talley",
-          headerShown: false,
-        }}
+        name="history"
+        options={{ headerShown: false }}
       ></Stack.Screen>
     </Stack>
   );

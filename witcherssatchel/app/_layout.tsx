@@ -1,4 +1,4 @@
-import { Stack, Tabs } from "expo-router";
+import { Link, Stack, Tabs } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
@@ -35,6 +35,24 @@ export default function Routing() {
         name="talley"
         options={{
           title: "Talley",
+          headerLeft: () => {
+            return (
+              <Link href="/talley" asChild>
+                <MaterialIcons name="library-add" size={24} color="black" />
+              </Link>
+            );
+          },
+          headerRight: () => {
+            return (
+              <Link href="/talley/talleyHistory" asChild>
+                <MaterialIcons
+                  name="format-list-bulleted"
+                  size={24}
+                  color="black"
+                />
+              </Link>
+            );
+          },
           tabBarIcon: () => (
             <MaterialIcons name="library-add" size={24} color="black" />
           ),
@@ -44,6 +62,24 @@ export default function Routing() {
         name="countdownTimer"
         options={{
           title: "Timer",
+          headerLeft: () => {
+            return (
+              <Link href="/countdownTimer" asChild>
+                <MaterialIcons name="timer" size={24} color="black" />
+              </Link>
+            );
+          },
+          headerRight: () => {
+            return (
+              <Link href="/countdownTimer/history" asChild>
+                <MaterialIcons
+                  name="format-list-bulleted"
+                  size={24}
+                  color="black"
+                />
+              </Link>
+            );
+          },
           tabBarIcon: () => <Ionicons name="timer" size={24} color="black" />,
           tabBarShowLabel: false,
         }}
