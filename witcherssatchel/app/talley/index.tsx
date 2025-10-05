@@ -1,4 +1,3 @@
-import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import {
   Text,
@@ -20,7 +19,6 @@ import { getFromStorage, saveToStorage } from "../../utils/storage";
 import { HuntRecord, huntStorageKey } from "./talleyHistory";
 
 export default function TalleyerScreen() {
-  const router = useRouter();
   const [talley, setTalley] = useState(0);
   const [seconds, setSeconds] = useState("");
   const [huntName, setHuntName] = useState("");
@@ -58,7 +56,6 @@ export default function TalleyerScreen() {
         },
       });
 
-      // Save hunt to history
       const stored: HuntRecord[] = (await getFromStorage(huntStorageKey)) || [];
       const newRecord: HuntRecord = {
         huntName: name,
@@ -72,11 +69,9 @@ export default function TalleyerScreen() {
         `You'll be reminded in ${delay} seconds.`
       );
 
-      // Reset inputs
       setSeconds("");
       setHuntName("");
     } else if (result === null) {
-      // Save hunt to history
       const stored: HuntRecord[] = (await getFromStorage(huntStorageKey)) || [];
       const newRecord: HuntRecord = {
         huntName: name,
@@ -84,7 +79,6 @@ export default function TalleyerScreen() {
         scheduledAt: Date.now(),
       };
       await saveToStorage(huntStorageKey, [...stored, newRecord]);
-      // Reset inputs
       setSeconds("");
       setHuntName("");
       Alert.alert(

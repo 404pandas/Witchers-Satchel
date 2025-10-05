@@ -1,4 +1,4 @@
-import { Link, Stack, Tabs, usePathname } from "expo-router";
+import { Link, Tabs, usePathname } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";

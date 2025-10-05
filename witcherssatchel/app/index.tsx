@@ -1,15 +1,6 @@
-import {
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-  ScrollView,
-  FlatList,
-  LayoutAnimation,
-} from "react-native";
+import { TextInput, FlatList, LayoutAnimation } from "react-native";
 import { theme } from "../theme";
 import SatchelItem from "../components/SatchelItem";
-import { Link } from "expo-router";
 import { useEffect, useState } from "react";
 import { getFromStorage, saveToStorage } from "../utils/storage";
 import * as Haptics from "expo-haptics";
@@ -135,7 +126,3 @@ function orderSatchelList(satchelList: SatchelItemType[]) {
     return 0;
   });
 }
-
-const styles = StyleSheet.create({
-  subtitle: { textAlign: "center", marginBottom: 18, fontSize: 24 },
-});

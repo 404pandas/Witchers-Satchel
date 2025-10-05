@@ -1,5 +1,4 @@
-import { Link, Stack } from "expo-router";
-import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import { Stack } from "expo-router";
 
 export default function TalleyRouting() {
   return (
