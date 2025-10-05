@@ -59,6 +59,7 @@ export default function Routing() {
           tabBarIcon: () => (
             <MaterialIcons name="library-add" size={24} color="black" />
           ),
+          tabBarShowLabel: false,
         }}
       />
       <Tabs.Screen
