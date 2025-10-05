@@ -82,22 +82,22 @@ Stage 1 Completed 10/02/25
 
 https://github.com/user-attachments/assets/bc49c87e-dcc4-4c1b-83bf-8f5e2e5e7ed8
 
-Talley
-<img width="438" height="861" alt="Talley" src="https://github.com/user-attachments/assets/f6672393-531d-45ea-9560-7db9ef8b7281" />
-<img width="450" height="856" alt="Talley2" src="https://github.com/user-attachments/assets/ce104c20-02fb-40ee-bc03-048a3d8ec8bc" />
+### Talley
+![Talley](https://github.com/user-attachments/assets/f6672393-531d-45ea-9560-7db9ef8b7281)
+![Talley2](https://github.com/user-attachments/assets/ce104c20-02fb-40ee-bc03-048a3d8ec8bc)
 
-Satchel
-<img width="446" height="853" alt="Satchel1" src="https://github.com/user-attachments/assets/1742d043-0b46-4379-bc30-f4e22f8013fc" />
-<img width="430" height="860" alt="Satchel2" src="https://github.com/user-attachments/assets/11c4e0f2-285e-4f9f-b9d0-36b9af4a1055" />
+### Satchel
+![Satchel1](https://github.com/user-attachments/assets/1742d043-0b46-4379-bc30-f4e22f8013fc)
+![Satchel2](https://github.com/user-attachments/assets/11c4e0f2-285e-4f9f-b9d0-36b9af4a1055)
 
-Bestiary
-<img width="442" height="860" alt="Bestiary" src="https://github.com/user-attachments/assets/406e53a7-d754-49bc-a3a1-cacc2bf1c540" />
+### Bestiary
+![Bestiary](https://github.com/user-attachments/assets/406e53a7-d754-49bc-a3a1-cacc2bf1c540)
 
-Timer
-<img width="431" height="848" alt="Timer" src="https://github.com/user-attachments/assets/970f7b81-6471-443f-ab00-77303daed446" />
-<img width="460" height="842" alt="Timer2" src="https://github.com/user-attachments/assets/211ace8c-da8b-4f70-a726-49530a2c5772" />
-<img width="440" height="854" alt="Timer3" src="https://github.com/user-attachments/assets/b8619b24-44ab-47a4-a86f-3c85cace633d" />
-<img width="436" height="849" alt="Timer4" src="https://github.com/user-attachments/assets/141e69f9-37ad-428a-807b-03cffe38c2e7" />
+### Timer
+![Timer](https://github.com/user-attachments/assets/970f7b81-6471-443f-ab00-77303daed446)
+![Timer2](https://github.com/user-attachments/assets/211ace8c-da8b-4f70-a726-49530a2c5772)
+![Timer3](https://github.com/user-attachments/assets/b8619b24-44ab-47a4-a86f-3c85cace633d)
+![Timer4](https://github.com/user-attachments/assets/141e69f9-37ad-428a-807b-03cffe38c2e7)
 
 ---
 
