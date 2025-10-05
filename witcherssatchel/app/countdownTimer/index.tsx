@@ -110,7 +110,7 @@ export default function CounterScreen() {
 
     let pushNotificationId;
     const result = await registerForPushNotificationsAsync();
-
+    console.log(result);
     if (result === "granted") {
       pushNotificationId = await Notifications.scheduleNotificationAsync({
         content: {

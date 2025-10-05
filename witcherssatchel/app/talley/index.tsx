@@ -13,9 +13,11 @@ import {
 import { theme } from "../../theme";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
-import { registerForPushNotificationsAsync } from "../../utils/registerForPushNotificationsAsync";
 import * as Device from "expo-device";
 import * as Notifications from "expo-notifications";
+import { registerForPushNotificationsAsync } from "../../utils/registerForPushNotificationsAsync";
+import { getFromStorage, saveToStorage } from "../../utils/storage";
+import { HuntRecord, huntStorageKey } from "./talleyHistory";
 
 export default function TalleyerScreen() {
   const router = useRouter();
@@ -27,6 +29,11 @@ export default function TalleyerScreen() {
     const delay = parseInt(seconds, 10);
     const name = huntName.trim();
 
+    if (!name) {
+      Alert.alert("Invalid input", "Please enter a hunt name.");
+      return;
+    }
+
     if (isNaN(delay) || delay <= 0) {
       Alert.alert(
         "Invalid input",
@@ -36,7 +43,7 @@ export default function TalleyerScreen() {
     }
 
     const result = await registerForPushNotificationsAsync();
-
+    console.log(result);
     if (result === "granted") {
       await Notifications.scheduleNotificationAsync({
         content: {
@@ -45,16 +52,46 @@ export default function TalleyerScreen() {
           sound: true,
         },
         trigger: {
-          type: "timeInterval",
+          type: "timeInterval" as const,
           seconds: delay,
           repeats: false,
         },
       });
+
+      // Save hunt to history
+      const stored: HuntRecord[] = (await getFromStorage(huntStorageKey)) || [];
+      const newRecord: HuntRecord = {
+        huntName: name,
+        seconds: delay,
+        scheduledAt: Date.now(),
+      };
+      await saveToStorage(huntStorageKey, [...stored, newRecord]);
+
       Alert.alert(
         "Notification scheduled",
         `You'll be reminded in ${delay} seconds.`
       );
+
+      // Reset inputs
       setSeconds("");
+      setHuntName("");
+    } else if (result === null) {
+      // Save hunt to history
+      const stored: HuntRecord[] = (await getFromStorage(huntStorageKey)) || [];
+      const newRecord: HuntRecord = {
+        huntName: name,
+        seconds: delay,
+        scheduledAt: Date.now(),
+      };
+      await saveToStorage(huntStorageKey, [...stored, newRecord]);
+      // Reset inputs
+      setSeconds("");
+      setHuntName("");
+      Alert.alert(
+        "Push notifications not supported",
+        "Push notifications are not supported on emulators. Please test on a physical device."
+      );
+      return;
     } else {
       if (Device.isDevice) {
         Alert.alert(
@@ -98,7 +135,7 @@ export default function TalleyerScreen() {
         />
       </View>
 
-      <View style={(styles.buttonRow, styles.talleyContainer)}>
+      <View style={[styles.buttonRow, styles.talleyContainer]}>
         <TouchableOpacity
           style={[theme.commonStyles.button, styles.decrement]}
           onPress={() => setTalley((c) => Math.max(0, c - 1))}
@@ -130,6 +167,7 @@ export default function TalleyerScreen() {
           <Text style={theme.commonStyles.buttonText}>Slay More</Text>
         </TouchableOpacity>
       </View>
+
       <Text style={theme.commonStyles.boldTitle}>Hunt Scheduler</Text>
 
       <View style={styles.notificationContainer}>
