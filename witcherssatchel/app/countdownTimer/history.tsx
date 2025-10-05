@@ -7,11 +7,11 @@ import {
 } from "react-native";
 import { PersistedCountdownState, storageKey, BrewRecord } from ".";
 import { useEffect, useState } from "react";
-import { getFromStorage, saveToStorage } from "../../utils/storage";
+import { getFromStorage, saveToStorage } from "@/utils/storage";
 import { format } from "date-fns";
-import { theme } from "../../theme";
+import { theme } from "@/theme";
 import Foundation from "@expo/vector-icons/Foundation";
-import NoItems from "../../components/NoItems";
+import NoItems from "@/components/NoItems";
 
 const fullDateFormat = `LLL d yyyy, h:mm aaa`;
 

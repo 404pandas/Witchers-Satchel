@@ -2,7 +2,7 @@ import { Link, Tabs, usePathname } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
-import { theme } from "../theme";
+import { theme } from "@/theme";
 
 export default function Routing() {
   const pathname = usePathname();
@@ -56,8 +56,8 @@ export default function Routing() {
               </Link>
             );
           },
-          tabBarIcon: () => (
-            <MaterialIcons name="library-add" size={24} color="black" />
+          tabBarIcon: ({ size, color }) => (
+            <MaterialIcons name="library-add" size={size} color={color} />
           ),
           tabBarShowLabel: false,
         }}
@@ -84,7 +84,19 @@ export default function Routing() {
               </Link>
             );
           },
-          tabBarIcon: () => <Ionicons name="timer" size={24} color="black" />,
+          tabBarIcon: ({ size, color }) => (
+            <Ionicons name="timer" size={size} color={color} />
+          ),
+          tabBarShowLabel: false,
+        }}
+      />
+      <Tabs.Screen
+        name="profile"
+        options={{
+          title: "Profile",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="person-circle" size={size} color={color} />
+          ),
           tabBarShowLabel: false,
         }}
       />

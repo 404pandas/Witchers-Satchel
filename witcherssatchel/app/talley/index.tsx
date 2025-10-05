@@ -9,13 +9,13 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from "react-native";
-import { theme } from "../../theme";
+import { theme } from "@/theme";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import * as Device from "expo-device";
 import * as Notifications from "expo-notifications";
-import { registerForPushNotificationsAsync } from "../../utils/registerForPushNotificationsAsync";
-import { getFromStorage, saveToStorage } from "../../utils/storage";
+import { registerForPushNotificationsAsync } from "@/utils/registerForPushNotificationsAsync";
+import { getFromStorage, saveToStorage } from "@/utils/storage";
 import { HuntRecord, huntStorageKey } from "./talleyHistory";
 
 export default function TalleyerScreen() {

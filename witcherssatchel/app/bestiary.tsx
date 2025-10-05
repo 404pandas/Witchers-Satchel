@@ -9,8 +9,8 @@ import {
   Animated,
   ScrollView,
 } from "react-native";
-import bestiary from "../assets/beastiary.json";
-import { theme } from "../theme";
+import bestiary from "@/assets/beastiary.json";
+import { theme } from "@/theme";
 
 const { width } = Dimensions.get("window");
 

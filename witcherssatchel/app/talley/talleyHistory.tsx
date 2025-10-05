@@ -6,10 +6,10 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { useEffect, useState } from "react";
-import { getFromStorage, saveToStorage } from "../../utils/storage";
-import { theme } from "../../theme";
+import { getFromStorage, saveToStorage } from "@/utils/storage";
+import { theme } from "@/theme";
 import Foundation from "@expo/vector-icons/Foundation";
-import NoItems from "../../components/NoItems";
+import NoItems from "@/components/NoItems";
 
 // Define a new type for Hunt history
 export interface HuntRecord {

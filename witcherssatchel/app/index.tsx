@@ -1,10 +1,10 @@
 import { TextInput, FlatList, LayoutAnimation } from "react-native";
-import { theme } from "../theme";
-import SatchelItem from "../components/SatchelItem";
+import { theme } from "@/theme";
+import SatchelItem from "@/components/SatchelItem";
 import { useEffect, useState } from "react";
-import { getFromStorage, saveToStorage } from "../utils/storage";
+import { getFromStorage, saveToStorage } from "@/utils/storage";
 import * as Haptics from "expo-haptics";
-import NoItems from "../components/NoItems";
+import NoItems from "@/components/NoItems";
 
 const storageKey = "satchelItems";
 

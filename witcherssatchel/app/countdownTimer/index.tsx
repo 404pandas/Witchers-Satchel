@@ -7,14 +7,14 @@ import {
   ActivityIndicator,
   TextInput,
 } from "react-native";
-import { theme } from "../../theme";
+import { theme } from "@/theme";
 import { Duration, intervalToDuration, isBefore } from "date-fns";
-import { TimeSegment } from "../../components/TimeSegment";
+import { TimeSegment } from "@/components/TimeSegment";
 import { useEffect, useState } from "react";
 import * as Device from "expo-device";
 import * as Notifications from "expo-notifications";
-import { registerForPushNotificationsAsync } from "../../utils/registerForPushNotificationsAsync";
-import { getFromStorage, saveToStorage } from "../../utils/storage";
+import { registerForPushNotificationsAsync } from "@/utils/registerForPushNotificationsAsync";
+import { getFromStorage, saveToStorage } from "@/utils/storage";
 
 export const storageKey = "witchers-satchel-countdown-state";
 
