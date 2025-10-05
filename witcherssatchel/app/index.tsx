@@ -13,6 +13,7 @@ import { Link } from "expo-router";
 import { useEffect, useState } from "react";
 import { getFromStorage, saveToStorage } from "../utils/storage";
 import * as Haptics from "expo-haptics";
+import NoItems from "../components/NoItems";
 
 const storageKey = "satchelItems";
 
@@ -89,12 +90,8 @@ export default function App() {
   };
   return (
     <>
-      <Text style={styles.subtitle}>Need to talley your trophies?</Text>
-      <Link href="/talley" style={theme.commonStyles.link}>
-        Go to monster talley
-      </Link>
       <TextInput
-        style={theme.commonStyles.textInput}
+        style={[theme.commonStyles.textInput, { marginTop: 16 }]}
         placeholder="E.g. Potion"
         value={satchelItem}
         onChangeText={setSatchelItem}
@@ -102,7 +99,7 @@ export default function App() {
       />
       <FlatList
         data={orderSatchelList(satchelList)}
-        ListEmptyComponent={<Text>No items</Text>}
+        ListEmptyComponent={<NoItems message="Your satchel is empty!" />}
         renderItem={({ item }) => (
           <SatchelItem
             key={item.id}

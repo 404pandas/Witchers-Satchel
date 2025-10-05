@@ -65,14 +65,14 @@ export default function Bestiary() {
       >
         {bestiary.map((monster) => (
           <View key={monster.beastName} style={[styles.card, { width }]}>
+            <Text style={[theme.commonStyles.boldTitle, styles.name]}>
+              {monster.beastName.toUpperCase()}
+            </Text>
             <Image
               source={{ uri: monster.imageUrl }}
               style={styles.image}
               resizeMode="contain"
             />
-            <Text style={[theme.commonStyles.boldTitle, styles.name]}>
-              {monster.beastName.toUpperCase()}
-            </Text>
             <View style={styles.statsContainer}>
               <Text style={styles.statsKeyName}>
                 Vitality:
@@ -115,7 +115,7 @@ export default function Bestiary() {
 }
 
 const styles = StyleSheet.create({
-  carousel: { backgroundColor: theme.colorDarkBlue },
+  carousel: { backgroundColor: theme.colorGray },
   sliderContainer: {
     flexDirection: "row",
     alignItems: "center",

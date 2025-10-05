@@ -11,6 +11,7 @@ import { getFromStorage, saveToStorage } from "../../utils/storage";
 import { format } from "date-fns";
 import { theme } from "../../theme";
 import Foundation from "@expo/vector-icons/Foundation";
+import NoItems from "../../components/NoItems";
 
 const fullDateFormat = `LLL d yyyy, h:mm aaa`;
 
@@ -74,7 +75,7 @@ export default function HistoryScreen() {
         style={styles.list}
         contentContainerStyle={styles.listContentContainer}
         data={countdownState?.completedBrews}
-        ListEmptyComponent={<Text>No potions brewed yet</Text>}
+        ListEmptyComponent={<NoItems message="No potions brewed yet!" />}
         keyExtractor={(_, index) => index.toString()}
         renderItem={({ item }: { item: BrewRecord }) => {
           const brewSeconds = Math.round(item.duration / 1000);

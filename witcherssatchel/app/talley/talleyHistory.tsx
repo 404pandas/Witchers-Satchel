@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { getFromStorage, saveToStorage } from "../../utils/storage";
 import { theme } from "../../theme";
 import Foundation from "@expo/vector-icons/Foundation";
+import NoItems from "../../components/NoItems";
 
 // Define a new type for Hunt history
 export interface HuntRecord {
@@ -62,7 +63,7 @@ export default function HistoryScreen() {
         style={styles.list}
         contentContainerStyle={styles.listContentContainer}
         data={huntHistory}
-        ListEmptyComponent={<Text>No hunts scheduled yet</Text>}
+        ListEmptyComponent={<NoItems message="No hunts scheduled yet!" />}
         keyExtractor={(_, index) => index.toString()}
         renderItem={({ item }: { item: HuntRecord }) => (
           <View style={styles.listItem}>

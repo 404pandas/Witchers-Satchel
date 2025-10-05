@@ -107,18 +107,8 @@ export default function TalleyerScreen() {
       style={theme.commonStyles.pageContainer}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
-      <TouchableOpacity onPress={() => router.navigate("/")}>
-        <Text style={theme.commonStyles.link}>Return to the tavern</Text>
-      </TouchableOpacity>
-
       <View style={styles.buttonRow}>
         <Text style={theme.commonStyles.boldTitle}>Monster Trophies</Text>
-        <FontAwesome
-          name="question-circle-o"
-          size={24}
-          onPress={() => router.navigate("/bestiary")}
-          color={theme.colorDarkBlue}
-        />
       </View>
 
       <View style={styles.talleyContainer}>
