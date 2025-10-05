@@ -3,6 +3,8 @@ import { theme } from "@/theme";
 import { useUserStore } from "@/store/userStore";
 import { useRouter } from "expo-router";
 import { WitcherSatchelButton } from "@/components/WitcherSatchelButton";
+import { LinearGradient } from "expo-linear-gradient";
+
 export default function OnboardingScreen() {
   const router = useRouter();
   const toggleHasOnboarded = useUserStore((state) => state.toggleHasOnboarded);
@@ -11,28 +13,43 @@ export default function OnboardingScreen() {
     toggleHasOnboarded();
     router.replace("/");
   };
+
   return (
-    <View style={styles.container}>
-      <Text style={[theme.commonStyles.boldTitle, styles.onboardingText]}>
-        Welcome to Witcher's Satchel!
-      </Text>
-      <Text style={styles.text}>
-        This is an experimental app for me to learn React Native.
-      </Text>
-      <Text style={styles.text}>Press the button to continue.</Text>
-      <TouchableOpacity
-        style={theme.commonStyles.buttonRed}
-        onPress={handlePress}
+    <LinearGradient
+      start={{ x: 0, y: 0 }}
+      end={{ x: 1, y: 1 }}
+      colors={["gray", "black", "gray"]}
+      style={styles.container}
+    >
+      <View
+        style={[
+          styles.onboardingContainer,
+          { backgroundColor: theme.colorDarkerRed },
+        ]}
       >
-        <Text style={[theme.commonStyles.buttonText, { fontSize: 20 }]}>
-          Continue
+        <Text style={[theme.commonStyles.boldTitle, styles.onboardingText]}>
+          Welcome to Witcher's Satchel!
         </Text>
-      </TouchableOpacity>
-      <WitcherSatchelButton
-        title="Continue, but prettier"
-        onPress={handlePress}
-      />
-    </View>
+        <Text style={styles.text}>
+          This is an experimental app for me to learn React Native.
+        </Text>
+        <Text style={styles.text}>Press the button to continue.</Text>
+
+        <TouchableOpacity
+          style={theme.commonStyles.buttonRed}
+          onPress={handlePress}
+        >
+          <Text style={[theme.commonStyles.buttonText, { fontSize: 20 }]}>
+            Continue
+          </Text>
+        </TouchableOpacity>
+
+        <WitcherSatchelButton
+          title="Continue, but a cylon"
+          onPress={handlePress}
+        />
+      </View>
+    </LinearGradient>
   );
 }
 
@@ -41,7 +58,16 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: theme.colorBlack,
+  },
+  onboardingContainer: {
+    width: "80%",
+    height: "70%",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 16,
+    borderColor: theme.colorBlack,
+    borderWidth: 1,
+    padding: 24,
   },
   text: {
     color: theme.colorWhite,

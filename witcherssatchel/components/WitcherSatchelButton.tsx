@@ -68,7 +68,7 @@ export function WitcherSatchelButton({ title, onPress }: Props) {
             colors={[
               "transparent",
               "rgba(179, 57, 57, 0.4)",
-              "rgba(57, 28, 28, 0.5)",
+              "rgba(188, 88, 88, 0.5)",
               "transparent",
             ]}
             start={{ x: 0, y: 0 }}
