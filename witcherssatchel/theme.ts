@@ -30,6 +30,14 @@ export const theme = {
       paddingHorizontal: 14,
       borderRadius: 8,
     } as ViewStyle,
+    buttonRed: {
+      backgroundColor: "#ff0000",
+      marginTop: 48,
+      paddingHorizontal: 48,
+      paddingVertical: 12,
+      borderRadius: 6,
+    } as ViewStyle,
+
     buttonText: {
       fontSize: 16,
       fontWeight: "600",
