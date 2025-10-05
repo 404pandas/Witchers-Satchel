@@ -5,6 +5,8 @@ import { useRouter } from "expo-router";
 import { WitcherSatchelButton } from "@/components/WitcherSatchelButton";
 import { LinearGradient } from "expo-linear-gradient";
 
+import { Logo } from "@/components/Logo";
+
 export default function OnboardingScreen() {
   const router = useRouter();
   const toggleHasOnboarded = useUserStore((state) => state.toggleHasOnboarded);
@@ -36,6 +38,7 @@ export default function OnboardingScreen() {
         >
           Welcome to Witcher&apos;s Satchel!
         </Text>
+        <Logo />
         <Text style={[styles.text, theme.commonStyles.textShadow]}>
           This is an experimental app for me to learn React Native.
         </Text>
