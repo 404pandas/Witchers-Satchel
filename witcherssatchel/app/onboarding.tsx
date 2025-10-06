@@ -1,4 +1,10 @@
-import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  Linking,
+} from "react-native";
 import { theme } from "@/theme";
 import { useUserStore } from "@/store/userStore";
 import { useRouter } from "expo-router";
@@ -14,6 +20,16 @@ export default function OnboardingScreen() {
   const handlePress = () => {
     toggleHasOnboarded();
     router.replace("/");
+  };
+
+  const openLinkedIn = async () => {
+    const url = "https://www.linkedin.com/in/404pandas";
+    const supported = await Linking.canOpenURL(url);
+    if (supported) {
+      await Linking.openURL(url);
+    } else {
+      console.warn("Don't know how to open this URL: ", url);
+    }
   };
 
   return (
@@ -42,7 +58,13 @@ export default function OnboardingScreen() {
         <Text style={[styles.text, theme.commonStyles.textShadow]}>
           This is an experimental app for me to learn React Native.
         </Text>
-
+        <Text>
+          <TouchableOpacity onPress={openLinkedIn} hitSlop={20}>
+            <Text style={[theme.commonStyles.link]}>
+              Please consider visiting my LinkedIn by clicking on this text.
+            </Text>
+          </TouchableOpacity>
+        </Text>
         <Text style={[styles.text, theme.commonStyles.textShadow]}>
           Press the button to continue.
         </Text>
