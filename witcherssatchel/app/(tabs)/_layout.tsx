@@ -22,7 +22,7 @@ export default function Routing() {
   return (
     <Tabs screenOptions={{ tabBarActiveTintColor: theme.colorRed }}>
       <Tabs.Screen
-        name="index"
+        name="(home)"
         options={{
           title: "Satchel",
           tabBarIcon: ({ color, size }) => {
