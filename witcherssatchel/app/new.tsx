@@ -1,4 +1,11 @@
-import { Text, StyleSheet, TextInput, Alert, View } from "react-native";
+import {
+  Text,
+  StyleSheet,
+  TextInput,
+  Alert,
+  View,
+  TouchableOpacity,
+} from "react-native";
 import { theme } from "@/theme";
 import { WitcherSatchelButton } from "@/components/WitcherSatchelButton";
 import { useState } from "react";
@@ -6,12 +13,42 @@ import { Potion } from "@/components/Potion";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { usePotionStore } from "@/store/potionStore";
 import { useRouter } from "expo-router";
+import Feather from "@expo/vector-icons/Feather";
+import Entypo from "@expo/vector-icons/Entypo";
+import { Platform } from "react-native";
+import * as ImagePicker from "expo-image-picker";
 
 export default function NewScreen() {
   const [name, setName] = useState<string>();
   const [days, setDays] = useState<string>();
+  const [imageURI, setImageURI] = useState<string>();
   const addPotion = usePotionStore((state) => state.addPotion);
   const router = useRouter();
+
+  const handleChooseImage = async () => {
+    if (Platform.OS === "web") {
+      Alert.alert("Not supported", "Image picking is not supported on web.");
+      return;
+    }
+
+    try {
+      const result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ["images"],
+        allowsEditing: true,
+        aspect: [1, 1],
+        quality: 1,
+      });
+
+      if (!result.canceled && result.assets && result.assets.length > 0) {
+        const uri = result.assets[0].uri;
+        setImageURI(uri);
+      } else {
+        Alert.alert("Image selection canceled or failed", "Please try again.");
+      }
+    } catch (error) {
+      console.error("Error picking image:", error);
+    }
+  };
 
   const handleSubmit = () => {
     if (!name) {
@@ -32,7 +69,7 @@ export default function NewScreen() {
       );
     }
 
-    addPotion(name, Number(days));
+    addPotion(name, Number(days), imageURI);
     router.navigate("/profile");
     console.log("Adding potion", name, days);
   };
@@ -44,7 +81,15 @@ export default function NewScreen() {
       keyboardShouldPersistTaps="handled"
     >
       <View style={styles.centered}>
-        <Potion />
+        <Potion imageUri={imageURI} />
+        <View style={styles.imagePicker}>
+          <TouchableOpacity hitSlop={20} onPress={handleChooseImage}>
+            <Entypo name="image" size={24} color={theme.colorGray} />
+          </TouchableOpacity>
+          <TouchableOpacity hitSlop={20}>
+            <Feather name="camera" size={24} color="black" />
+          </TouchableOpacity>
+        </View>
       </View>
       <Text style={styles.label}>Name</Text>
       <TextInput
@@ -91,5 +136,15 @@ const styles = StyleSheet.create({
   },
   centered: {
     alignItems: "center",
+  },
+  imagePicker: {
+    position: "relative",
+    bottom: 24,
+    right: -120,
+    gap: 24,
+    flexDirection: "row",
+    width: 100,
+    marginTop: 12,
+    marginBottom: 24,
   },
 });

@@ -7,7 +7,7 @@ export function PotionCard({ potion }: { potion: PotionType }) {
   return (
     <View style={styles.potionCard}>
       <View style={{ width: 80, height: 50 }}>
-        <Potion size={30} />
+        <Potion size={30} imageUri={potion.imageUri} />
       </View>
       <View style={styles.details}>
         <Text numberOfLines={1} style={styles.potionName}>
