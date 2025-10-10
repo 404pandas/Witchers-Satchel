@@ -35,6 +35,17 @@
         {
           "fonts": ["assets/StoryScript-Regular.ttf"]
         }
+      ],
+      [
+        "expo-quick-actions",
+        {
+          "androidIcons": {
+            "potion": {
+              "foregroundImage": "./assets/potion-sf.png",
+              "backgroundColor": "#cc0000"
+            }
+          }
+        }
       ]
     ]
   }
