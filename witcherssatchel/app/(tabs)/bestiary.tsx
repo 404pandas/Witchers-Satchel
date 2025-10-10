@@ -45,14 +45,14 @@ export default function Bestiary() {
         style={styles.sliderContainer}
         onLayout={(e) => setSliderWidth(e.nativeEvent.layout.width)}
       >
-        <Text style={styles.letter}>A</Text>
+        <Text style={[styles.letter, theme.commonStyles.scriptText]}>A</Text>
         <View style={styles.track}>
           <Animated.View
             {...panResponder.panHandlers}
             style={[styles.thumb, { transform: [{ translateX: pan }] }]}
           />
         </View>
-        <Text style={styles.letter}>Z</Text>
+        <Text style={[styles.letter, theme.commonStyles.scriptText]}>Z</Text>
       </View>
 
       {/* Carousel */}
@@ -65,7 +65,13 @@ export default function Bestiary() {
       >
         {bestiary.map((monster) => (
           <View key={monster.beastName} style={[styles.card, { width }]}>
-            <Text style={[theme.commonStyles.boldTitle, styles.name]}>
+            <Text
+              style={[
+                theme.commonStyles.boldTitle,
+                styles.name,
+                theme.commonStyles.scriptText,
+              ]}
+            >
               {monster.beastName.toUpperCase()}
             </Text>
             <Image
@@ -76,35 +82,53 @@ export default function Bestiary() {
             <View style={styles.statsContainer}>
               <Text style={styles.statsKeyName}>
                 Vitality:
-                <Text style={styles.statsValue}>{monster.stats.vitality}</Text>
+                <Text
+                  style={[styles.statsValue, theme.commonStyles.scriptText]}
+                >
+                  {monster.stats.vitality}
+                </Text>
               </Text>
               <Text style={styles.statsKeyName}>
                 Attack:{" "}
-                <Text style={styles.statsValue}>{monster.stats.attack}</Text>
+                <Text
+                  style={[styles.statsValue, theme.commonStyles.scriptText]}
+                >
+                  {monster.stats.attack}
+                </Text>
               </Text>
               <Text style={styles.statsKeyName}>
                 Defense:{" "}
-                <Text style={styles.statsValue}>{monster.stats.defense}</Text>
+                <Text
+                  style={[styles.statsValue, theme.commonStyles.scriptText]}
+                >
+                  {monster.stats.defense}
+                </Text>
               </Text>
               <Text style={styles.statsKeyName}>
                 Speed:{" "}
-                <Text style={styles.statsValue}>{monster.stats.speed}</Text>
+                <Text
+                  style={[styles.statsValue, theme.commonStyles.scriptText]}
+                >
+                  {monster.stats.speed}
+                </Text>
               </Text>
               <Text style={styles.statsKeyName}>
                 Intelligence:{" "}
-                <Text style={styles.statsValue}>
+                <Text
+                  style={[styles.statsValue, theme.commonStyles.scriptText]}
+                >
                   {monster.stats.intelligence}
                 </Text>
               </Text>
             </View>
             <Text style={styles.statsKeyName}>
               Weak to:{" "}
-              <Text style={styles.statsValue}>
+              <Text style={[styles.statsValue, theme.commonStyles.scriptText]}>
                 {monster.stats.signVulnerability}
               </Text>
             </Text>
             <Text style={styles.statsKeyName}>Loot:</Text>
-            <Text style={styles.statsValue}>
+            <Text style={[styles.statsValue, theme.commonStyles.scriptText]}>
               {monster.stats.loot.join(", ")}
             </Text>
           </View>

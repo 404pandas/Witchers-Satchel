@@ -65,5 +65,8 @@ export const theme = {
       shadowRadius: 2,
       marginBottom: 12,
     } as ViewStyle,
+    scriptText: {
+      fontFamily: "StoryScript-Regular",
+    },
   },
 };
