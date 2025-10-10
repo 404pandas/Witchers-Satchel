@@ -15,7 +15,6 @@ import NoItems from "@/components/NoItems";
 export default function ProfileScreen() {
   const toggleHasOnbaorded = useUserStore((state) => state.toggleHasOnboarded);
   const potions = usePotionStore((state) => state.potions);
-  console.log(potions);
 
   return (
     <>
