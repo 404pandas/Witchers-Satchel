@@ -1,8 +1,7 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
-import * as FileSystem from "expo-file-system";
-import { copyAsync } from "expo-file-system/legacy";
+import { File, Paths } from "expo-file-system";
 
 export type PotionType = {
   id: string;
@@ -34,14 +33,13 @@ export const usePotionStore = create(
         stiringFrequencyDays: number,
         imageUri?: string
       ) => {
-        const savedImageUri =
-          FileSystem.Directory +
-          `${new Date().getTime()}-${imageUri?.split("/").slice(-1)[0]}`;
+        const fileName = `${new Date().getTime()}-${imageUri?.split("/").slice(-1)[0]}`;
+        const destinationFile = new File(Paths.document, fileName);
+        const savedImageUri = destinationFile.uri;
+
         if (imageUri) {
-          await copyAsync({
-            from: imageUri,
-            to: savedImageUri,
-          });
+          const sourceFile = new File(imageUri);
+          await sourceFile.copy(destinationFile);
         }
         set((state) => {
           return {

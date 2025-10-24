@@ -1,4 +1,9 @@
-import { useLocalSearchParams, useNavigation, useRouter } from "expo-router";
+import {
+  Link,
+  useLocalSearchParams,
+  useNavigation,
+  useRouter,
+} from "expo-router";
 import { View, Text, StyleSheet, Pressable, Alert } from "react-native";
 import { usePotionStore } from "@/store/potionStore";
 import { differenceInCalendarDays, format } from "date-fns";
@@ -61,6 +66,11 @@ export default function PotionDetails() {
         <Text style={styles.notFoundText}>
           Potion with ID {potionId} not found
         </Text>
+        <Link href="/new" asChild>
+          <Pressable style={styles.addPotionButton}>
+            <Text style={styles.addPotionText}>Add a potion now</Text>
+          </Pressable>
+        </Link>
       </View>
     );
   }
@@ -72,13 +82,13 @@ export default function PotionDetails() {
         <View style={styles.spacer} />
         <Text style={styles.key}>Stir me every</Text>
         <Text style={styles.value}>{potion.stiringFrequencyDays} days</Text>
-        <Text style={styles.key}>Last stired at</Text>
+        <Text style={styles.key}>Last stirred at</Text>
         <Text style={styles.value}>
           {potion.lastStirredAtTimestamp
             ? `${format(potion.lastStirredAtTimestamp, fullDateFormat)}`
             : "Never 😟"}
         </Text>
-        <Text style={styles.key}>Days since last stired</Text>
+        <Text style={styles.key}>Days since last stirred</Text>
         <Text style={styles.value}>
           {potion.lastStirredAtTimestamp
             ? differenceInCalendarDays(
@@ -131,10 +141,22 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   deleteButtonText: {
-    color: theme.colorGrey,
+    color: theme.colorGray,
     fontWeight: "bold",
   },
   spacer: {
     height: 18,
+  },
+  addPotionButton: {
+    backgroundColor: theme.colorDarkerRed,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 8,
+    marginTop: 12,
+  },
+  addPotionText: {
+    color: theme.colorWhite,
+    fontWeight: "bold",
+    fontSize: 16,
   },
 });

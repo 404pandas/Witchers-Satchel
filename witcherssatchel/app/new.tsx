@@ -25,6 +25,40 @@ export default function NewScreen() {
   const addPotion = usePotionStore((state) => state.addPotion);
   const router = useRouter();
 
+  const handleTakePhoto = async () => {
+    if (Platform.OS === "web") {
+      Alert.alert("Not supported", "Camera capture is not supported on web.");
+      return;
+    }
+
+    try {
+      const permission = await ImagePicker.requestCameraPermissionsAsync();
+
+      if (permission.status !== "granted") {
+        Alert.alert(
+          "Permission required",
+          "Camera permission is needed to take photos."
+        );
+        return;
+      }
+
+      const result = await ImagePicker.launchCameraAsync({
+        allowsEditing: true,
+        aspect: [1, 1],
+        quality: 1,
+      });
+
+      if (!result.canceled && result.assets && result.assets.length > 0) {
+        const uri = result.assets[0].uri;
+        setImageURI(uri);
+      } else {
+        Alert.alert("Photo capture canceled or failed", "Please try again.");
+      }
+    } catch (error) {
+      console.error("Error taking photo:", error);
+    }
+  };
+
   const handleChooseImage = async () => {
     if (Platform.OS === "web") {
       Alert.alert("Not supported", "Image picking is not supported on web.");
@@ -86,7 +120,7 @@ export default function NewScreen() {
           <TouchableOpacity hitSlop={20} onPress={handleChooseImage}>
             <Entypo name="image" size={24} color={theme.colorGray} />
           </TouchableOpacity>
-          <TouchableOpacity hitSlop={20}>
+          <TouchableOpacity hitSlop={20} onPress={handleTakePhoto}>
             <Feather name="camera" size={24} color="black" />
           </TouchableOpacity>
         </View>
