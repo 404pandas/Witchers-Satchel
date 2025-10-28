@@ -195,7 +195,7 @@ export default function CounterScreen() {
               Potion has been brewed for...
             </Text>
           )}
-          <View style={styles.row}>
+          <View style={theme.commonStyles.buttonRow}>
             <TimeSegment
               unit="Days"
               number={status.distance?.days ?? 0}
@@ -255,10 +255,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textTransform: "uppercase",
     letterSpacing: 1,
-  },
-  row: {
-    flexDirection: "row",
-    marginBottom: 24,
   },
   heading: {
     fontSize: 24,

@@ -10,13 +10,7 @@ import { getFromStorage, saveToStorage } from "@/utils/storage";
 import { theme } from "@/theme";
 import Foundation from "@expo/vector-icons/Foundation";
 import NoItems from "@/components/NoItems";
-
-// Define a new type for Hunt history
-export interface HuntRecord {
-  huntName: string;
-  seconds: number;
-  scheduledAt: number; // timestamp
-}
+import { HuntRecord } from "@/types/talleyTypes";
 
 // Key for storing hunts in async storage
 export const huntStorageKey = "huntHistory";

@@ -2,6 +2,7 @@
   {
     "beastName": "alghoul",
     "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/alghoul.png",
+
     "stats": {
       "vitality": 5,
       "attack": 5,

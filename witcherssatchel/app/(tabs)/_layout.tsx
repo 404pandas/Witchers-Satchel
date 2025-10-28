@@ -2,6 +2,7 @@ import { Link, Redirect, Tabs, usePathname } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import Entypo from "@expo/vector-icons/Entypo";
 import { theme } from "@/theme";
 import { useUserStore } from "@/store/userStore";
 
@@ -19,6 +20,8 @@ export default function Routing() {
 
   const isCountdownHistory = pathname.startsWith("/countdownTimer/history");
   const isTalleyHistory = pathname.startsWith("/talley/talleyHistory");
+  const isCalculatorHistory = pathname.startsWith("/calculator/history");
+
   return (
     <Tabs screenOptions={{ tabBarActiveTintColor: theme.colorRed }}>
       <Tabs.Screen
@@ -128,6 +131,34 @@ export default function Routing() {
           },
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="person-circle" size={size} color={color} />
+          ),
+          tabBarShowLabel: false,
+        }}
+      />
+      <Tabs.Screen
+        name="calculator"
+        options={{
+          title: isCalculatorHistory ? "History" : "Calculator",
+          headerLeft: () => {
+            return (
+              <Link href="/calculator" asChild>
+                <Pressable style={{ marginRight: 8 }} hitSlop={20}>
+                  <Entypo name="calculator" size={24} color="black" />
+                </Pressable>
+              </Link>
+            );
+          },
+          headerRight: () => {
+            return (
+              <Link href="/calculator/history" asChild>
+                <Pressable style={{ marginRight: 8 }} hitSlop={20}>
+                  <MaterialIcons name="history" size={24} color="black" />
+                </Pressable>
+              </Link>
+            );
+          },
+          tabBarIcon: ({ size, color }) => (
+            <Ionicons name="calculator" size={size} color={color} />
           ),
           tabBarShowLabel: false,
         }}

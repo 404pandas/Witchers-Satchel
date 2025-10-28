@@ -68,5 +68,11 @@ export const theme = {
     scriptText: {
       fontFamily: "StoryScript-Regular",
     },
+    buttonRow: {
+      row: {
+        flexDirection: "row",
+        marginBottom: 24,
+      },
+    },
   },
 };
