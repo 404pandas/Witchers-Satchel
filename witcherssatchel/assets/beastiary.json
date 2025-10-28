@@ -26,7 +26,7 @@
     }
   },
   {
-    "beastName": "armoredarachas",
+    "beastName": "armored Arachas",
     "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/armoredarachas.png",
     "stats": {
       "vitality": 5,
@@ -39,7 +39,7 @@
     }
   },
   {
-    "beastName": "bear",
+    "beastName": "Bear",
     "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/bear.png",
     "stats": {
       "vitality": 5,
@@ -52,7 +52,7 @@
     }
   },
   {
-    "beastName": "beast_beauclair",
+    "beastName": "beast Beauclair",
     "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/beast_beauclair.png",
     "stats": {
       "vitality": 5,
@@ -130,7 +130,7 @@
     }
   },
   {
-    "beastName": "cloud_giant",
+    "beastName": "cloud Giant",
     "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/cloud_giant.png",
     "stats": {
       "vitality": 5,
@@ -182,7 +182,7 @@
     }
   },
   {
-    "beastName": "dettlaff_vampire",
+    "beastName": "dettlaff Vampire",
     "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/dettlaff_vampire.png",
     "stats": {
       "vitality": 10,
@@ -195,7 +195,7 @@
     }
   },
   {
-    "beastName": "devilbythewell",
+    "beastName": "devil By The Well",
     "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/devilbythewell.png",
     "stats": {
       "vitality": 5,
@@ -221,7 +221,7 @@
     }
   },
   {
-    "beastName": "earthelemental",
+    "beastName": "earth Elemental",
     "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/earthelemental.png",
     "stats": {
       "vitality": 5,
@@ -234,7 +234,7 @@
     }
   },
   {
-    "beastName": "ekhidna",
+    "beastName": "Ekhidna",
     "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/ekhidna.png",
     "stats": {
       "vitality": 5,
@@ -247,7 +247,7 @@
     }
   },
   {
-    "beastName": "ekimmara",
+    "beastName": "Ekimmara",
     "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/ekimmara.png",
     "stats": {
       "vitality": 5,
@@ -260,7 +260,7 @@
     }
   },
   {
-    "beastName": "endregadrone",
+    "beastName": "Endregadrone",
     "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/endregadrone.png",
     "stats": {
       "vitality": 5,
@@ -273,7 +273,7 @@
     }
   },
   {
-    "beastName": "endregawarrior",
+    "beastName": "endrega Warrior",
     "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/endregawarrior.png",
     "stats": {
       "vitality": 5,
@@ -286,7 +286,7 @@
     }
   },
   {
-    "beastName": "endregaworker",
+    "beastName": "endrega Worker",
     "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/endregaworker.png",
     "stats": {
       "vitality": 5,
@@ -325,7 +325,7 @@
     }
   },
   {
-    "beastName": "fireelemental",
+    "beastName": "fire Elemental",
     "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/fireelemental.png",
     "stats": {
       "vitality": 5,
@@ -507,7 +507,7 @@
     }
   },
   {
-    "beastName": "highervampire",
+    "beastName": "higher Vampire",
     "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/highervampire.png",
     "stats": {
       "vitality": 5,
@@ -520,7 +520,7 @@
     }
   },
   {
-    "beastName": "houndofthewildhunt",
+    "beastName": "hound Of The Wild Hunt",
     "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/houndofthewildhunt.png",
     "stats": {
       "vitality": 5,
@@ -559,7 +559,7 @@
     }
   },
   {
-    "beastName": "icegiant",
+    "beastName": "ice Giant",
     "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/icegiant.png",
     "stats": {
       "vitality": 5,
@@ -572,7 +572,7 @@
     }
   },
   {
-    "beastName": "icetroll",
+    "beastName": "ice Troll",
     "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/icetroll.png",
     "stats": {
       "vitality": 5,
@@ -585,7 +585,7 @@
     }
   },
   {
-    "beastName": "jennyothewoods",
+    "beastName": "jenny O The Woods",
     "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/jennyothewoods.png",
     "stats": {
       "vitality": 5,
@@ -637,7 +637,7 @@
     }
   },
   {
-    "beastName": "nightwraith",
+    "beastName": "night Wraith",
     "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/nightwraith.png",
     "stats": {
       "vitality": 7,
@@ -650,7 +650,7 @@
     }
   },
   {
-    "beastName": "noonwraith",
+    "beastName": "noon Wraith",
     "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/noonwraith.png",
     "stats": {
       "vitality": 6,
@@ -689,7 +689,7 @@
     }
   },
   {
-    "beastName": "rocktroll",
+    "beastName": "rock Troll",
     "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/rocktroll.png",
     "stats": {
       "vitality": 5,
@@ -715,7 +715,7 @@
     }
   },
   {
-    "beastName": "royalwyvern",
+    "beastName": "royal Wyvern",
     "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/royalwyvern.png",
     "stats": {
       "vitality": 5,
@@ -767,7 +767,7 @@
     }
   },
   {
-    "beastName": "theapiarianphantom",
+    "beastName": "the Apiarian Phantom",
     "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/theapiarianphantom.png",
     "stats": {
       "vitality": 5,
@@ -780,7 +780,7 @@
     }
   },
   {
-    "beastName": "thedragonoffyresdal",
+    "beastName": "the Dragon Of Fyresdal",
     "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/thedragonoffyresdal.png",
     "stats": {
       "vitality": 5,
@@ -793,7 +793,7 @@
     }
   },
   {
-    "beastName": "therazane",
+    "beastName": "the Razane",
     "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/therazane.png",
     "stats": {
       "vitality": 5,
@@ -806,7 +806,7 @@
     }
   },
   {
-    "beastName": "thewhitelady",
+    "beastName": "the White Lady",
     "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/thewhitelady.png",
     "stats": {
       "vitality": 5,
@@ -819,7 +819,7 @@
     }
   },
   {
-    "beastName": "toad_prince",
+    "beastName": "toad Prince",
     "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/toad_prince.png",
     "stats": {
       "vitality": 5,
@@ -845,7 +845,7 @@
     }
   },
   {
-    "beastName": "venomousarachas",
+    "beastName": "venomous Arachas",
     "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/venomousarachas.png",
     "stats": {
       "vitality": 5,
@@ -897,7 +897,7 @@
     }
   },
   {
-    "beastName": "wild_boar",
+    "beastName": "wild Boar",
     "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/wild_boar.png",
     "stats": {
       "vitality": 6,
