@@ -25,13 +25,12 @@ export default function Bestiary() {
     onPanResponderMove: (_, gestureState) => {
       if (!sliderWidth) return;
 
-      let newX = gestureState.dx + gestureState.x0 - 20; // adjust for padding
+      let newX = gestureState.dx + gestureState.x0 - 20;
       if (newX < 0) newX = 0;
       if (newX > sliderWidth) newX = sliderWidth;
 
       pan.setValue(newX);
 
-      // Calculate corresponding carousel scroll
       const scrollPercent = newX / sliderWidth;
       const scrollX = scrollPercent * (width * (bestiary.length - 1));
       scrollRef.current?.scrollTo({ x: scrollX, animated: false });
@@ -40,7 +39,6 @@ export default function Bestiary() {
 
   return (
     <View style={{ flex: 1, paddingTop: 16 }}>
-      {/* Slider */}
       <View
         style={styles.sliderContainer}
         onLayout={(e) => setSliderWidth(e.nativeEvent.layout.width)}
@@ -55,7 +53,6 @@ export default function Bestiary() {
         <Text style={[styles.letter, theme.commonStyles.scriptText]}>Z</Text>
       </View>
 
-      {/* Carousel */}
       <ScrollView
         horizontal
         pagingEnabled

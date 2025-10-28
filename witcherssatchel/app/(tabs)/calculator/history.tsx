@@ -8,9 +8,10 @@ import {
 } from "react-native";
 import { getFromStorage, saveToStorage } from "@/utils/storage";
 import { theme } from "@/theme";
-import { CalcRecord, calcStorageKey } from "@/components/Calculatorr";
+import { calcStorageKey } from "@/components/Calculatorr";
 import NoItems from "@/components/NoItems";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import { CalcRecord } from "@/types/calculatorTypes";
 
 export default function CalculatorHistoryScreen() {
   const [calcHistory, setCalcHistory] = useState<CalcRecord[]>([]);

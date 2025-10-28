@@ -16,7 +16,8 @@ import * as Device from "expo-device";
 import * as Notifications from "expo-notifications";
 import { registerForPushNotificationsAsync } from "@/utils/registerForPushNotificationsAsync";
 import { getFromStorage, saveToStorage } from "@/utils/storage";
-import { HuntRecord, huntStorageKey } from "./talleyHistory";
+import { huntStorageKey } from "./talleyHistory";
+import { HuntRecord } from "@/types/talleyTypes";
 
 export default function TalleyerScreen() {
   const [talley, setTalley] = useState(0);

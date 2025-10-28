@@ -36,17 +36,15 @@ export function Calculator() {
   const handleInput = (val: string) => {
     const lastChar = expression.slice(-1);
 
-    // Operator logic
     if (ops.includes(val)) {
-      if (expression.length === 0) return; // cannot start with operator
-      if (ops.includes(lastChar)) return; // prevent consecutive operators
+      if (expression.length === 0) return;
+      if (ops.includes(lastChar)) return;
     }
 
-    // Decimal logic
     if (val === ".") {
       const segments = expression.split(new RegExp(`[\\+\\-\\*/]`));
       const currentNumber = segments[segments.length - 1];
-      if (currentNumber.includes(".")) return; // prevent multiple decimals
+      if (currentNumber.includes(".")) return;
     }
 
     setExpression((prev) => prev + val);
@@ -101,7 +99,6 @@ export function Calculator() {
         { backgroundColor: "black" },
       ]}
     >
-      {/* Display */}
       <View style={styles.displayContainer}>
         <TextInput
           style={styles.input}
@@ -119,9 +116,7 @@ export function Calculator() {
         </View>
       </View>
 
-      {/* Buttons */}
       <ScrollView contentContainerStyle={styles.buttonGrid}>
-        {/* Numbers + decimal */}
         <View style={styles.buttonRow}>
           {nums.map((num) => (
             <CalculatorButton
@@ -132,7 +127,6 @@ export function Calculator() {
           ))}
         </View>
 
-        {/* Operators + equals */}
         <View style={styles.buttonRow}>
           {ops.map((op) => (
             <CalculatorButton
@@ -144,7 +138,6 @@ export function Calculator() {
           <CalculatorButton numOrOp="=" onPress={handleCalculate} />
         </View>
 
-        {/* Clear / Backspace / History */}
         <View style={styles.bottomRow}>
           <TouchableOpacity
             style={[theme.commonStyles.button, styles.clearButton]}
@@ -162,7 +155,7 @@ export function Calculator() {
             style={[theme.commonStyles.button, styles.historyButton]}
             onPress={() => router.push("/(tabs)/calculator/history")}
           >
-            <Text style={{ color: theme.colorYellow }}>History</Text>
+            <Text style={{ color: theme.colorDarkerRed }}>History</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>

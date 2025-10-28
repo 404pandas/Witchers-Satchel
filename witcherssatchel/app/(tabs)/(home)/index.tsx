@@ -5,15 +5,9 @@ import { useEffect, useState } from "react";
 import { getFromStorage, saveToStorage } from "@/utils/storage";
 import * as Haptics from "expo-haptics";
 import NoItems from "@/components/NoItems";
+import { SatchelItemType } from "@/types/satchelTypes";
 
 const storageKey = "satchelItems";
-
-type SatchelItemType = {
-  id: string;
-  name: string;
-  completedAtTimeStamp?: number;
-  lastUpdatedTimestamp: number;
-};
 
 export default function App() {
   const [satchelItem, setSatchelItem] = useState("");

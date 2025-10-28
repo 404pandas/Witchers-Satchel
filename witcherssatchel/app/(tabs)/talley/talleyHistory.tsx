@@ -12,7 +12,6 @@ import Foundation from "@expo/vector-icons/Foundation";
 import NoItems from "@/components/NoItems";
 import { HuntRecord } from "@/types/talleyTypes";
 
-// Key for storing hunts in async storage
 export const huntStorageKey = "huntHistory";
 
 export default function HistoryScreen() {
