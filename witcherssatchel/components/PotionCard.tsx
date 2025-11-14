@@ -16,7 +16,7 @@ export function PotionCard({ potion }: { potion: PotionType }) {
             {potion.name}
           </Text>
           <Text style={styles.subtitle}>
-            Water every {potion.stiringFrequencyDays} days
+            Stir every {potion.stiringFrequencyDays} days
           </Text>
         </View>
       </Pressable>

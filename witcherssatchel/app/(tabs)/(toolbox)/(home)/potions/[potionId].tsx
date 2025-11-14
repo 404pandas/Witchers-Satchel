@@ -133,7 +133,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
     marginBottom: 20,
-    color: theme.colorGreen,
   },
   deleteButton: {
     padding: 12,

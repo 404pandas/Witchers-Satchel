@@ -17,7 +17,6 @@ export function CalculatorButton({
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: "#222",
     margin: 6,
     paddingVertical: 16,
     paddingHorizontal: 24,

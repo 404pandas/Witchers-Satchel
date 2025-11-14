@@ -92,13 +92,7 @@ export function Calculator() {
   };
 
   return (
-    <View
-      style={[
-        theme.commonStyles.pageContainer,
-        styles.container,
-        { backgroundColor: "black" },
-      ]}
-    >
+    <View style={[theme.commonStyles.pageContainer, styles.container]}>
       <View style={styles.displayContainer}>
         <TextInput
           style={styles.input}
@@ -109,7 +103,6 @@ export function Calculator() {
           keyboardType="numeric"
           returnKeyType="done"
           onSubmitEditing={handleCalculate}
-          blurOnSubmit={false}
         />
         <View style={styles.resultContainer}>
           <Text style={styles.resultText}>{result}</Text>
@@ -171,7 +164,7 @@ const styles = StyleSheet.create({
     borderBottomColor: "#222",
   },
   input: {
-    color: "white",
+    color: "black",
     fontSize: 24,
     borderBottomWidth: 1,
     borderBottomColor: "#555",
@@ -179,7 +172,6 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   resultContainer: {
-    backgroundColor: "#111",
     borderRadius: 8,
     paddingVertical: 8,
     alignItems: "flex-end",
@@ -203,7 +195,6 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
   },
   historyButton: {
-    backgroundColor: "#222",
     paddingHorizontal: 24,
     paddingVertical: 12,
   },
