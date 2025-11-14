@@ -77,55 +77,77 @@ export default function Bestiary() {
               resizeMode="contain"
             />
             <View style={styles.statsContainer}>
-              <Text style={styles.statsKeyName}>
+              <Text style={theme.commonStyles.keyName}>
                 Vitality:
                 <Text
-                  style={[styles.statsValue, theme.commonStyles.scriptText]}
+                  style={[
+                    theme.commonStyles.value,
+                    theme.commonStyles.scriptText,
+                  ]}
                 >
                   {monster.stats.vitality}
                 </Text>
               </Text>
-              <Text style={styles.statsKeyName}>
+              <Text style={theme.commonStyles.keyName}>
                 Attack:{" "}
                 <Text
-                  style={[styles.statsValue, theme.commonStyles.scriptText]}
+                  style={[
+                    theme.commonStyles.value,
+                    theme.commonStyles.scriptText,
+                  ]}
                 >
                   {monster.stats.attack}
                 </Text>
               </Text>
-              <Text style={styles.statsKeyName}>
+              <Text style={theme.commonStyles.keyName}>
                 Defense:{" "}
                 <Text
-                  style={[styles.statsValue, theme.commonStyles.scriptText]}
+                  style={[
+                    theme.commonStyles.value,
+                    theme.commonStyles.scriptText,
+                  ]}
                 >
                   {monster.stats.defense}
                 </Text>
               </Text>
-              <Text style={styles.statsKeyName}>
+              <Text style={theme.commonStyles.keyName}>
                 Speed:{" "}
                 <Text
-                  style={[styles.statsValue, theme.commonStyles.scriptText]}
+                  style={[
+                    theme.commonStyles.value,
+                    theme.commonStyles.scriptText,
+                  ]}
                 >
                   {monster.stats.speed}
                 </Text>
               </Text>
-              <Text style={styles.statsKeyName}>
+              <Text style={theme.commonStyles.keyName}>
                 Intelligence:{" "}
                 <Text
-                  style={[styles.statsValue, theme.commonStyles.scriptText]}
+                  style={[
+                    theme.commonStyles.value,
+                    theme.commonStyles.scriptText,
+                  ]}
                 >
                   {monster.stats.intelligence}
                 </Text>
               </Text>
             </View>
-            <Text style={styles.statsKeyName}>
+            <Text style={theme.commonStyles.keyName}>
               Weak to:{" "}
-              <Text style={[styles.statsValue, theme.commonStyles.scriptText]}>
+              <Text
+                style={[
+                  theme.commonStyles.value,
+                  theme.commonStyles.scriptText,
+                ]}
+              >
                 {monster.stats.signVulnerability}
               </Text>
             </Text>
-            <Text style={styles.statsKeyName}>Loot:</Text>
-            <Text style={[styles.statsValue, theme.commonStyles.scriptText]}>
+            <Text style={theme.commonStyles.keyName}>Loot:</Text>
+            <Text
+              style={[theme.commonStyles.value, theme.commonStyles.scriptText]}
+            >
               {monster.stats.loot.join(", ")}
             </Text>
           </View>
@@ -176,13 +198,6 @@ const styles = StyleSheet.create({
     color: theme.colorRed,
     marginBottom: 8,
   },
-  statsKeyName: {
-    fontSize: 20,
-    color: theme.colorBlack,
-    textAlign: "center",
-    marginBottom: 4,
-  },
-  statsValue: { fontWeight: "bold", color: theme.colorLightRed, fontSize: 24 },
   statsContainer: {
     marginTop: 8,
     width: "100%",

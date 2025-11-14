@@ -52,7 +52,7 @@ export default function HistoryScreen() {
 
   return (
     <>
-      <View style={styles.historyHeader}>
+      <View style={theme.commonStyles.historyHeader}>
         <Text
           style={[
             theme.commonStyles.boldTitle,
@@ -116,12 +116,5 @@ const styles = StyleSheet.create({
   durationText: {
     fontSize: 18,
     color: theme.colorGray,
-  },
-  historyHeader: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    backgroundColor: theme.colorGray,
-    paddingVertical: 8,
   },
 });

@@ -3,6 +3,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import Entypo from "@expo/vector-icons/Entypo";
+
 import { theme } from "@/theme";
 import { useUserStore } from "@/store/userStore";
 
@@ -21,6 +22,7 @@ export default function Routing() {
   const isCountdownHistory = pathname.startsWith("/countdownTimer/history");
   const isTalleyHistory = pathname.startsWith("/talley/talleyHistory");
   const isCalculatorHistory = pathname.startsWith("/calculator/history");
+  const isWeatherHistory = pathname.startsWith("/weather/history");
 
   return (
     <Tabs screenOptions={{ tabBarActiveTintColor: theme.colorRed }}>
@@ -159,6 +161,38 @@ export default function Routing() {
           },
           tabBarIcon: ({ size, color }) => (
             <Ionicons name="calculator" size={size} color={color} />
+          ),
+          tabBarShowLabel: false,
+        }}
+      />
+      <Tabs.Screen
+        name="weather"
+        options={{
+          title: isWeatherHistory ? "History" : "Weather",
+          headerLeft: () => {
+            return (
+              <Link href="/weather" asChild>
+                <Pressable style={{ marginRight: 8 }} hitSlop={20}>
+                  <Ionicons
+                    name="partly-sunny-outline"
+                    size={24}
+                    color="black"
+                  />
+                </Pressable>
+              </Link>
+            );
+          },
+          headerRight: () => {
+            return (
+              <Link href="/weather/history" asChild>
+                <Pressable style={{ marginRight: 8 }} hitSlop={20}>
+                  <MaterialIcons name="history" size={24} color="black" />
+                </Pressable>
+              </Link>
+            );
+          },
+          tabBarIcon: ({ size, color }) => (
+            <Ionicons name="partly-sunny-outline" size={24} color="black" />
           ),
           tabBarShowLabel: false,
         }}

@@ -31,7 +31,7 @@ export default function CalculatorHistoryScreen() {
 
   return (
     <>
-      <View style={styles.historyHeader}>
+      <View style={theme.commonStyles.historyHeader}>
         <Text style={[theme.commonStyles.boldTitle, { paddingLeft: 16 }]}>
           Calculation History
         </Text>
@@ -91,12 +91,5 @@ const styles = StyleSheet.create({
   timeText: {
     fontSize: 14,
     color: theme.colorGray,
-  },
-  historyHeader: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    backgroundColor: theme.colorGray,
-    paddingVertical: 8,
   },
 });

@@ -17,7 +17,9 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.anonymous.witcherssatchel",
       "infoPlist": {
-        "ITSAppUsesNonExemptEncryption": false
+        "ITSAppUsesNonExemptEncryption": false,
+        "NSLocationWhenInUseUsageDescription": "We need your location to show local weather data.",
+        "NSLocationAlwaysUsageDescription": "We need your location to show local weather data."
       }
     },
     "android": {
@@ -27,7 +29,8 @@
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
-      "package": "com.anonymous.witcherssatchel"
+      "package": "com.anonymous.witcherssatchel",
+      "permissions": ["ACCESS_FINE_LOCATION", "ACCESS_COARSE_LOCATION"]
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -37,9 +40,7 @@
       [
         "expo-font",
         {
-          "fonts": [
-            "assets/StoryScript-Regular.ttf"
-          ]
+          "fonts": ["assets/StoryScript-Regular.ttf"]
         }
       ],
       [
@@ -51,6 +52,12 @@
               "backgroundColor": "#cc0000"
             }
           }
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow Witcher's Satchel to access your location to fetch local weather information."
         }
       ]
     ],

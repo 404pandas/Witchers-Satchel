@@ -67,12 +67,31 @@ export const theme = {
     } as ViewStyle,
     scriptText: {
       fontFamily: "StoryScript-Regular",
-    },
+    } as ViewStyle,
     buttonRow: {
       row: {
         flexDirection: "row",
         marginBottom: 24,
       },
-    },
+    } as ViewStyle,
+    historyHeader: {
+      flexDirection: "row",
+      justifyContent: "space-between",
+      alignItems: "center",
+      backgroundColor: "#404040",
+      paddingVertical: 8,
+    } as ViewStyle,
+
+    keyName: {
+      fontSize: 20,
+      color: "#000000",
+      textAlign: "center",
+      marginBottom: 4,
+    } as ViewStyle,
+    value: {
+      fontWeight: "bold",
+      color: "#ff4d4d",
+      fontSize: 24,
+    } as ViewStyle,
   },
 };
