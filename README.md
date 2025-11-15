@@ -59,7 +59,7 @@ git clone https://github.com/404pandas/Witchers-Satchel.git
 # Navigate to the project
 
 ```bash
-cd witcher-handy-tome
+cd witcherssatchel
 ```
 
 # Install dependencies
@@ -81,6 +81,10 @@ npx expo start
 Stage 1 Completed 10/02/25
 
 https://github.com/user-attachments/assets/bc49c87e-dcc4-4c1b-83bf-8f5e2e5e7ed8
+
+Stage 2 Completed 11/15/25
+
+https://drive.google.com/file/d/1_hQYmNwwirsRJc22GjplBl1hT0gi-A5q/view?usp=sharing
 
 ### Talley
 <img src="https://github.com/user-attachments/assets/f6672393-531d-45ea-9560-7db9ef8b7281" width="300" alt="Talley screen showing character stats" />
