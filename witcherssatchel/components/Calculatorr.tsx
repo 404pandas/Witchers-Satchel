@@ -100,7 +100,7 @@ export function Calculator() {
           onChangeText={setExpression}
           placeholder="Enter calculation..."
           placeholderTextColor="#777"
-          keyboardType="numeric"
+          keyboardType="phone-pad"
           returnKeyType="done"
           onSubmitEditing={handleCalculate}
         />

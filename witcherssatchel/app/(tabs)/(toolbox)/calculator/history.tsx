@@ -32,7 +32,12 @@ export default function CalculatorHistoryScreen() {
   return (
     <>
       <View style={theme.commonStyles.historyHeader}>
-        <Text style={[theme.commonStyles.boldTitle, { paddingLeft: 16 }]}>
+        <Text
+          style={[
+            theme.commonStyles.boldTitle,
+            { paddingLeft: 16, paddingTop: 8 },
+          ]}
+        >
           Calculation History
         </Text>
         <TouchableOpacity

@@ -8,11 +8,18 @@ import {
   PanResponder,
   Animated,
   ScrollView,
+  FlatList,
 } from "react-native";
 import bestiary from "@/assets/beastiary.json";
 import { theme } from "@/theme";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 
 const { width } = Dimensions.get("window");
+const { height } = Dimensions.get("window");
+
+const CARD_WIDTH = width * 0.9;
+const CARD_MARGIN = width * 0.05;
+const CARD_HEIGHT = height * 0.7;
 
 export default function Bestiary() {
   const scrollRef = useRef<ScrollView>(null);
@@ -52,7 +59,7 @@ export default function Bestiary() {
         </View>
         <Text style={[styles.letter, theme.commonStyles.scriptText]}>Z</Text>
       </View>
-
+      {/* TODO- debug how to set slider to current progress, even if the user manually slides the scrollview */}
       <ScrollView
         horizontal
         pagingEnabled
@@ -61,7 +68,17 @@ export default function Bestiary() {
         style={styles.carousel}
       >
         {bestiary.map((monster) => (
-          <View key={monster.beastName} style={[styles.card, { width }]}>
+          <ScrollView
+            key={monster.beastName}
+            contentContainerStyle={[
+              styles.card,
+              {
+                height: CARD_HEIGHT,
+                width: CARD_WIDTH,
+                marginHorizontal: CARD_MARGIN,
+              },
+            ]}
+          >
             <Text
               style={[
                 theme.commonStyles.boldTitle,
@@ -69,7 +86,7 @@ export default function Bestiary() {
                 theme.commonStyles.scriptText,
               ]}
             >
-              {monster.beastName.toUpperCase()}
+              {monster.beastName.replace(/\b\w/g, (char) => char.toUpperCase())}
             </Text>
             <Image
               source={{ uri: monster.imageUrl }}
@@ -78,7 +95,7 @@ export default function Bestiary() {
             />
             <View style={styles.statsContainer}>
               <Text style={theme.commonStyles.keyName}>
-                Vitality:
+                Vitality:{"\u00A0"}
                 <Text
                   style={[
                     theme.commonStyles.value,
@@ -89,7 +106,7 @@ export default function Bestiary() {
                 </Text>
               </Text>
               <Text style={theme.commonStyles.keyName}>
-                Attack:{" "}
+                Attack:{"\u00A0"}{" "}
                 <Text
                   style={[
                     theme.commonStyles.value,
@@ -100,7 +117,7 @@ export default function Bestiary() {
                 </Text>
               </Text>
               <Text style={theme.commonStyles.keyName}>
-                Defense:{" "}
+                Defense:{"\u00A0"}{" "}
                 <Text
                   style={[
                     theme.commonStyles.value,
@@ -111,7 +128,7 @@ export default function Bestiary() {
                 </Text>
               </Text>
               <Text style={theme.commonStyles.keyName}>
-                Speed:{" "}
+                Speed:{"\u00A0"}{" "}
                 <Text
                   style={[
                     theme.commonStyles.value,
@@ -122,7 +139,7 @@ export default function Bestiary() {
                 </Text>
               </Text>
               <Text style={theme.commonStyles.keyName}>
-                Intelligence:{" "}
+                Intelligence:{"\u00A0"}{" "}
                 <Text
                   style={[
                     theme.commonStyles.value,
@@ -134,7 +151,7 @@ export default function Bestiary() {
               </Text>
             </View>
             <Text style={theme.commonStyles.keyName}>
-              Weak to:{" "}
+              Weak to:{"\u00A0"}{" "}
               <Text
                 style={[
                   theme.commonStyles.value,
@@ -144,13 +161,30 @@ export default function Bestiary() {
                 {monster.stats.signVulnerability}
               </Text>
             </Text>
-            <Text style={theme.commonStyles.keyName}>Loot:</Text>
-            <Text
-              style={[theme.commonStyles.value, theme.commonStyles.scriptText]}
-            >
-              {monster.stats.loot.join(", ")}
-            </Text>
-          </View>
+            <Text style={theme.commonStyles.keyName}>Loot:{"\u00A0"} </Text>
+
+            <FlatList
+              data={monster.stats.loot}
+              keyExtractor={(item, index) => item + index}
+              renderItem={({ item }) => (
+                <Text
+                  style={[
+                    theme.commonStyles.value,
+                    theme.commonStyles.scriptText,
+                    { marginVertical: 2 },
+                  ]}
+                >
+                  <MaterialCommunityIcons
+                    name="sword"
+                    size={24}
+                    color={theme.colorLightRed}
+                  />
+                  {"\u00A0"} {item}
+                </Text>
+              )}
+              scrollEnabled={false} // prevents nested scroll issues
+            />
+          </ScrollView>
         ))}
       </ScrollView>
     </View>

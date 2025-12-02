@@ -15,6 +15,7 @@ export const theme = {
       alignItems: "center",
       backgroundColor: "#ffffff",
       paddingHorizontal: 20,
+      color: "hsl(0 0% 96%)",
     } as ViewStyle,
     link: {
       textAlign: "center",
@@ -78,7 +79,8 @@ export const theme = {
       flexDirection: "row",
       justifyContent: "space-between",
       alignItems: "center",
-      backgroundColor: "#404040",
+      // light gray
+      backgroundColor: "#bebebe",
       paddingVertical: 8,
     } as ViewStyle,
 

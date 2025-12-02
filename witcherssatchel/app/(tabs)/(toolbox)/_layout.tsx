@@ -33,7 +33,10 @@ export default function Routing() {
           headerLeft: () => {
             return (
               <Link href="/talley" asChild>
-                <Pressable style={{ marginRight: 8 }} hitSlop={20}>
+                <Pressable
+                  style={{ marginRight: 8, marginLeft: 8 }}
+                  hitSlop={20}
+                >
                   <MaterialIcons name="library-add" size={24} color="black" />
                 </Pressable>
               </Link>
@@ -42,7 +45,10 @@ export default function Routing() {
           headerRight: () => {
             return (
               <Link href="/talley/talleyHistory" asChild>
-                <Pressable style={{ marginRight: 8 }} hitSlop={20}>
+                <Pressable
+                  style={{ marginRight: 8, marginLeft: 8 }}
+                  hitSlop={20}
+                >
                   <MaterialIcons
                     name="format-list-bulleted"
                     size={24}
@@ -64,7 +70,10 @@ export default function Routing() {
           headerLeft: () => {
             return (
               <Link href="/countdownTimer" asChild>
-                <Pressable style={{ marginRight: 8 }} hitSlop={20}>
+                <Pressable
+                  style={{ marginRight: 8, marginLeft: 8 }}
+                  hitSlop={20}
+                >
                   <MaterialIcons name="timer" size={24} color="black" />
                 </Pressable>
               </Link>
@@ -73,7 +82,10 @@ export default function Routing() {
           headerRight: () => {
             return (
               <Link href="/countdownTimer/history" asChild>
-                <Pressable style={{ marginRight: 8 }} hitSlop={20}>
+                <Pressable
+                  style={{ marginRight: 8, marginLeft: 8 }}
+                  hitSlop={20}
+                >
                   <MaterialIcons
                     name="format-list-bulleted"
                     size={24}
@@ -95,7 +107,10 @@ export default function Routing() {
           headerLeft: () => {
             return (
               <Link href="/calculator" asChild>
-                <Pressable style={{ marginRight: 8 }} hitSlop={20}>
+                <Pressable
+                  style={{ marginRight: 8, marginLeft: 8 }}
+                  hitSlop={20}
+                >
                   <Entypo name="calculator" size={24} color="black" />
                 </Pressable>
               </Link>
@@ -104,7 +119,10 @@ export default function Routing() {
           headerRight: () => {
             return (
               <Link href="/calculator/history" asChild>
-                <Pressable style={{ marginRight: 8 }} hitSlop={20}>
+                <Pressable
+                  style={{ marginRight: 8, marginLeft: 8 }}
+                  hitSlop={20}
+                >
                   <MaterialIcons name="history" size={24} color="black" />
                 </Pressable>
               </Link>
@@ -122,7 +140,10 @@ export default function Routing() {
           headerLeft: () => {
             return (
               <Link href="/weather" asChild>
-                <Pressable style={{ marginRight: 8 }} hitSlop={20}>
+                <Pressable
+                  style={{ marginRight: 8, marginLeft: 8 }}
+                  hitSlop={20}
+                >
                   <Ionicons
                     name="partly-sunny-outline"
                     size={24}
@@ -135,7 +156,10 @@ export default function Routing() {
           headerRight: () => {
             return (
               <Link href="/weather/history" asChild>
-                <Pressable style={{ marginRight: 8 }} hitSlop={20}>
+                <Pressable
+                  style={{ marginRight: 8, marginLeft: 8 }}
+                  hitSlop={20}
+                >
                   <MaterialIcons name="history" size={24} color="black" />
                 </Pressable>
               </Link>

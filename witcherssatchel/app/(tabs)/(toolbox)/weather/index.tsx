@@ -1,5 +1,12 @@
 import { useEffect, useState } from "react";
-import { View, Text, ActivityIndicator, Image, Alert } from "react-native";
+import {
+  View,
+  Text,
+  ActivityIndicator,
+  Image,
+  Alert,
+  ScrollView,
+} from "react-native";
 import * as Location from "expo-location";
 import { useWeatherStore } from "@/store/weatherStore";
 import { theme } from "@/theme";
@@ -64,7 +71,12 @@ export default function WeatherScreen() {
     : null;
 
   return (
-    <View style={[theme.commonStyles.pageContainer, { alignItems: "center" }]}>
+    <ScrollView
+      contentContainerStyle={[
+        theme.commonStyles.pageContainer,
+        { alignItems: "center" },
+      ]}
+    >
       <Text style={{ fontSize: 24, fontWeight: "bold", marginBottom: 10 }}>
         Current Weather
       </Text>
@@ -87,6 +99,6 @@ export default function WeatherScreen() {
       <Text style={theme.commonStyles.value}>{wind.speed} m/s</Text>
       <Text style={theme.commonStyles.keyName}>Conditions: </Text>
       <Text style={theme.commonStyles.value}>{description}</Text>
-    </View>
+    </ScrollView>
   );
 }

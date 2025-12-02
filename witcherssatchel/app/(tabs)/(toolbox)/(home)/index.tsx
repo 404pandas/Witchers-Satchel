@@ -76,7 +76,10 @@ export default function App() {
   return (
     <>
       <TextInput
-        style={[theme.commonStyles.textInput, { marginTop: 16 }]}
+        style={[
+          theme.commonStyles.textInput,
+          { marginTop: 16, width: "90%", alignSelf: "center" },
+        ]}
         placeholder="E.g. Potion"
         value={satchelItem}
         onChangeText={setSatchelItem}

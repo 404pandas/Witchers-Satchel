@@ -21,19 +21,28 @@ import { HuntRecord } from "@/types/talleyTypes";
 
 export default function TalleyerScreen() {
   const [talley, setTalley] = useState(0);
-  const [seconds, setSeconds] = useState("");
-  const [huntName, setHuntName] = useState("");
+  const [seconds, setSeconds] = useState<undefined | number>(undefined);
+  const [huntName, setHuntName] = useState<undefined | string>(undefined);
 
   const scheduleNotification = async () => {
-    const delay = parseInt(seconds, 10);
-    const name = huntName.trim();
-
-    if (!name) {
-      Alert.alert("Invalid input", "Please enter a hunt name.");
-      return;
+    if (seconds === null) {
+      setSeconds(undefined);
+    } else if (typeof seconds === "string") {
+      setSeconds(parseInt(seconds, 10));
     }
 
-    if (isNaN(delay) || delay <= 0) {
+    if (huntName === "string") {
+      setHuntName(huntName.trim());
+    } else if (huntName === null) {
+      Alert.alert("Invalid input", "Please enter a hunt name.");
+      setHuntName(undefined);
+    }
+
+    if (
+      typeof seconds === "undefined" ||
+      isNaN(Number(seconds)) ||
+      Number(seconds) <= 0
+    ) {
       Alert.alert(
         "Invalid input",
         "Please enter a positive number of seconds."
@@ -46,42 +55,42 @@ export default function TalleyerScreen() {
     if (result === "granted") {
       await Notifications.scheduleNotificationAsync({
         content: {
-          title: `Time for your hunt: ${name}!`,
+          title: `Time for your hunt: ${huntName}!`,
           body: "Your hunt is ready to begin.",
           sound: true,
         },
         trigger: {
           type: "timeInterval" as const,
-          seconds: delay,
+          seconds: seconds,
           repeats: false,
         },
       });
 
       const stored: HuntRecord[] = (await getFromStorage(huntStorageKey)) || [];
       const newRecord: HuntRecord = {
-        huntName: name,
-        seconds: delay,
+        huntName: huntName ?? "",
+        seconds: seconds ?? 0,
         scheduledAt: Date.now(),
       };
       await saveToStorage(huntStorageKey, [...stored, newRecord]);
 
       Alert.alert(
         "Notification scheduled",
-        `You'll be reminded in ${delay} seconds.`
+        `You'll be reminded in ${seconds} seconds.`
       );
 
-      setSeconds("");
-      setHuntName("");
+      setSeconds(undefined);
+      setHuntName(undefined);
     } else if (result === null) {
       const stored: HuntRecord[] = (await getFromStorage(huntStorageKey)) || [];
       const newRecord: HuntRecord = {
-        huntName: name,
-        seconds: delay,
+        huntName: huntName ?? "Default Entry",
+        seconds: seconds ?? 0,
         scheduledAt: Date.now(),
       };
       await saveToStorage(huntStorageKey, [...stored, newRecord]);
-      setSeconds("");
-      setHuntName("");
+      setSeconds(undefined);
+      setHuntName(undefined);
       Alert.alert(
         "Push notifications not supported",
         "Push notifications are not supported on emulators. Please test on a physical device."
