@@ -89,12 +89,15 @@ Stage 1 Completed 10/02/25
 Video:
 [Click here to view](https://github.com/user-attachments/assets/bc49c87e-dcc4-4c1b-83bf-8f5e2e5e7ed8)
 
+APK: 
+Depreceated
+
 Stage 2 Completed 11/15/25
 
 Video:
 [Click here to view](https://dms.licdn.com/playlist/vid/v2/D4E05AQEH4Vj4Nvc4WQ/mp4-720p-30fp-crf28/B4EZqIFRfHGYB0-/0/1763219696636?e=1765346400&v=beta&t=Rt9ElxpvBjR6kK0J_kQWk1J6ZG4wHDt3HTI9vd679Ao)
 
-SDK:
+APK:
 [Click here to view](https://drive.google.com/file/d/1_hQYmNwwirsRJc22GjplBl1hT0gi-A5q/view?usp=sharing)
 
 Stage 3 Completed 12/3/25
@@ -102,8 +105,8 @@ Stage 3 Completed 12/3/25
 Video:
 [Click here to view](https://drive.google.com/file/d/1Qxlsncfi8tnrSBWKcK8v3hkc0TzQ8KYB/view?usp=drive_link)
 
-SDK:
-[Click here to view](https://drive.google.com/file/d/1OhxriwufiKCH15_uipwlFKbZpWtKmz5c/view?usp=sharing)
+APK:
+[Click here to view](https://drive.google.com/file/d/1HW5KuxDl4CQWw3dUxndutXRZqcKIh2os/view?usp=sharing)
 
 - [Talley](#talley)
 - [Satchel](#satchel)
