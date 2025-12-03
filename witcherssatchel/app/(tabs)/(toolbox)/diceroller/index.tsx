@@ -53,7 +53,9 @@ export default function DicePicker() {
 
   return (
     <KeyboardAvoidingView style={theme.commonStyles.pageContainer}>
-      <ScrollView contentContainerStyle={{ alignItems: "center" }}>
+      <ScrollView
+        contentContainerStyle={{ alignItems: "center", paddingBottom: 120 }}
+      >
         <Text style={theme.commonStyles.boldTitle}>Pick your dice</Text>
         <View>
           <FlatList

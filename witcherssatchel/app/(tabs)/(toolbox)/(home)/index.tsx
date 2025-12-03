@@ -81,6 +81,7 @@ export default function App() {
           { marginTop: 16, width: "90%", alignSelf: "center" },
         ]}
         placeholder="E.g. Potion"
+        placeholderTextColor={"#888"}
         value={satchelItem}
         onChangeText={setSatchelItem}
         onSubmitEditing={handleSubmit}

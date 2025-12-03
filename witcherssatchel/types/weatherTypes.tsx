@@ -34,7 +34,7 @@ export type WeatherType = {
   };
   timezone: number;
   id: string;
-  name: string;
+  name?: string;
   cod: number;
   lastUpdatedAt?: number;
 };

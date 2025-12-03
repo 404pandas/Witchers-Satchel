@@ -11,6 +11,7 @@ import { useUserStore } from "@/store/userStore";
 import { usePotionStore } from "@/store/potionStore";
 import { PotionCard } from "@/components/PotionCard";
 import NoItems from "@/components/NoItems";
+import WitcherMediaPlayer from "@/components/WitcherMediaPlayer";
 
 export default function ProfileScreen() {
   const toggleHasOnbaorded = useUserStore((state) => state.toggleHasOnboarded);
@@ -39,6 +40,8 @@ export default function ProfileScreen() {
           Back to Welcome Screen
         </Text>
       </TouchableOpacity>
+      {/* media player for witcher song */}
+      <WitcherMediaPlayer />
       <FlatList
         data={potions}
         renderItem={(item) => <PotionCard potion={item.item} />}

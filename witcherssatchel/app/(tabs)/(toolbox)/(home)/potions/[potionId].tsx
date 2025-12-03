@@ -128,6 +128,7 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colorWhite,
     flex: 1,
     justifyContent: "center",
+    marginVertical: 20,
   },
   key: {
     marginRight: 8,
@@ -143,6 +144,7 @@ const styles = StyleSheet.create({
   },
   deleteButton: {
     padding: 12,
+    marginVertical: 16,
     justifyContent: "center",
     alignItems: "center",
   },

@@ -65,30 +65,25 @@ export default function WeatherScreen() {
     );
   }
 
-  const { main, weather: weatherArr, wind } = weather;
+  const { main, weather: weatherArr, wind, name } = weather;
   const description = weatherArr[0]?.description || "";
   const icon = weatherArr[0]?.icon
     ? `https://openweathermap.org/img/wn/${weatherArr[0].icon}@2x.png`
     : null;
 
   return (
-    <KeyboardAvoidingView style={theme.commonStyles.pageContainer}>
-      <ScrollView
-        contentContainerStyle={[
-          theme.commonStyles.pageContainer,
-          { alignItems: "center" },
-        ]}
-      >
-        <Text style={{ fontSize: 24, fontWeight: "bold", marginBottom: 10 }}>
+    <ScrollView
+      contentContainerStyle={[
+        theme.commonStyles.pageContainer,
+        { alignItems: "center" },
+      ]}
+    >
+      <ScrollView contentContainerStyle={{ alignItems: "center" }}>
+        <Text style={{ fontSize: 24, fontWeight: "bold" }}>
           Current Weather
         </Text>
-        <Text
-          style={[
-            (theme.commonStyles.boldTitle, theme.commonStyles.scriptText),
-            { fontSize: 28 },
-          ]}
-        >
-          {weather.name}
+        <Text style={[theme.commonStyles.scriptText, { fontSize: 30 }]}>
+          {name}
         </Text>
         {icon && (
           <Image source={{ uri: icon }} style={{ width: 100, height: 100 }} />
@@ -126,6 +121,6 @@ export default function WeatherScreen() {
           {description}
         </Text>
       </ScrollView>
-    </KeyboardAvoidingView>
+    </ScrollView>
   );
 }

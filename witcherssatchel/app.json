@@ -33,7 +33,10 @@
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
       "package": "com.anonymous.witcherssatchel",
-      "permissions": ["ACCESS_FINE_LOCATION", "ACCESS_COARSE_LOCATION"]
+      "permissions": [
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -43,7 +46,9 @@
       [
         "expo-font",
         {
-          "fonts": ["assets/StoryScript-Regular.ttf"]
+          "fonts": [
+            "assets/StoryScript-Regular.ttf"
+          ]
         }
       ],
       [
@@ -77,9 +82,12 @@
           "photosPermission": "Allow $(PRODUCT_NAME) to access your photos.",
           "savePhotosPermission": "Allow $(PRODUCT_NAME) to save photos.",
           "isAccessMediaLocationEnabled": true,
-          "granularPermissions": ["photo"]
+          "granularPermissions": [
+            "photo"
+          ]
         }
-      ]
+      ],
+      "expo-audio"
     ],
     "extra": {
       "router": {},
