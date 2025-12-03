@@ -1,4 +1,5 @@
 import { CameraView, CameraType, useCameraPermissions } from "expo-camera";
+
 import { useState, useRef, useEffect } from "react";
 import {
   Animated,
@@ -32,14 +33,14 @@ const animations: Record<string, any> = {
 const signs = Object.keys(animations);
 
 export default function SignRecognitionScreen() {
-  const [facing, setFacing] = useState<CameraType>("back");
   const [permission, requestPermission] = useCameraPermissions();
   const [permissionResponse, requestPermissionResponse] =
     MediaLibrary.usePermissions();
   const [activeSign, setActiveSign] = useState<string | null>(null);
   const [capturedPhoto, setCapturedPhoto] = useState<string | null>(null);
+  const [facing, setFacing] = useState<CameraType>("back");
 
-  const cameraRef = useRef<CameraView>(null);
+  const cameraRef = useRef(null);
   const borderAnim = useRef(new Animated.Value(0)).current;
 
   // Request both permissions on mount
@@ -162,12 +163,16 @@ export default function SignRecognitionScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.container}>
-        <CameraView
-          style={styles.camera}
-          facing={facing}
-          ref={cameraRef}
-          active={true}
-        />
+        <CameraView style={styles.camera} facing={facing} ref={cameraRef} />
+        <TouchableOpacity
+          onPress={() =>
+            setFacing(
+              facing === CameraType.back ? CameraType.front : CameraType.back
+            )
+          }
+        >
+          <Text>Flip Camera</Text>
+        </TouchableOpacity>
       </View>
 
       {/* Glowing/fuzzy border overlay */}
