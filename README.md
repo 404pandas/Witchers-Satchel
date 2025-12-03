@@ -109,7 +109,8 @@ https://drive.google.com/file/d/1_hQYmNwwirsRJc22GjplBl1hT0gi-A5q/view?usp=shari
 
 - Inspired by [Kadi’s React Native Course](https://frontendmasters.com/).  
 - Beasts from the [Witcher API](https://github.com/diwashrestha/WitcherAPI).  
-- Confetti, haptics, and dark magic powered by Expo & React Native.  
+- Confetti, haptics, and dark magic powered by Expo & React Native.
+- Dice rolling animation from [Lottie Files](https://lottiefiles.com/iwb5945qedidagn9)
 
 ---
 
