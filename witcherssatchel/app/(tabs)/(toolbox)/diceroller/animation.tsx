@@ -3,6 +3,7 @@ import { Text, ScrollView } from "react-native";
 import { useRouter } from "expo-router";
 import { useDiceStore } from "@/store/diceRollerStore";
 import { theme } from "@/theme";
+import LottieView from "lottie-react-native";
 
 export default function DiceAnimation() {
   const router = useRouter();
@@ -13,7 +14,7 @@ export default function DiceAnimation() {
 
     const timer = setTimeout(() => {
       router.replace("/(tabs)/(toolbox)/diceroller/result");
-    }, 5000);
+    }, 2300);
 
     return () => clearTimeout(timer);
   }, []);
@@ -22,9 +23,14 @@ export default function DiceAnimation() {
     <ScrollView contentContainerStyle={theme.commonStyles.pageContainer}>
       <Text style={theme.commonStyles.boldTitle}>Rolling your dice...</Text>
       <Text style={theme.commonStyles.scriptText}>
-        This will take exactly 5 seconds
+        This will take exactly 3 seconds
       </Text>
-      {/* TODO: add animation (spinning dice/SVG) */}
+      <LottieView
+        source={require("@/assets/animations/diceRolling.json")}
+        autoPlay
+        loop
+        style={{ width: 250, height: 250, marginTop: 40 }}
+      />
     </ScrollView>
   );
 }

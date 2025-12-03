@@ -153,20 +153,20 @@ export default function Routing() {
               </Link>
             );
           },
-          headerRight: () => {
+          headerRight: ({ size, color }) => {
             return (
               <Link href="/weather/history" asChild>
                 <Pressable
                   style={{ marginRight: 8, marginLeft: 8 }}
                   hitSlop={20}
                 >
-                  <MaterialIcons name="history" size={24} color="black" />
+                  <MaterialIcons name="history" size={24} color={"black"} />
                 </Pressable>
               </Link>
             );
           },
           tabBarIcon: ({ size, color }) => (
-            <Ionicons name="partly-sunny-outline" size={24} color="black" />
+            <Ionicons name="partly-sunny-outline" size={size} color={color} />
           ),
         }}
       />
