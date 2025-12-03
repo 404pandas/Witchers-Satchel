@@ -16,6 +16,7 @@ export const theme = {
       backgroundColor: "#ffffff",
       paddingHorizontal: 20,
       color: "hsl(0 0% 96%)",
+      marginTop: 10,
     } as ViewStyle,
     link: {
       textAlign: "center",
@@ -49,6 +50,7 @@ export const theme = {
       fontSize: 28,
       fontWeight: "700",
       marginBottom: 12,
+      marginTop: 12,
       color: "#000000",
     } as ViewStyle,
     textInput: {

@@ -170,6 +170,15 @@ export default function Routing() {
           ),
         }}
       />
+      <Tabs.Screen
+        name="diceroller"
+        options={{
+          title: "Dice Roller",
+          tabBarIcon: ({ size, color }) => (
+            <Ionicons name="dice-outline" size={size} color={color} />
+          ),
+        }}
+      />
     </Tabs>
   );
 }
