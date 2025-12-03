@@ -23,6 +23,8 @@ import axii from "@/assets/animations/axii.json";
 
 import { ResetButton } from "@/components/ResetButton";
 
+let cameraInstance: any = null;
+
 const animations: Record<string, any> = {
   Igni: igni,
   Aard: aard,
@@ -54,6 +56,10 @@ export default function SignRecognitionScreen() {
         await requestPermissionResponse();
       }
     })();
+  }, []);
+
+  useEffect(() => {
+    console.log("cameraRef:", cameraRef.current);
   }, []);
 
   useEffect(() => {
@@ -117,22 +123,26 @@ export default function SignRecognitionScreen() {
 
   // Saving photo
   const takePhoto = async () => {
-    if (cameraRef.current) {
-      try {
-        const photo = await cameraRef.current.takePictureAsync({ quality: 1 });
-        setCapturedPhoto(photo.uri);
+    const cam = cameraRef.current?._cameraRef?.current;
+    if (!cam) return console.warn("Camera not ready yet");
 
-        if (permissionResponse?.granted) {
-          await MediaLibrary.saveToLibraryAsync(photo.uri);
-        }
-      } catch (err) {
-        console.error("Error taking photo:", err);
+    try {
+      const photo = await cam.takePictureAsync({ quality: 1 });
+      console.log("Photo captured:", photo.uri);
+
+      if (permissionResponse?.granted) {
+        await MediaLibrary.saveToLibraryAsync(photo.uri);
       }
+      setCapturedPhoto(photo.uri);
+    } catch (err) {
+      console.error("Error taking photo:", err);
     }
   };
 
-  const toggleCameraFacing = () =>
-    setFacing(facing === "back" ? "front" : "back");
+  const toggleCameraFacing = () => {
+    setFacing((current) => (current === "back" ? "front" : "back"));
+    console.log("Toggled camera facing to:", facing);
+  };
 
   const handleSignPress = (sign: string) => {
     setActiveSign(sign);
@@ -163,14 +173,34 @@ export default function SignRecognitionScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.container}>
-        <CameraView style={styles.camera} facing={facing} ref={cameraRef} />
-        <TouchableOpacity
-          onPress={() =>
-            setFacing(
-              facing === CameraType.back ? CameraType.front : CameraType.back
-            )
-          }
-        >
+        <Text style={{ color: "white", zIndex: 90 }}>
+          {/* This console logs: */}
+          {/* {"canAskAgain": true, "expires": "never", "granted": true, "status": "granted"} */}
+          {console.log(permission)}Test
+        </Text>
+        {permission.granted && permissionResponse.granted && (
+          <>
+            <CameraView
+              style={styles.camera}
+              facing={facing}
+              active={true}
+              ref={(ref) => {
+                cameraInstance = ref;
+                console.log("Camera instance:", ref);
+              }}
+              onCameraReady={() =>
+                console.log(
+                  "Camera ready",
+                  cameraRef.current?._cameraRef?.current
+                )
+              }
+              onMountError={(err) => console.log("Camera mount error:", err)}
+              ratio="16:9"
+            />
+            <Text style={{ color: "white" }}>Hello</Text>
+          </>
+        )}
+        <TouchableOpacity onPress={toggleCameraFacing}>
           <Text>Flip Camera</Text>
         </TouchableOpacity>
       </View>
@@ -254,7 +284,7 @@ const styles = StyleSheet.create({
     color: "#F2C800",
     fontSize: 18,
   },
-  camera: { flex: 1, width: "100%" },
+  camera: { flex: 1, width: "100%", height: "80%", backgroundColor: "unset" },
   buttonContainer: {
     position: "absolute",
     bottom: 140,
