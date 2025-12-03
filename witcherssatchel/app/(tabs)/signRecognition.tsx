@@ -1,6 +1,13 @@
 import { CameraView, CameraType, useCameraPermissions } from "expo-camera";
-import { useState } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { useState, useRef, useEffect } from "react";
+import {
+  Animated,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  Platform,
+} from "react-native";
 import Feather from "@expo/vector-icons/Feather";
 import LottieView from "lottie-react-native";
 
@@ -10,21 +17,41 @@ import yrden from "@/assets/animations/yrden.json";
 import quen from "@/assets/animations/quen.json";
 import axii from "@/assets/animations/axii.json";
 
-// Replace these with actual animation JSON files
 const animations: Record<string, any> = {
   Igni: igni,
-  Aard: aard, // wind/force
-  Yrden: yrden, // magical trap
-  Quen: quen, // shield
-  Axii: axii, // mind control
+  Aard: aard,
+  Yrden: yrden,
+  Quen: quen,
+  Axii: axii,
 };
-
 const signs = Object.keys(animations);
 
 export default function SignRecognitionScreen() {
   const [facing, setFacing] = useState<CameraType>("back");
   const [permission, requestPermission] = useCameraPermissions();
   const [activeSign, setActiveSign] = useState<string | null>(null);
+
+  const borderAnim = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    if (activeSign) {
+      Animated.timing(borderAnim, {
+        toValue: 1,
+        duration: 400,
+        useNativeDriver: false,
+      }).start();
+
+      const timeout = setTimeout(() => {
+        Animated.timing(borderAnim, {
+          toValue: 0,
+          duration: 400,
+          useNativeDriver: false,
+        }).start(() => setActiveSign(null));
+      }, 3000);
+
+      return () => clearTimeout(timeout);
+    }
+  }, [activeSign]);
 
   if (!permission) return <View />;
 
@@ -47,14 +74,56 @@ export default function SignRecognitionScreen() {
 
   const handleSignPress = (sign: string) => {
     setActiveSign(sign);
-    setTimeout(() => setActiveSign(null), 5000);
   };
+
+  const borderColor =
+    activeSign === "Igni"
+      ? "orange"
+      : activeSign === "Aard"
+        ? "lightblue"
+        : activeSign === "Yrden"
+          ? "aqua"
+          : activeSign === "Quen"
+            ? "green"
+            : activeSign === "Axii"
+              ? "pink"
+              : "transparent";
+
+  const borderWidth = borderAnim.interpolate({
+    inputRange: [0, 1],
+    outputRange: [0, 8],
+  });
+  const shadowOpacity = borderAnim.interpolate({
+    inputRange: [0, 1],
+    outputRange: [0, 0.8],
+  });
 
   return (
     <View style={styles.container}>
       <CameraView style={styles.camera} facing={facing} />
 
-      {/* Animated overlay */}
+      {/* Glowing/fade border overlay */}
+      {activeSign && (
+        <Animated.View
+          pointerEvents="none"
+          style={[
+            styles.overlayBorder,
+            {
+              borderColor,
+              borderWidth,
+              shadowColor: borderColor,
+              shadowOpacity,
+              shadowRadius: 20,
+              shadowOffset: { width: 0, height: 0 },
+              ...Platform.select({
+                android: { elevation: borderWidth.__getValue() * 2 },
+              }),
+            },
+          ]}
+        />
+      )}
+
+      {/* Sign Lottie animation */}
       {activeSign && animations[activeSign] && (
         <LottieView
           source={animations[activeSign]}
@@ -104,6 +173,10 @@ const styles = StyleSheet.create({
   button: { alignItems: "center" },
   text: { fontSize: 24, fontWeight: "bold", color: "#F2C800" },
   signsContainer: {
+    position: "absolute",
+    bottom: 0,
+    width: "100%",
+    zIndex: 9,
     flexDirection: "row",
     justifyContent: "space-around",
     paddingVertical: 16,
@@ -123,7 +196,16 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
     right: 0,
-    bottom: 0,
+    bottom: -150,
     zIndex: 1,
+  },
+  overlayBorder: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    borderRadius: 20,
+    zIndex: 2,
   },
 });
