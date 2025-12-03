@@ -99,7 +99,7 @@ SDK:
 Stage 3 Completed 12/3/25
 
 SDK:
-TODO- INSERT SDK LINK
+[Click here to view](https://drive.google.com/file/d/1OhxriwufiKCH15_uipwlFKbZpWtKmz5c/view?usp=sharing)
 
 Video:
 TODO- INSERT VIDEO
