@@ -8,6 +8,7 @@ import {
   View,
   Platform,
   Image,
+  Linking,
 } from "react-native";
 import Feather from "@expo/vector-icons/Feather";
 import LottieView from "lottie-react-native";
@@ -18,6 +19,8 @@ import aard from "@/assets/animations/aard.json";
 import yrden from "@/assets/animations/yrden.json";
 import quen from "@/assets/animations/quen.json";
 import axii from "@/assets/animations/axii.json";
+
+import { ResetButton } from "@/components/ResetButton";
 
 const animations: Record<string, any> = {
   Igni: igni,
@@ -45,8 +48,9 @@ export default function SignRecognitionScreen() {
       if (!permission?.granted) {
         await requestPermission();
       }
+
       if (!permissionResponse?.granted) {
-        await MediaLibrary.requestPermissionsAsync();
+        await requestPermissionResponse();
       }
     })();
   }, []);
@@ -71,32 +75,41 @@ export default function SignRecognitionScreen() {
     }
   }, [activeSign]);
 
-  // Show messages if either is denied
-  if (!permission?.granted || !mediaPermission?.granted) {
+  if (!permission || !permissionResponse) {
     return (
       <View style={styles.container}>
-        {!permission?.granted && (
-          <>
-            <Feather name="camera-off" size={100} color="gray" />
-            <Text style={styles.message}>
-              We need your permission to use the camera
-            </Text>
-            <TouchableOpacity onPress={requestCameraPermission}>
-              <Text style={styles.text}>Grant Camera Permission</Text>
-            </TouchableOpacity>
-          </>
-        )}
-        {permission?.granted && !mediaPermission?.granted && (
-          <>
-            <Feather name="image" size={100} color="gray" />
-            <Text style={styles.message}>
-              We need your permission to access the media library
-            </Text>
-            <TouchableOpacity onPress={requestMediaPermission}>
-              <Text style={styles.text}>Grant Media Permission</Text>
-            </TouchableOpacity>
-          </>
-        )}
+        <Text style={{ color: "#F2C800" }}>Loading camera…</Text>
+      </View>
+    );
+  }
+  // If camera permission denied
+  if (!permission.granted) {
+    return (
+      <View style={styles.container}>
+        <Feather name="camera-off" size={100} color="gray" />
+        <Text style={styles.message}>
+          We need your permission to use the camera
+        </Text>
+        <TouchableOpacity onPress={requestPermission}>
+          <Text style={styles.text}>Grant Camera Permission</Text>
+        </TouchableOpacity>
+        <ResetButton />
+      </View>
+    );
+  }
+
+  // If media permission denied
+  if (!permissionResponse.granted) {
+    return (
+      <View style={styles.container}>
+        <Feather name="image" size={100} color="gray" />
+        <Text style={styles.message}>
+          We need your permission to access the media library
+        </Text>
+        <TouchableOpacity onPress={requestPermissionResponse}>
+          <Text style={styles.text}>Grant Media Permission</Text>
+        </TouchableOpacity>
+        <ResetButton />
       </View>
     );
   }
@@ -108,7 +121,7 @@ export default function SignRecognitionScreen() {
         const photo = await cameraRef.current.takePictureAsync({ quality: 1 });
         setCapturedPhoto(photo.uri);
 
-        if (mediaPermission?.granted) {
+        if (permissionResponse?.granted) {
           await MediaLibrary.saveToLibraryAsync(photo.uri);
         }
       } catch (err) {
@@ -148,7 +161,14 @@ export default function SignRecognitionScreen() {
 
   return (
     <View style={styles.container}>
-      <CameraView style={styles.camera} facing={facing} ref={cameraRef} />
+      <View style={styles.container}>
+        <CameraView
+          style={styles.camera}
+          facing={facing}
+          ref={cameraRef}
+          active={true}
+        />
+      </View>
 
       {/* Glowing/fuzzy border overlay */}
       {activeSign && (
@@ -216,6 +236,7 @@ export default function SignRecognitionScreen() {
           />
         </View>
       )}
+      <ResetButton />
     </View>
   );
 }

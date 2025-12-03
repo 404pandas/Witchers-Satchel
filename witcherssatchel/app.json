@@ -19,7 +19,10 @@
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false,
         "NSLocationWhenInUseUsageDescription": "We need your location to show local weather data.",
-        "NSLocationAlwaysUsageDescription": "We need your location to show local weather data."
+        "NSLocationAlwaysUsageDescription": "We need your location to show local weather data.",
+        "NSCameraUsageDescription": "This app uses the camera to take photos.",
+        "NSPhotoLibraryUsageDescription": "This app needs access to your photo library.",
+        "NSPhotoLibraryAddUsageDescription": "This app saves captured photos to your library."
       }
     },
     "android": {
