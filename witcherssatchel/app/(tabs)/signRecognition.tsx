@@ -37,13 +37,15 @@ export default function SignRecognitionScreen() {
           <Text style={styles.text}>Flip Camera</Text>
         </TouchableOpacity>
       </View>
+
+      {/* Signs to touch instead */}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    height: "40%",
     justifyContent: "center",
     alignItems: "center", // center icon and text
     backgroundColor: "#010302",
