@@ -16,6 +16,7 @@
     "@reduxjs/toolkit": "^2.9.2",
     "date-fns": "^4.1.0",
     "expo": "54.0.12",
+    "expo-camera": "~17.0.9",
     "expo-constants": "~18.0.9",
     "expo-dev-client": "~6.0.14",
     "expo-device": "~8.0.9",

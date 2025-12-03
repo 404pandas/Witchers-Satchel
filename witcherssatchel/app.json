@@ -59,6 +59,14 @@
         {
           "locationAlwaysAndWhenInUsePermission": "Allow Witcher's Satchel to access your location to fetch local weather information."
         }
+      ],
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera",
+          "microphonePermission": "Allow $(PRODUCT_NAME) to access your microphone",
+          "recordAudioAndroid": true
+        }
       ]
     ],
     "extra": {

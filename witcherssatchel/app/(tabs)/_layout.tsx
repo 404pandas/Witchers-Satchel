@@ -60,6 +60,18 @@ export default function Routing() {
         }}
       />
       <Tabs.Screen
+        name="signRecognition"
+        options={{
+          title: "Signs",
+          tabBarIcon: ({ color, size }) => (
+            <MaterialIcons name="gesture" size={size} color={color} />
+          ),
+          tabBarShowLabel: false,
+          headerShown: false,
+        }}
+      />
+
+      <Tabs.Screen
         name="(toolbox)"
         options={{
           title: "Toolbox",
