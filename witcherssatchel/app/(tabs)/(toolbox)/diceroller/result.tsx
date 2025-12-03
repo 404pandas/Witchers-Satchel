@@ -1,4 +1,3 @@
-// /(tabs)/(toolbox)/diceroller/result.tsx
 import React from "react";
 import {
   View,
@@ -40,7 +39,7 @@ export default function DiceResult() {
               </Text>
             </View>
           )}
-          ItemSeparatorComponent={() => <View style={styles.sep} />}
+          ItemSeparatorComponent={() => <View style={theme.commonStyles.sep} />}
           style={{ width: "100%" }}
         />
       </ScrollView>
@@ -80,10 +79,5 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     flexDirection: "row",
     justifyContent: "space-between",
-  },
-  sep: {
-    height: 1,
-    backgroundColor: "#eee",
-    width: "100%",
   },
 });

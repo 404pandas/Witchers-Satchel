@@ -1,4 +1,3 @@
-// /(tabs)/(toolbox)/diceroller/index.tsx
 import React from "react";
 import {
   View,
@@ -19,7 +18,6 @@ export default function DicePicker() {
   const setSelectedDice = useDiceStore((s) => s.setSelectedDice);
   const selectedDice = useDiceStore((s) => s.selectedDice);
 
-  // local editable map for amounts
   const [amounts, setAmounts] = React.useState<Record<DieType, number>>(() => {
     const init: Record<DieType, number> = {
       d4: 0,
@@ -49,7 +47,6 @@ export default function DicePicker() {
     })).filter((s) => s.amount > 0);
 
     setSelectedDice(selections);
-    // Use replace to prevent building a back stack (flow enforced)
     router.replace("/(tabs)/(toolbox)/diceroller/animation");
   };
 
@@ -95,14 +92,16 @@ export default function DicePicker() {
                 </View>
               </View>
             )}
-            ItemSeparatorComponent={() => <View style={styles.sep} />}
+            ItemSeparatorComponent={() => (
+              <View style={theme.commonStyles.sep} />
+            )}
           />
           <Pressable
             style={theme.commonStyles.buttonRed}
             onPress={handleSubmit}
           >
             <Text style={theme.commonStyles.buttonText}>Roll Dice</Text>
-          </Pressable>{" "}
+          </Pressable>
         </View>
       </ScrollView>
     </View>
@@ -131,9 +130,5 @@ const styles = StyleSheet.create({
   },
   btnText: {
     fontSize: 20,
-  },
-  sep: {
-    height: 1,
-    backgroundColor: "#eee",
   },
 });

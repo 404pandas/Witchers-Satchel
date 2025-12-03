@@ -19,13 +19,12 @@ export default function WeatherHistoryScreen() {
   const { currentWeather, removeWeather } = useWeatherStore();
   const [weatherHistory, setWeatherHistory] = useState(currentWeather || []);
 
-  // Keep local state in sync with store
   useEffect(() => {
     setWeatherHistory(currentWeather);
   }, [currentWeather]);
 
   const clearHistory = () => {
-    if (!weatherHistory?.length) return; // do nothing if empty
+    if (!weatherHistory?.length) return;
     weatherHistory.forEach((w) => removeWeather(w.id.toString()));
     setWeatherHistory([]);
   };

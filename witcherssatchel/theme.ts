@@ -1,4 +1,4 @@
-import { ViewStyle } from "react-native";
+import { View, ViewStyle } from "react-native";
 
 export const theme = {
   colorRed: "#ff0000",
@@ -81,11 +81,9 @@ export const theme = {
       flexDirection: "row",
       justifyContent: "space-between",
       alignItems: "center",
-      // light gray
       backgroundColor: "#bebebe",
       paddingVertical: 8,
     } as ViewStyle,
-
     keyName: {
       fontSize: 20,
       color: "#000000",
@@ -96,6 +94,11 @@ export const theme = {
       fontWeight: "bold",
       color: "#ff4d4d",
       fontSize: 24,
+    } as ViewStyle,
+    sep: {
+      height: 1,
+      backgroundColor: "#eee",
+      width: "100%",
     } as ViewStyle,
   },
 };
