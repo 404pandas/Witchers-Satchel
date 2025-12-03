@@ -106,7 +106,7 @@ export default function Bestiary() {
                 </Text>
               </Text>
               <Text style={theme.commonStyles.keyName}>
-                Attack:{"\u00A0"}{" "}
+                Attack:{"\u00A0"}
                 <Text
                   style={[
                     theme.commonStyles.value,
@@ -117,7 +117,7 @@ export default function Bestiary() {
                 </Text>
               </Text>
               <Text style={theme.commonStyles.keyName}>
-                Defense:{"\u00A0"}{" "}
+                Defense:{"\u00A0"}
                 <Text
                   style={[
                     theme.commonStyles.value,
@@ -128,7 +128,7 @@ export default function Bestiary() {
                 </Text>
               </Text>
               <Text style={theme.commonStyles.keyName}>
-                Speed:{"\u00A0"}{" "}
+                Speed:{"\u00A0"}
                 <Text
                   style={[
                     theme.commonStyles.value,
@@ -139,7 +139,7 @@ export default function Bestiary() {
                 </Text>
               </Text>
               <Text style={theme.commonStyles.keyName}>
-                Intelligence:{"\u00A0"}{" "}
+                Intelligence:{"\u00A0"}
                 <Text
                   style={[
                     theme.commonStyles.value,
@@ -151,7 +151,7 @@ export default function Bestiary() {
               </Text>
             </View>
             <Text style={theme.commonStyles.keyName}>
-              Weak to:{"\u00A0"}{" "}
+              Weak to:{"\u00A0"}
               <Text
                 style={[
                   theme.commonStyles.value,
@@ -183,7 +183,7 @@ export default function Bestiary() {
                   </Text>
                 )}
                 scrollEnabled={false} // prevents nested scroll issues
-              />{" "}
+              />
             </ScrollView>
           </ScrollView>
         ))}

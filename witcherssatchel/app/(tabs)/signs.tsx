@@ -7,9 +7,11 @@ import {
   TouchableOpacity,
   View,
   Platform,
+  Image,
 } from "react-native";
 import Feather from "@expo/vector-icons/Feather";
 import LottieView from "lottie-react-native";
+import * as MediaLibrary from "expo-media-library";
 
 import igni from "@/assets/animations/igni.json";
 import aard from "@/assets/animations/aard.json";
@@ -29,9 +31,25 @@ const signs = Object.keys(animations);
 export default function SignRecognitionScreen() {
   const [facing, setFacing] = useState<CameraType>("back");
   const [permission, requestPermission] = useCameraPermissions();
+  const [permissionResponse, requestPermissionResponse] =
+    MediaLibrary.usePermissions();
   const [activeSign, setActiveSign] = useState<string | null>(null);
+  const [capturedPhoto, setCapturedPhoto] = useState<string | null>(null);
 
+  const cameraRef = useRef<CameraView>(null);
   const borderAnim = useRef(new Animated.Value(0)).current;
+
+  // Request both permissions on mount
+  useEffect(() => {
+    (async () => {
+      if (!permission?.granted) {
+        await requestPermission();
+      }
+      if (!permissionResponse?.granted) {
+        await MediaLibrary.requestPermissionsAsync();
+      }
+    })();
+  }, []);
 
   useEffect(() => {
     if (activeSign) {
@@ -53,21 +71,51 @@ export default function SignRecognitionScreen() {
     }
   }, [activeSign]);
 
-  if (!permission) return <View />;
-
-  if (!permission.granted) {
+  // Show messages if either is denied
+  if (!permission?.granted || !mediaPermission?.granted) {
     return (
       <View style={styles.container}>
-        <Feather name="camera-off" size={100} color="gray" />
-        <Text style={styles.message}>
-          We need your permission to show the camera
-        </Text>
-        <TouchableOpacity onPress={requestPermission}>
-          <Text style={styles.text}>Grant Permission</Text>
-        </TouchableOpacity>
+        {!permission?.granted && (
+          <>
+            <Feather name="camera-off" size={100} color="gray" />
+            <Text style={styles.message}>
+              We need your permission to use the camera
+            </Text>
+            <TouchableOpacity onPress={requestCameraPermission}>
+              <Text style={styles.text}>Grant Camera Permission</Text>
+            </TouchableOpacity>
+          </>
+        )}
+        {permission?.granted && !mediaPermission?.granted && (
+          <>
+            <Feather name="image" size={100} color="gray" />
+            <Text style={styles.message}>
+              We need your permission to access the media library
+            </Text>
+            <TouchableOpacity onPress={requestMediaPermission}>
+              <Text style={styles.text}>Grant Media Permission</Text>
+            </TouchableOpacity>
+          </>
+        )}
       </View>
     );
   }
+
+  // Saving photo
+  const takePhoto = async () => {
+    if (cameraRef.current) {
+      try {
+        const photo = await cameraRef.current.takePictureAsync({ quality: 1 });
+        setCapturedPhoto(photo.uri);
+
+        if (mediaPermission?.granted) {
+          await MediaLibrary.saveToLibraryAsync(photo.uri);
+        }
+      } catch (err) {
+        console.error("Error taking photo:", err);
+      }
+    }
+  };
 
   const toggleCameraFacing = () =>
     setFacing(facing === "back" ? "front" : "back");
@@ -100,9 +148,9 @@ export default function SignRecognitionScreen() {
 
   return (
     <View style={styles.container}>
-      <CameraView style={styles.camera} facing={facing} />
+      <CameraView style={styles.camera} facing={facing} ref={cameraRef} />
 
-      {/* Glowing/fade border overlay */}
+      {/* Glowing/fuzzy border overlay */}
       {activeSign && (
         <Animated.View
           pointerEvents="none"
@@ -133,6 +181,13 @@ export default function SignRecognitionScreen() {
         />
       )}
 
+      {/* Capture button */}
+      <View style={styles.captureContainer}>
+        <TouchableOpacity style={styles.captureButton} onPress={takePhoto}>
+          <Feather name="camera" size={36} color="#F2C800" />
+        </TouchableOpacity>
+      </View>
+
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.button} onPress={toggleCameraFacing}>
           <Text style={styles.text}>Flip Camera</Text>
@@ -150,6 +205,17 @@ export default function SignRecognitionScreen() {
           </TouchableOpacity>
         ))}
       </View>
+
+      {/* Preview captured photo */}
+      {capturedPhoto && (
+        <View style={styles.previewContainer}>
+          <Image
+            source={{ uri: capturedPhoto }}
+            style={styles.previewImage}
+            resizeMode="contain"
+          />
+        </View>
+      )}
     </View>
   );
 }
@@ -165,7 +231,7 @@ const styles = StyleSheet.create({
   camera: { flex: 1, width: "100%" },
   buttonContainer: {
     position: "absolute",
-    bottom: 100,
+    bottom: 140,
     flexDirection: "row",
     width: "100%",
     justifyContent: "center",
@@ -208,4 +274,31 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     zIndex: 2,
   },
+  captureContainer: {
+    position: "absolute",
+    bottom: 220,
+    width: "100%",
+    alignItems: "center",
+    zIndex: 10,
+  },
+  captureButton: {
+    backgroundColor: "#222",
+    padding: 16,
+    borderRadius: 50,
+    borderWidth: 2,
+    borderColor: "#F2C800",
+  },
+  previewContainer: {
+    position: "absolute",
+    top: 60,
+    left: 20,
+    right: 20,
+    bottom: 200,
+    borderWidth: 2,
+    borderColor: "#F2C800",
+    borderRadius: 20,
+    overflow: "hidden",
+    zIndex: 11,
+  },
+  previewImage: { width: "100%", height: "100%", borderRadius: 20 },
 });
