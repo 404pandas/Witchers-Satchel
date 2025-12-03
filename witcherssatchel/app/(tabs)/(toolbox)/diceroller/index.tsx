@@ -6,6 +6,7 @@ import {
   StyleSheet,
   FlatList,
   ScrollView,
+  KeyboardAvoidingView,
 } from "react-native";
 import { useRouter } from "expo-router";
 import { useDiceStore, DieType, DiceSelection } from "@/store/diceRollerStore";
@@ -51,7 +52,7 @@ export default function DicePicker() {
   };
 
   return (
-    <View style={theme.commonStyles.pageContainer}>
+    <KeyboardAvoidingView style={theme.commonStyles.pageContainer}>
       <ScrollView contentContainerStyle={{ alignItems: "center" }}>
         <Text style={theme.commonStyles.boldTitle}>Pick your dice</Text>
         <View>
@@ -97,14 +98,19 @@ export default function DicePicker() {
             )}
           />
           <Pressable
-            style={theme.commonStyles.buttonRed}
+            style={[
+              theme.commonStyles.buttonRed,
+              {
+                marginTop: -60,
+              },
+            ]}
             onPress={handleSubmit}
           >
             <Text style={theme.commonStyles.buttonText}>Roll Dice</Text>
           </Pressable>
         </View>
       </ScrollView>
-    </View>
+    </KeyboardAvoidingView>
   );
 }
 

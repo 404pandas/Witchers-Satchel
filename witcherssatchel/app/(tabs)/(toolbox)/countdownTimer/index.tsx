@@ -6,6 +6,7 @@ import {
   Alert,
   ActivityIndicator,
   TextInput,
+  KeyboardAvoidingView,
 } from "react-native";
 import { theme } from "@/theme";
 import { Duration, intervalToDuration, isBefore } from "date-fns";
@@ -161,7 +162,7 @@ export default function CounterScreen() {
   }
 
   return (
-    <View
+    <KeyboardAvoidingView
       style={[
         theme.commonStyles.pageContainer,
         status.isOverdue ? styles.containerLate : undefined,
@@ -229,7 +230,7 @@ export default function CounterScreen() {
           </TouchableOpacity>
         </>
       )}
-    </View>
+    </KeyboardAvoidingView>
   );
 }
 
