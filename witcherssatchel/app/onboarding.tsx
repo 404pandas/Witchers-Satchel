@@ -4,6 +4,8 @@ import {
   StyleSheet,
   TouchableOpacity,
   Linking,
+  Alert,
+  ScrollView,
 } from "react-native";
 import { theme } from "@/theme";
 import { useUserStore } from "@/store/userStore";
@@ -28,7 +30,7 @@ export default function OnboardingScreen() {
     if (supported) {
       await Linking.openURL(url);
     } else {
-      console.warn("Don't know how to open this URL: ", url);
+      Alert.alert("Don't know how to open this URL: ", url);
     }
   };
 
@@ -39,50 +41,56 @@ export default function OnboardingScreen() {
       colors={["gray", "black", "gray"]}
       style={styles.container}
     >
-      <View
-        style={[
-          styles.onboardingContainer,
-          { backgroundColor: theme.colorDarkerRed },
-        ]}
-      >
-        <Text
+      <ScrollView contentContainerStyle={{ flex: 1, alignItems: "center" }}>
+        <View
           style={[
-            theme.commonStyles.boldTitle,
-            styles.onboardingText,
-            theme.commonStyles.textShadow,
+            styles.onboardingContainer,
+            {
+              backgroundColor: theme.colorDarkerRed,
+              height: "auto",
+              marginTop: 80,
+            },
           ]}
         >
-          Welcome to Witcher&apos;s Satchel!
-        </Text>
-        <Logo />
-        <Text style={[styles.text, theme.commonStyles.textShadow]}>
-          This is an experimental app for me to learn React Native.
-        </Text>
-        <Text>
-          <TouchableOpacity onPress={openLinkedIn} hitSlop={20}>
-            <Text style={[theme.commonStyles.link]}>
-              Please consider visiting my LinkedIn by clicking on this text.
+          <Text
+            style={[
+              theme.commonStyles.boldTitle,
+              styles.onboardingText,
+              theme.commonStyles.textShadow,
+            ]}
+          >
+            Welcome to Witcher&apos;s Satchel!
+          </Text>
+          <Logo />
+          <Text style={[styles.text, theme.commonStyles.textShadow]}>
+            This is an experimental app for me to learn React Native.
+          </Text>
+          <Text>
+            <TouchableOpacity onPress={openLinkedIn} hitSlop={20}>
+              <Text style={[theme.commonStyles.link]}>
+                Please consider visiting my LinkedIn by clicking on this text.
+              </Text>
+            </TouchableOpacity>
+          </Text>
+          <Text style={[styles.text, theme.commonStyles.textShadow]}>
+            Press the button to continue.
+          </Text>
+
+          <TouchableOpacity
+            style={theme.commonStyles.buttonRed}
+            onPress={handlePress}
+          >
+            <Text style={[theme.commonStyles.buttonText, { fontSize: 20 }]}>
+              Continue
             </Text>
           </TouchableOpacity>
-        </Text>
-        <Text style={[styles.text, theme.commonStyles.textShadow]}>
-          Press the button to continue.
-        </Text>
 
-        <TouchableOpacity
-          style={theme.commonStyles.buttonRed}
-          onPress={handlePress}
-        >
-          <Text style={[theme.commonStyles.buttonText, { fontSize: 20 }]}>
-            Continue
-          </Text>
-        </TouchableOpacity>
-
-        <WitcherSatchelButton
-          title="Continue, but a cylon"
-          onPress={handlePress}
-        />
-      </View>
+          <WitcherSatchelButton
+            title="Continue, but a cylon"
+            onPress={handlePress}
+          />
+        </View>
+      </ScrollView>
     </LinearGradient>
   );
 }

@@ -4,7 +4,14 @@ import {
   useNavigation,
   useRouter,
 } from "expo-router";
-import { View, Text, StyleSheet, Pressable, Alert } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Pressable,
+  Alert,
+  ScrollView,
+} from "react-native";
 import { usePotionStore } from "@/store/potionStore";
 import { differenceInCalendarDays, format } from "date-fns";
 
@@ -76,7 +83,7 @@ export default function PotionDetails() {
   }
 
   return (
-    <View style={styles.detailsContainer}>
+    <ScrollView contentContainerStyle={styles.detailsContainer}>
       <View style={{ alignItems: "center" }}>
         <Potion imageUri={potion.imageUri} />
         <View style={styles.spacer} />
@@ -102,7 +109,7 @@ export default function PotionDetails() {
       <Pressable style={styles.deleteButton} onPress={handleDeletePotion}>
         <Text style={styles.deleteButtonText}>Delete</Text>
       </Pressable>
-    </View>
+    </ScrollView>
   );
 }
 
