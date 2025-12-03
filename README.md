@@ -29,7 +29,8 @@ It combines **practical utility tools** with **monster-hunting fun** to create a
 - **Calculator**: A fully functioning calculator. Tracks history to persist through app closure.
 - **Weather**: A local weather display. Tracks weather history to persist through app closure. Fetched from [Weather API](https://openweathermap.org/api/one-call-3#current)
 - **Dice Roller**: A rolling kit with all the popular D&D dice. Tracks roll history to persist through app closure.
-- ** Potion Tracker**: A tracking system to keep track of how often you have stirred a potion. Create, Read, and Delete functionality.
+- **Potion Tracker**: A tracking system to keep track of how often you have stirred a potion. Create, Read, and Delete functionality.
+- **Media Player**: A fully functioning media player loaded with the only song you need to hear.
 
 ### 🎓 From Kadi’s Course
 
@@ -111,6 +112,8 @@ SDK:
 - [Dice Roller](#dice-roller)
 - [Calculator](#calculator)
 - [Weather](#weather)
+- [Media Player](#media-player)
+- [Sign Camera](#sign-camera)
 
 ### Talley
 
@@ -142,6 +145,14 @@ TODO- ADD IMAGES
 TODO- ADD IMAGES
 
 ### Weather
+
+TODO- ADD IMAGES
+
+### Media Player
+
+TODO- ADD IMAGES
+
+### Sign Camera
 
 TODO- ADD IMAGES
 
