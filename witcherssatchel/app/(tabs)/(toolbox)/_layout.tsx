@@ -29,7 +29,7 @@ export default function Routing() {
       <Tabs.Screen
         name="talley"
         options={{
-          title: isTalleyHistory ? "History" : "Talley",
+          title: isTalleyHistory ? "Hunt History" : "Talley & Scheduler",
           headerLeft: () => {
             return (
               <Link href="/talley" asChild>

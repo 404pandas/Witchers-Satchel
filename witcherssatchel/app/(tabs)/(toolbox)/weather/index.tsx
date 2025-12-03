@@ -80,25 +80,49 @@ export default function WeatherScreen() {
       <Text style={{ fontSize: 24, fontWeight: "bold", marginBottom: 10 }}>
         Current Weather
       </Text>
+      <Text
+        style={[
+          (theme.commonStyles.boldTitle, theme.commonStyles.scriptText),
+          { fontSize: 28 },
+        ]}
+      >
+        {weather.name}
+      </Text>
       {icon && (
         <Image source={{ uri: icon }} style={{ width: 100, height: 100 }} />
       )}
       <Text style={theme.commonStyles.keyName}>Temperature: </Text>
-      <Text style={theme.commonStyles.value}>{main.temp} °F</Text>
+      <Text style={[theme.commonStyles.value, theme.commonStyles.scriptText]}>
+        {main.temp} °F
+      </Text>
       <Text style={theme.commonStyles.keyName}>Temperature Min: </Text>
-      <Text style={theme.commonStyles.value}>{main.temp_min} °F</Text>
+      <Text style={[theme.commonStyles.value, theme.commonStyles.scriptText]}>
+        {main.temp_min} °F
+      </Text>
       <Text style={theme.commonStyles.keyName}>Temperature Max: </Text>
-      <Text style={theme.commonStyles.value}>{main.temp_max} °F</Text>
+      <Text style={[theme.commonStyles.value, theme.commonStyles.scriptText]}>
+        {main.temp_max} °F
+      </Text>
       <Text style={theme.commonStyles.keyName}>Feels Like: </Text>
-      <Text style={theme.commonStyles.value}>{main.feels_like} °F</Text>
+      <Text style={[theme.commonStyles.value, theme.commonStyles.scriptText]}>
+        {main.feels_like} °F
+      </Text>
       <Text style={theme.commonStyles.keyName}>Humidity: </Text>
-      <Text style={theme.commonStyles.value}>{main.humidity}%</Text>
+      <Text style={[theme.commonStyles.value, theme.commonStyles.scriptText]}>
+        {main.humidity}%
+      </Text>
       <Text style={theme.commonStyles.keyName}>Pressure: </Text>
-      <Text style={theme.commonStyles.value}>{main.pressure} hPa</Text>
+      <Text style={[theme.commonStyles.value, theme.commonStyles.scriptText]}>
+        {main.pressure} hPa
+      </Text>
       <Text style={theme.commonStyles.keyName}>Wind Speed: </Text>
-      <Text style={theme.commonStyles.value}>{wind.speed} m/s</Text>
+      <Text style={[theme.commonStyles.value, theme.commonStyles.scriptText]}>
+        {wind.speed} m/s
+      </Text>
       <Text style={theme.commonStyles.keyName}>Conditions: </Text>
-      <Text style={theme.commonStyles.value}>{description}</Text>
+      <Text style={[theme.commonStyles.value, theme.commonStyles.scriptText]}>
+        {description}
+      </Text>
     </ScrollView>
   );
 }

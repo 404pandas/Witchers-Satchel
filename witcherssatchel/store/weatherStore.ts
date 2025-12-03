@@ -47,6 +47,8 @@ export const useWeatherStore = create(
 
           const data: WeatherType = await response.json();
 
+          console.log(data);
+
           const weatherWithId: StoredWeather = {
             ...data,
             id: Date.now().toString(),
