@@ -34,9 +34,6 @@ export function ResetButton() {
 
 const styles = StyleSheet.create({
   debugPermissionButton: {
-    position: "absolute",
-    top: 40,
-    left: 20,
     backgroundColor: "rgba(0,0,0,0.6)",
     paddingVertical: 8,
     paddingHorizontal: 12,
@@ -44,10 +41,5 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#F2C800",
     zIndex: 999,
-  },
-  debugPermissionText: {
-    color: "#F2C800",
-    fontSize: 14,
-    fontWeight: "bold",
   },
 });

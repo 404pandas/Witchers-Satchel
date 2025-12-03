@@ -1,6 +1,4 @@
 import { CameraView, CameraType, useCameraPermissions } from "expo-camera";
-import { captureScreen } from "react-native-view-shot";
-
 import { useState, useRef, useEffect } from "react";
 import {
   Animated,
@@ -9,11 +7,9 @@ import {
   TouchableOpacity,
   View,
   Platform,
-  Image,
 } from "react-native";
 import Feather from "@expo/vector-icons/Feather";
 import LottieView from "lottie-react-native";
-import * as MediaLibrary from "expo-media-library";
 
 import igni from "@/assets/animations/igni.json";
 import aard from "@/assets/animations/aard.json";
@@ -35,23 +31,20 @@ const signs = Object.keys(animations);
 
 export default function SignRecognitionScreen() {
   const [permission, requestPermission] = useCameraPermissions();
-  const [permissionResponse, requestPermissionResponse] =
-    MediaLibrary.usePermissions();
   const [activeSign, setActiveSign] = useState<string | null>(null);
   const [facing, setFacing] = useState<CameraType>("back");
-  const [capturedPhoto, setCapturedPhoto] = useState<string | null>(null);
 
   const borderAnim = useRef(new Animated.Value(0)).current;
+  const flipAnim = useRef(new Animated.Value(0)).current;
 
-  // Request permissions on mount
+  // Request camera permission on mount
   useEffect(() => {
     (async () => {
       if (!permission?.granted) await requestPermission();
-      if (!permissionResponse?.granted) await requestPermissionResponse();
     })();
   }, []);
 
-  if (!permission || !permissionResponse) {
+  if (!permission) {
     return (
       <View style={styles.container}>
         <Text style={{ color: "#F2C800" }}>Loading camera…</Text>
@@ -74,22 +67,27 @@ export default function SignRecognitionScreen() {
     );
   }
 
-  if (!permissionResponse.granted) {
-    return (
-      <View style={styles.container}>
-        <Feather name="image" size={100} color="gray" />
-        <Text style={styles.message}>
-          We need your permission to access the media library
-        </Text>
-        <TouchableOpacity onPress={requestPermissionResponse}>
-          <Text style={styles.text}>Grant Media Permission</Text>
-        </TouchableOpacity>
-        <ResetButton />
-      </View>
-    );
-  }
-
   const toggleCameraFacing = () => {
+    // Animate flip icon: 360° rotation + bounce
+    Animated.sequence([
+      Animated.timing(flipAnim, {
+        toValue: 1,
+        duration: 600,
+        useNativeDriver: true,
+      }),
+      Animated.timing(flipAnim, {
+        toValue: 0.9,
+        duration: 100,
+        useNativeDriver: true,
+      }),
+      Animated.timing(flipAnim, {
+        toValue: 1,
+        duration: 100,
+        useNativeDriver: true,
+      }),
+    ]).start();
+
+    // Flip camera
     setFacing((current) => (current === "back" ? "front" : "back"));
   };
 
@@ -115,39 +113,24 @@ export default function SignRecognitionScreen() {
     outputRange: [0, 0.8],
   });
 
-  // Play animation + border + capture screenshot
-  const handleSignPress = async (sign: string) => {
+  // Trigger animation + border
+  const handleSignPress = (sign: string) => {
     setActiveSign(sign);
 
-    // Animate border in
     Animated.timing(borderAnim, {
       toValue: 1,
       duration: 400,
       useNativeDriver: false,
     }).start();
 
-    // Capture screenshot after short delay
-    setTimeout(async () => {
-      try {
-        const uri = await captureScreen({ format: "png", quality: 1 });
-        console.log("Captured snapshot:", uri);
-        if (permissionResponse?.granted) {
-          await MediaLibrary.saveToLibraryAsync(uri);
-        }
-        setCapturedPhoto(uri);
-      } catch (err) {
-        console.error("captureScreen failed:", err);
-      }
-    }, 300); // delay to allow animation to render
-
-    // Reset border and animation after 3s
+    // Reset border after 5s
     setTimeout(() => {
       Animated.timing(borderAnim, {
         toValue: 0,
         duration: 400,
         useNativeDriver: false,
       }).start(() => setActiveSign(null));
-    }, 3000);
+    }, 5000);
   };
 
   return (
@@ -158,6 +141,36 @@ export default function SignRecognitionScreen() {
         active={true}
         ratio="16:9"
       />
+
+      {/* Top bar: Reset (left) + Flip Camera (right) */}
+      <View style={styles.topBar}>
+        <ResetButton />
+        <TouchableOpacity
+          style={styles.flipButton}
+          onPress={toggleCameraFacing}
+        >
+          <Animated.View
+            style={{
+              transform: [
+                {
+                  rotate: flipAnim.interpolate({
+                    inputRange: [0, 1],
+                    outputRange: ["0deg", "360deg"],
+                  }),
+                },
+                {
+                  scale: flipAnim.interpolate({
+                    inputRange: [0.9, 1],
+                    outputRange: [0.9, 1],
+                  }),
+                },
+              ],
+            }}
+          >
+            <Feather name="rotate-ccw" size={28} color="#F2C800" />
+          </Animated.View>
+        </TouchableOpacity>
+      </View>
 
       {activeSign && (
         <Animated.View
@@ -183,16 +196,10 @@ export default function SignRecognitionScreen() {
         <LottieView
           source={animations[activeSign]}
           autoPlay
-          loop={false}
+          loop={true}
           style={styles.overlayAnimation}
         />
       )}
-
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button} onPress={toggleCameraFacing}>
-          <Text style={styles.text}>Flip Camera</Text>
-        </TouchableOpacity>
-      </View>
 
       <View style={styles.signsContainer}>
         {signs.map((sign) => (
@@ -205,8 +212,6 @@ export default function SignRecognitionScreen() {
           </TouchableOpacity>
         ))}
       </View>
-
-      <ResetButton />
     </View>
   );
 }
@@ -220,15 +225,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   camera: { flex: 1, width: "100%", height: "80%", backgroundColor: "unset" },
-  buttonContainer: {
-    position: "absolute",
-    bottom: 140,
-    flexDirection: "row",
-    width: "100%",
-    justifyContent: "center",
-  },
-  button: { alignItems: "center" },
-  text: { fontSize: 24, fontWeight: "bold", color: "#F2C800" },
   signsContainer: {
     position: "absolute",
     bottom: 0,
@@ -265,17 +261,23 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     zIndex: 2,
   },
-  previewContainer: {
+  topBar: {
     position: "absolute",
-    top: 60,
+    top: 50,
     left: 20,
     right: 20,
-    bottom: 200,
-    borderWidth: 2,
-    borderColor: "#F2C800",
-    borderRadius: 20,
-    overflow: "hidden",
-    zIndex: 11,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    zIndex: 10,
+    alignItems: "center",
   },
-  previewImage: { width: "100%", height: "100%", borderRadius: 20 },
+  flipButton: {
+    padding: 10,
+    backgroundColor: "#222",
+    borderRadius: 50,
+    borderWidth: 1,
+    borderColor: "#F2C800",
+    alignItems: "center",
+    justifyContent: "center",
+  },
 });

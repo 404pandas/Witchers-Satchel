@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: theme.colorWhite,
-    fontSize: 24,
+    fontSize: 12,
     textAlign: "center",
   },
   onboardingText: {
