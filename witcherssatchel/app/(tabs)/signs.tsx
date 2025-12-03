@@ -14,6 +14,7 @@ import {
 import Feather from "@expo/vector-icons/Feather";
 import LottieView from "lottie-react-native";
 import * as MediaLibrary from "expo-media-library";
+import CameraWrapper from "@/components/CameraWrapper";
 
 import igni from "@/assets/animations/igni.json";
 import aard from "@/assets/animations/aard.json";
@@ -22,8 +23,6 @@ import quen from "@/assets/animations/quen.json";
 import axii from "@/assets/animations/axii.json";
 
 import { ResetButton } from "@/components/ResetButton";
-
-let cameraInstance: any = null;
 
 const animations: Record<string, any> = {
   Igni: igni,
@@ -42,9 +41,10 @@ export default function SignRecognitionScreen() {
   const [capturedPhoto, setCapturedPhoto] = useState<string | null>(null);
   const [facing, setFacing] = useState<CameraType>("back");
 
-  const cameraRef = useRef(null);
-  const borderAnim = useRef(new Animated.Value(0)).current;
+  const cameraRef = useRef<any>(null); // <-- useRef here
 
+  const borderAnim = useRef(new Animated.Value(0)).current;
+  const cameraInstance = useRef<any>(null);
   // Request both permissions on mount
   useEffect(() => {
     (async () => {
@@ -122,18 +122,21 @@ export default function SignRecognitionScreen() {
   }
 
   // Saving photo
+  // Take photo
   const takePhoto = async () => {
-    const cam = cameraRef.current?._cameraRef?.current;
-    if (!cam) return console.warn("Camera not ready yet");
+    if (!cameraRef.current) {
+      console.warn("Camera not ready yet");
+      return;
+    }
 
     try {
-      const photo = await cam.takePictureAsync({ quality: 1 });
+      const photo = await cameraRef.current.takePictureAsync({ quality: 1 });
+
       console.log("Photo captured:", photo.uri);
 
       if (permissionResponse?.granted) {
         await MediaLibrary.saveToLibraryAsync(photo.uri);
       }
-      setCapturedPhoto(photo.uri);
     } catch (err) {
       console.error("Error taking photo:", err);
     }
@@ -180,14 +183,11 @@ export default function SignRecognitionScreen() {
         </Text>
         {permission.granted && permissionResponse.granted && (
           <>
-            <CameraView
+            <CameraWrapper
               style={styles.camera}
               facing={facing}
               active={true}
-              ref={(ref) => {
-                cameraInstance = ref;
-                console.log("Camera instance:", ref);
-              }}
+              ref={cameraRef}
               onCameraReady={() =>
                 console.log(
                   "Camera ready",
