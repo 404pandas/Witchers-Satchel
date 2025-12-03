@@ -10,8 +10,8 @@ import { useEffect, useState } from "react";
 import { getFromStorage, saveToStorage } from "@/utils/storage";
 import { format } from "date-fns";
 import { theme } from "@/theme";
-import Foundation from "@expo/vector-icons/Foundation";
 import NoItems from "@/components/NoItems";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 
 const fullDateFormat = `LLL d yyyy, h:mm aaa`;
 
@@ -52,22 +52,22 @@ export default function HistoryScreen() {
 
   return (
     <>
-      <View style={theme.commonStyles.historyHeader}>
+      <View style={theme.commonStyles.header}>
         <Text
           style={[
             theme.commonStyles.boldTitle,
             { paddingLeft: 16, paddingTop: 8 },
           ]}
         >
-          Potion History
+          Brew History
         </Text>
         <TouchableOpacity
-          style={[theme.commonStyles.button]}
+          style={theme.commonStyles.clearButton}
           onPress={clearHistory}
           activeOpacity={0.7}
         >
-          <Text style={{ fontSize: 18, color: theme.colorRed }}>Clear</Text>
-          <Foundation name="skull" size={24} color={theme.colorRed} />
+          <Text style={theme.commonStyles.clearText}>Clear</Text>
+          <MaterialIcons name="history" size={22} color={theme.colorRed} />
         </TouchableOpacity>
       </View>
 

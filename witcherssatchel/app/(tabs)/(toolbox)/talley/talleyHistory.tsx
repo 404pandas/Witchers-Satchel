@@ -8,9 +8,9 @@ import {
 import { useEffect, useState } from "react";
 import { getFromStorage, saveToStorage } from "@/utils/storage";
 import { theme } from "@/theme";
-import Foundation from "@expo/vector-icons/Foundation";
 import NoItems from "@/components/NoItems";
 import { HuntRecord } from "@/types/talleyTypes";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 
 export const huntStorageKey = "huntHistory";
 
@@ -33,7 +33,7 @@ export default function HistoryScreen() {
 
   return (
     <>
-      <View style={theme.commonStyles.historyHeader}>
+      <View style={theme.commonStyles.header}>
         <Text
           style={[
             theme.commonStyles.boldTitle,
@@ -43,12 +43,12 @@ export default function HistoryScreen() {
           Hunt History
         </Text>
         <TouchableOpacity
-          style={[theme.commonStyles.button]}
+          style={[theme.commonStyles.clearButton]}
           onPress={clearHistory}
           activeOpacity={0.7}
         >
-          <Text style={{ fontSize: 18, color: theme.colorRed }}>Clear</Text>
-          <Foundation name="skull" size={24} color={theme.colorRed} />
+          <Text style={theme.commonStyles.clearText}>Clear</Text>
+          <MaterialIcons name="history" size={22} color={theme.colorRed} />
         </TouchableOpacity>
       </View>
 

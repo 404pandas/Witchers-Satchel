@@ -1,27 +1,22 @@
 // /store/diceRollerStore.ts
+import {
+  DiceRecord,
+  DieType,
+  RollHistoryRecord,
+  RollResult,
+} from "@/types/diceTypes";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 
-export type DieType = "d4" | "d6" | "d8" | "d10" | "d12" | "d20";
-
-export type DiceSelection = {
-  die: DieType;
-  amount: number;
-};
-
-export type RollResult = {
-  die: DieType;
-  value: number;
-};
-
 type DiceState = {
-  selectedDice: DiceSelection[]; // selections the user made
-  results: RollResult[]; // array of rolled dice (one item per die)
+  selectedDice: DiceRecord[];
+  results: RollResult[];
   total: number;
+  rollHistory: RollHistoryRecord[];
 
-  setSelectedDice: (dice: DiceSelection[]) => void;
-  finalizeRoll: () => void; // perform random rolls and compute total
+  setSelectedDice: (dice: DiceRecord[]) => void;
+  finalizeRoll: () => void;
   clearResults: () => void;
 };
 
@@ -36,9 +31,9 @@ export const useDiceStore = create(
       selectedDice: [],
       results: [],
       total: 0,
+      rollHistory: [],
 
       setSelectedDice: (dice) => {
-        // normalize amounts (no negative)
         const normalized = dice.map((d) => ({
           die: d.die,
           amount: Math.max(0, Math.floor(d.amount || 0)),
@@ -50,6 +45,7 @@ export const useDiceStore = create(
         const selections = get().selectedDice || [];
         const rolled: RollResult[] = [];
 
+        // roll dice
         selections.forEach((s) => {
           for (let i = 0; i < s.amount; i++) {
             rolled.push({ die: s.die, value: rollSingleDie(s.die) });
@@ -57,10 +53,25 @@ export const useDiceStore = create(
         });
 
         const total = rolled.reduce((acc, r) => acc + r.value, 0);
-        set({ results: rolled, total });
+
+        // build history entry
+        const historyEntry = {
+          id: Date.now(),
+          expression: selections.map((s) => `${s.amount}${s.die}`).join(" + "),
+          result: total,
+          diceulatedAt: new Date().toISOString(),
+        };
+
+        set((state) => ({
+          results: rolled,
+          total,
+          rollHistory: [...state.rollHistory, historyEntry],
+        }));
       },
 
       clearResults: () => set({ results: [], total: 0 }),
+
+      clearHistory: () => set({ rollHistory: [] }),
     }),
     {
       name: "dice-roller-store",

@@ -49,11 +49,7 @@ export default function Routing() {
                   style={{ marginRight: 8, marginLeft: 8 }}
                   hitSlop={20}
                 >
-                  <MaterialIcons
-                    name="format-list-bulleted"
-                    size={24}
-                    color="black"
-                  />
+                  <MaterialIcons name="history" size={24} color="black" />
                 </Pressable>
               </Link>
             );
@@ -86,11 +82,7 @@ export default function Routing() {
                   style={{ marginRight: 8, marginLeft: 8 }}
                   hitSlop={20}
                 >
-                  <MaterialIcons
-                    name="format-list-bulleted"
-                    size={24}
-                    color="black"
-                  />
+                  <MaterialIcons name="history" size={24} color="black" />
                 </Pressable>
               </Link>
             );
@@ -153,7 +145,7 @@ export default function Routing() {
               </Link>
             );
           },
-          headerRight: ({ size, color }) => {
+          headerRight: () => {
             return (
               <Link href="/weather/history" asChild>
                 <Pressable
@@ -173,10 +165,34 @@ export default function Routing() {
       <Tabs.Screen
         name="diceroller"
         options={{
-          title: "Dice Roller",
+          title: isWeatherHistory ? "History" : "Roller",
+          headerLeft: () => {
+            return (
+              <Link href="/diceroller" asChild>
+                <Pressable
+                  style={{ marginRight: 8, marginLeft: 8 }}
+                  hitSlop={20}
+                >
+                  <Ionicons name="dice-outline" size={24} color="black" />
+                </Pressable>
+              </Link>
+            );
+          },
           tabBarIcon: ({ size, color }) => (
             <Ionicons name="dice-outline" size={size} color={color} />
           ),
+          headerRight: () => {
+            return (
+              <Link href="/diceroller/history" asChild>
+                <Pressable
+                  style={{ marginRight: 8, marginLeft: 8 }}
+                  hitSlop={20}
+                >
+                  <MaterialIcons name="history" size={24} color={"black"} />
+                </Pressable>
+              </Link>
+            );
+          },
         }}
       />
     </Tabs>

@@ -31,7 +31,7 @@ export default function CalculatorHistoryScreen() {
 
   return (
     <>
-      <View style={theme.commonStyles.historyHeader}>
+      <View style={theme.commonStyles.header}>
         <Text
           style={[
             theme.commonStyles.boldTitle,
@@ -41,11 +41,11 @@ export default function CalculatorHistoryScreen() {
           Calculation History
         </Text>
         <TouchableOpacity
-          style={[theme.commonStyles.button]}
+          style={[theme.commonStyles.clearButton]}
           onPress={clearHistory}
           activeOpacity={0.7}
         >
-          <Text style={{ fontSize: 18, color: theme.colorRed }}>Clear</Text>
+          <Text style={theme.commonStyles.clearText}>Clear</Text>
           <MaterialIcons name="history" size={24} color={theme.colorRed} />
         </TouchableOpacity>
       </View>

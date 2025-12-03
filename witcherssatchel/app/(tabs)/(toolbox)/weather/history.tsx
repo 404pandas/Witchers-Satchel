@@ -8,10 +8,10 @@ import {
 } from "react-native";
 import { useEffect, useState } from "react";
 import { theme } from "@/theme";
-import Foundation from "@expo/vector-icons/Foundation";
 import NoItems from "@/components/NoItems";
 import { useWeatherStore } from "@/store/weatherStore";
 import { format } from "date-fns";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 
 const fullDateFormat = `LLL d yyyy, h:mm aaa`;
 
@@ -31,7 +31,7 @@ export default function WeatherHistoryScreen() {
 
   return (
     <>
-      <View style={theme.commonStyles.historyHeader}>
+      <View style={theme.commonStyles.header}>
         <Text
           style={[
             theme.commonStyles.boldTitle,
@@ -41,12 +41,12 @@ export default function WeatherHistoryScreen() {
           Weather History
         </Text>
         <TouchableOpacity
-          style={[theme.commonStyles.button]}
+          style={theme.commonStyles.clearButton}
           onPress={clearHistory}
           activeOpacity={0.7}
         >
-          <Text style={{ fontSize: 18, color: theme.colorRed }}>Clear</Text>
-          <Foundation name="skull" size={24} color={theme.colorRed} />
+          <Text style={theme.commonStyles.clearText}>Clear</Text>
+          <MaterialIcons name="history" size={22} color={theme.colorRed} />
         </TouchableOpacity>
       </View>
 

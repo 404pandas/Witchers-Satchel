@@ -162,28 +162,29 @@ export default function Bestiary() {
               </Text>
             </Text>
             <Text style={theme.commonStyles.keyName}>Loot:{"\u00A0"} </Text>
-
-            <FlatList
-              data={monster.stats.loot}
-              keyExtractor={(item, index) => item + index}
-              renderItem={({ item }) => (
-                <Text
-                  style={[
-                    theme.commonStyles.value,
-                    theme.commonStyles.scriptText,
-                    { marginVertical: 2 },
-                  ]}
-                >
-                  <MaterialCommunityIcons
-                    name="sword"
-                    size={24}
-                    color={theme.colorLightRed}
-                  />
-                  {"\u00A0"} {item}
-                </Text>
-              )}
-              scrollEnabled={false} // prevents nested scroll issues
-            />
+            <ScrollView>
+              <FlatList
+                data={monster.stats.loot}
+                keyExtractor={(item, index) => item + index}
+                renderItem={({ item }) => (
+                  <Text
+                    style={[
+                      theme.commonStyles.value,
+                      theme.commonStyles.scriptText,
+                      { marginVertical: 2 },
+                    ]}
+                  >
+                    <MaterialCommunityIcons
+                      name="sword"
+                      size={24}
+                      color={theme.colorLightRed}
+                    />
+                    {"\u00A0"} {item}
+                  </Text>
+                )}
+                scrollEnabled={false} // prevents nested scroll issues
+              />{" "}
+            </ScrollView>
           </ScrollView>
         ))}
       </ScrollView>
