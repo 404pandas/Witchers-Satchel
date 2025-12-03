@@ -98,11 +98,11 @@ SDK:
 
 Stage 3 Completed 12/3/25
 
+Video:
+[Click here to view](https://drive.google.com/file/d/1Qxlsncfi8tnrSBWKcK8v3hkc0TzQ8KYB/view?usp=drive_link)
+
 SDK:
 [Click here to view](https://drive.google.com/file/d/1OhxriwufiKCH15_uipwlFKbZpWtKmz5c/view?usp=sharing)
-
-Video:
-TODO- INSERT VIDEO
 
 - [Talley](#talley)
 - [Satchel](#satchel)
