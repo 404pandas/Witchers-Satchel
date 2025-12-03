@@ -1,4 +1,5 @@
 import { CameraView, CameraType, useCameraPermissions } from "expo-camera";
+import { captureScreen } from "react-native-view-shot";
 
 import { useState, useRef, useEffect } from "react";
 import {
@@ -9,12 +10,10 @@ import {
   View,
   Platform,
   Image,
-  Linking,
 } from "react-native";
 import Feather from "@expo/vector-icons/Feather";
 import LottieView from "lottie-react-native";
 import * as MediaLibrary from "expo-media-library";
-import CameraWrapper from "@/components/CameraWrapper";
 
 import igni from "@/assets/animations/igni.json";
 import aard from "@/assets/animations/aard.json";
@@ -31,6 +30,7 @@ const animations: Record<string, any> = {
   Quen: quen,
   Axii: axii,
 };
+
 const signs = Object.keys(animations);
 
 export default function SignRecognitionScreen() {
@@ -38,49 +38,18 @@ export default function SignRecognitionScreen() {
   const [permissionResponse, requestPermissionResponse] =
     MediaLibrary.usePermissions();
   const [activeSign, setActiveSign] = useState<string | null>(null);
-  const [capturedPhoto, setCapturedPhoto] = useState<string | null>(null);
   const [facing, setFacing] = useState<CameraType>("back");
-
-  const cameraRef = useRef<any>(null); // <-- useRef here
+  const [capturedPhoto, setCapturedPhoto] = useState<string | null>(null);
 
   const borderAnim = useRef(new Animated.Value(0)).current;
-  const cameraInstance = useRef<any>(null);
-  // Request both permissions on mount
+
+  // Request permissions on mount
   useEffect(() => {
     (async () => {
-      if (!permission?.granted) {
-        await requestPermission();
-      }
-
-      if (!permissionResponse?.granted) {
-        await requestPermissionResponse();
-      }
+      if (!permission?.granted) await requestPermission();
+      if (!permissionResponse?.granted) await requestPermissionResponse();
     })();
   }, []);
-
-  useEffect(() => {
-    console.log("cameraRef:", cameraRef.current);
-  }, []);
-
-  useEffect(() => {
-    if (activeSign) {
-      Animated.timing(borderAnim, {
-        toValue: 1,
-        duration: 400,
-        useNativeDriver: false,
-      }).start();
-
-      const timeout = setTimeout(() => {
-        Animated.timing(borderAnim, {
-          toValue: 0,
-          duration: 400,
-          useNativeDriver: false,
-        }).start(() => setActiveSign(null));
-      }, 3000);
-
-      return () => clearTimeout(timeout);
-    }
-  }, [activeSign]);
 
   if (!permission || !permissionResponse) {
     return (
@@ -89,7 +58,7 @@ export default function SignRecognitionScreen() {
       </View>
     );
   }
-  // If camera permission denied
+
   if (!permission.granted) {
     return (
       <View style={styles.container}>
@@ -105,7 +74,6 @@ export default function SignRecognitionScreen() {
     );
   }
 
-  // If media permission denied
   if (!permissionResponse.granted) {
     return (
       <View style={styles.container}>
@@ -121,34 +89,8 @@ export default function SignRecognitionScreen() {
     );
   }
 
-  // Saving photo
-  // Take photo
-  const takePhoto = async () => {
-    if (!cameraRef.current) {
-      console.warn("Camera not ready yet");
-      return;
-    }
-
-    try {
-      const photo = await cameraRef.current.takePictureAsync({ quality: 1 });
-
-      console.log("Photo captured:", photo.uri);
-
-      if (permissionResponse?.granted) {
-        await MediaLibrary.saveToLibraryAsync(photo.uri);
-      }
-    } catch (err) {
-      console.error("Error taking photo:", err);
-    }
-  };
-
   const toggleCameraFacing = () => {
     setFacing((current) => (current === "back" ? "front" : "back"));
-    console.log("Toggled camera facing to:", facing);
-  };
-
-  const handleSignPress = (sign: string) => {
-    setActiveSign(sign);
   };
 
   const borderColor =
@@ -173,39 +115,50 @@ export default function SignRecognitionScreen() {
     outputRange: [0, 0.8],
   });
 
+  // Play animation + border + capture screenshot
+  const handleSignPress = async (sign: string) => {
+    setActiveSign(sign);
+
+    // Animate border in
+    Animated.timing(borderAnim, {
+      toValue: 1,
+      duration: 400,
+      useNativeDriver: false,
+    }).start();
+
+    // Capture screenshot after short delay
+    setTimeout(async () => {
+      try {
+        const uri = await captureScreen({ format: "png", quality: 1 });
+        console.log("Captured snapshot:", uri);
+        if (permissionResponse?.granted) {
+          await MediaLibrary.saveToLibraryAsync(uri);
+        }
+        setCapturedPhoto(uri);
+      } catch (err) {
+        console.error("captureScreen failed:", err);
+      }
+    }, 300); // delay to allow animation to render
+
+    // Reset border and animation after 3s
+    setTimeout(() => {
+      Animated.timing(borderAnim, {
+        toValue: 0,
+        duration: 400,
+        useNativeDriver: false,
+      }).start(() => setActiveSign(null));
+    }, 3000);
+  };
+
   return (
     <View style={styles.container}>
-      <View style={styles.container}>
-        <Text style={{ color: "white", zIndex: 90 }}>
-          {/* This console logs: */}
-          {/* {"canAskAgain": true, "expires": "never", "granted": true, "status": "granted"} */}
-          {console.log(permission)}Test
-        </Text>
-        {permission.granted && permissionResponse.granted && (
-          <>
-            <CameraWrapper
-              style={styles.camera}
-              facing={facing}
-              active={true}
-              ref={cameraRef}
-              onCameraReady={() =>
-                console.log(
-                  "Camera ready",
-                  cameraRef.current?._cameraRef?.current
-                )
-              }
-              onMountError={(err) => console.log("Camera mount error:", err)}
-              ratio="16:9"
-            />
-            <Text style={{ color: "white" }}>Hello</Text>
-          </>
-        )}
-        <TouchableOpacity onPress={toggleCameraFacing}>
-          <Text>Flip Camera</Text>
-        </TouchableOpacity>
-      </View>
+      <CameraView
+        style={styles.camera}
+        facing={facing}
+        active={true}
+        ratio="16:9"
+      />
 
-      {/* Glowing/fuzzy border overlay */}
       {activeSign && (
         <Animated.View
           pointerEvents="none"
@@ -226,7 +179,6 @@ export default function SignRecognitionScreen() {
         />
       )}
 
-      {/* Sign Lottie animation */}
       {activeSign && animations[activeSign] && (
         <LottieView
           source={animations[activeSign]}
@@ -235,13 +187,6 @@ export default function SignRecognitionScreen() {
           style={styles.overlayAnimation}
         />
       )}
-
-      {/* Capture button */}
-      <View style={styles.captureContainer}>
-        <TouchableOpacity style={styles.captureButton} onPress={takePhoto}>
-          <Feather name="camera" size={36} color="#F2C800" />
-        </TouchableOpacity>
-      </View>
 
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.button} onPress={toggleCameraFacing}>
@@ -261,23 +206,13 @@ export default function SignRecognitionScreen() {
         ))}
       </View>
 
-      {/* Preview captured photo */}
-      {capturedPhoto && (
-        <View style={styles.previewContainer}>
-          <Image
-            source={{ uri: capturedPhoto }}
-            style={styles.previewImage}
-            resizeMode="contain"
-          />
-        </View>
-      )}
       <ResetButton />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#010302" },
+  container: { flex: 1, justifyContent: "center" },
   message: {
     textAlign: "center",
     paddingVertical: 10,
@@ -329,20 +264,6 @@ const styles = StyleSheet.create({
     bottom: 0,
     borderRadius: 20,
     zIndex: 2,
-  },
-  captureContainer: {
-    position: "absolute",
-    bottom: 220,
-    width: "100%",
-    alignItems: "center",
-    zIndex: 10,
-  },
-  captureButton: {
-    backgroundColor: "#222",
-    padding: 16,
-    borderRadius: 50,
-    borderWidth: 2,
-    borderColor: "#F2C800",
   },
   previewContainer: {
     position: "absolute",
