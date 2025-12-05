@@ -14,6 +14,12 @@ export default function Layout() {
         id: "0",
         params: { href: "/new" },
       },
+      {
+        title: "Take picture",
+        icon: Platform.OS === "ios" ? "symbol:camera" : "camera",
+        id: "1",
+        params: { href: "/signs" },
+      },
     ]);
   }, []);
   return (

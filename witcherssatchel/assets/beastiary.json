@@ -4,11 +4,11 @@
     "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/alghoul.png",
 
     "stats": {
-      "vitality": 5,
+      "vitality": 8,
       "attack": 5,
-      "defense": 5,
+      "defense": 8,
       "speed": 5,
-      "intelligence": 3,
+      "intelligence": 4,
       "signVulnerability": "Igni",
       "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
     }
@@ -18,8 +18,8 @@
     "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/arachas.png",
     "stats": {
       "vitality": 5,
-      "attack": 5,
-      "defense": 5,
+      "attack": 6,
+      "defense": 2,
       "speed": 5,
       "intelligence": 3,
       "signVulnerability": "Igni",
@@ -31,8 +31,8 @@
     "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/armoredarachas.png",
     "stats": {
       "vitality": 5,
-      "attack": 5,
-      "defense": 5,
+      "attack": 6,
+      "defense": 7,
       "speed": 5,
       "intelligence": 3,
       "signVulnerability": "Igni",
@@ -43,11 +43,11 @@
     "beastName": "Bear",
     "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/bear.png",
     "stats": {
-      "vitality": 5,
+      "vitality": 7,
       "attack": 5,
       "defense": 5,
-      "speed": 5,
-      "intelligence": 3,
+      "speed": 8,
+      "intelligence": 4,
       "signVulnerability": "Igni",
       "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
     }
@@ -56,9 +56,9 @@
     "beastName": "beast Beauclair",
     "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/beast_beauclair.png",
     "stats": {
-      "vitality": 5,
-      "attack": 5,
-      "defense": 5,
+      "vitality": 2,
+      "attack": 6,
+      "defense": 8,
       "speed": 5,
       "intelligence": 3,
       "signVulnerability": "Igni",
@@ -70,9 +70,9 @@
     "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/berserker.png",
     "stats": {
       "vitality": 5,
-      "attack": 5,
+      "attack": 9,
       "defense": 5,
-      "speed": 5,
+      "speed": 4,
       "intelligence": 3,
       "signVulnerability": "Igni",
       "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
@@ -122,8 +122,8 @@
     "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/chort.png",
     "stats": {
       "vitality": 5,
-      "attack": 5,
-      "defense": 5,
+      "attack": 2,
+      "defense": 6,
       "speed": 5,
       "intelligence": 3,
       "signVulnerability": "Igni",
@@ -134,7 +134,7 @@
     "beastName": "cloud Giant",
     "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/cloud_giant.png",
     "stats": {
-      "vitality": 5,
+      "vitality": 8,
       "attack": 5,
       "defense": 5,
       "speed": 5,
@@ -147,10 +147,10 @@
     "beastName": "crones",
     "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/crones.png",
     "stats": {
-      "vitality": 5,
+      "vitality": 3,
       "attack": 5,
-      "defense": 5,
-      "speed": 5,
+      "defense": 2,
+      "speed": 1,
       "intelligence": 3,
       "signVulnerability": "Igni",
       "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]
@@ -174,8 +174,8 @@
     "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/dagonet.png",
     "stats": {
       "vitality": 5,
-      "attack": 5,
-      "defense": 5,
+      "attack": 6,
+      "defense": 4,
       "speed": 5,
       "intelligence": 3,
       "signVulnerability": "Igni",
@@ -187,7 +187,7 @@
     "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/dettlaff_vampire.png",
     "stats": {
       "vitality": 10,
-      "attack": 10,
+      "attack": 8,
       "defense": 10,
       "speed": 9,
       "intelligence": 10,
@@ -199,8 +199,8 @@
     "beastName": "devil By The Well",
     "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/devilbythewell.png",
     "stats": {
-      "vitality": 5,
-      "attack": 5,
+      "vitality": 1,
+      "attack": 1,
       "defense": 5,
       "speed": 5,
       "intelligence": 3,
@@ -225,10 +225,10 @@
     "beastName": "earth Elemental",
     "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/earthelemental.png",
     "stats": {
-      "vitality": 5,
-      "attack": 5,
-      "defense": 5,
-      "speed": 5,
+      "vitality": 6,
+      "attack": 6,
+      "defense": 6,
+      "speed": 6,
       "intelligence": 3,
       "signVulnerability": "Igni",
       "loot": ["Monster Blood", "Monster Claw", "Monster Bone"]

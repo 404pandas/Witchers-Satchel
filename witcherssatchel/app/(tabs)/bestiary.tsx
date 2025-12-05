@@ -9,10 +9,12 @@ import {
   Animated,
   ScrollView,
   FlatList,
+  TouchableOpacity,
 } from "react-native";
 import bestiary from "@/assets/beastiary.json";
 import { theme } from "@/theme";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import { router } from "expo-router";
 
 const { width } = Dimensions.get("window");
 const { height } = Dimensions.get("window");
@@ -59,13 +61,30 @@ export default function Bestiary() {
         </View>
         <Text style={[styles.letter, theme.commonStyles.scriptText]}>Z</Text>
       </View>
-      {/* TODO- debug how to set slider to current progress, even if the user manually slides the scrollview */}
+      <View>
+        <TouchableOpacity
+          style={theme.commonStyles.buttonRed}
+          onPress={() => router.push("/encounter")}
+        >
+          <Text style={theme.commonStyles.buttonText}>Random Encounter</Text>
+        </TouchableOpacity>
+      </View>
       <ScrollView
         horizontal
         pagingEnabled
         ref={scrollRef}
         showsHorizontalScrollIndicator={false}
         style={styles.carousel}
+        onScroll={(e) => {
+          const x = e.nativeEvent.contentOffset.x;
+          const maxScrollX = width * (bestiary.length - 1);
+
+          if (sliderWidth > 0) {
+            const percent = x / maxScrollX;
+            pan.setValue(percent * sliderWidth);
+          }
+        }}
+        scrollEventThrottle={16}
       >
         {bestiary.map((monster) => (
           <ScrollView
@@ -79,111 +98,115 @@ export default function Bestiary() {
               },
             ]}
           >
-            <Text
-              style={[
-                theme.commonStyles.boldTitle,
-                styles.name,
-                theme.commonStyles.scriptText,
-              ]}
-            >
-              {monster.beastName.replace(/\b\w/g, (char) => char.toUpperCase())}
-            </Text>
-            <Image
-              source={{ uri: monster.imageUrl }}
-              style={styles.image}
-              resizeMode="contain"
-            />
-            <View style={styles.statsContainer}>
-              <Text style={theme.commonStyles.keyName}>
-                Vitality:{"\u00A0"}
-                <Text
-                  style={[
-                    theme.commonStyles.value,
-                    theme.commonStyles.scriptText,
-                  ]}
-                >
-                  {monster.stats.vitality}
-                </Text>
-              </Text>
-              <Text style={theme.commonStyles.keyName}>
-                Attack:{"\u00A0"}
-                <Text
-                  style={[
-                    theme.commonStyles.value,
-                    theme.commonStyles.scriptText,
-                  ]}
-                >
-                  {monster.stats.attack}
-                </Text>
-              </Text>
-              <Text style={theme.commonStyles.keyName}>
-                Defense:{"\u00A0"}
-                <Text
-                  style={[
-                    theme.commonStyles.value,
-                    theme.commonStyles.scriptText,
-                  ]}
-                >
-                  {monster.stats.defense}
-                </Text>
-              </Text>
-              <Text style={theme.commonStyles.keyName}>
-                Speed:{"\u00A0"}
-                <Text
-                  style={[
-                    theme.commonStyles.value,
-                    theme.commonStyles.scriptText,
-                  ]}
-                >
-                  {monster.stats.speed}
-                </Text>
-              </Text>
-              <Text style={theme.commonStyles.keyName}>
-                Intelligence:{"\u00A0"}
-                <Text
-                  style={[
-                    theme.commonStyles.value,
-                    theme.commonStyles.scriptText,
-                  ]}
-                >
-                  {monster.stats.intelligence}
-                </Text>
-              </Text>
-            </View>
-            <Text style={theme.commonStyles.keyName}>
-              Weak to:{"\u00A0"}
+            <ScrollView>
               <Text
                 style={[
-                  theme.commonStyles.value,
+                  theme.commonStyles.boldTitle,
+                  styles.name,
                   theme.commonStyles.scriptText,
                 ]}
               >
-                {monster.stats.signVulnerability}
+                {monster.beastName.replace(/\b\w/g, (char) =>
+                  char.toUpperCase()
+                )}
               </Text>
-            </Text>
-            <Text style={theme.commonStyles.keyName}>Loot:{"\u00A0"} </Text>
-            <ScrollView>
-              <FlatList
-                data={monster.stats.loot}
-                keyExtractor={(item, index) => item + index}
-                renderItem={({ item }) => (
+              <Image
+                source={{ uri: monster.imageUrl }}
+                style={styles.image}
+                resizeMode="contain"
+              />
+              <View style={styles.statsContainer}>
+                <Text style={theme.commonStyles.keyName}>
+                  Vitality:{"\u00A0"}
                   <Text
                     style={[
                       theme.commonStyles.value,
                       theme.commonStyles.scriptText,
-                      { marginVertical: 2 },
                     ]}
                   >
-                    <MaterialCommunityIcons
-                      name="sword"
-                      size={24}
-                      color={theme.colorLightRed}
-                    />
-                    {"\u00A0"} {item}
+                    {monster.stats.vitality}
                   </Text>
-                )}
-                scrollEnabled={false} // prevents nested scroll issues
-              />
+                </Text>
+                <Text style={theme.commonStyles.keyName}>
+                  Attack:{"\u00A0"}
+                  <Text
+                    style={[
+                      theme.commonStyles.value,
+                      theme.commonStyles.scriptText,
+                    ]}
+                  >
+                    {monster.stats.attack}
+                  </Text>
+                </Text>
+                <Text style={theme.commonStyles.keyName}>
+                  Defense:{"\u00A0"}
+                  <Text
+                    style={[
+                      theme.commonStyles.value,
+                      theme.commonStyles.scriptText,
+                    ]}
+                  >
+                    {monster.stats.defense}
+                  </Text>
+                </Text>
+                <Text style={theme.commonStyles.keyName}>
+                  Speed:{"\u00A0"}
+                  <Text
+                    style={[
+                      theme.commonStyles.value,
+                      theme.commonStyles.scriptText,
+                    ]}
+                  >
+                    {monster.stats.speed}
+                  </Text>
+                </Text>
+                <Text style={theme.commonStyles.keyName}>
+                  Intelligence:{"\u00A0"}
+                  <Text
+                    style={[
+                      theme.commonStyles.value,
+                      theme.commonStyles.scriptText,
+                    ]}
+                  >
+                    {monster.stats.intelligence}
+                  </Text>
+                </Text>
+              </View>
+              <Text style={theme.commonStyles.keyName}>
+                Weak to:{"\u00A0"}
+                <Text
+                  style={[
+                    theme.commonStyles.value,
+                    theme.commonStyles.scriptText,
+                  ]}
+                >
+                  {monster.stats.signVulnerability}
+                </Text>
+              </Text>
+              <Text style={theme.commonStyles.keyName}>Loot:{"\u00A0"} </Text>
+              <ScrollView>
+                <FlatList
+                  data={monster.stats.loot}
+                  keyExtractor={(item, index) => item + index}
+                  renderItem={({ item }) => (
+                    <Text
+                      style={[
+                        theme.commonStyles.value,
+                        theme.commonStyles.scriptText,
+                        { marginVertical: 2 },
+                      ]}
+                    >
+                      <MaterialCommunityIcons
+                        name="sword"
+                        size={24}
+                        color={theme.colorLightRed}
+                      />
+                      {"\u00A0"} {item}
+                    </Text>
+                  )}
+                  scrollEnabled={false} // prevents nested scroll issues
+                />
+              </ScrollView>
             </ScrollView>
           </ScrollView>
         ))}

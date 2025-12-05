@@ -6,7 +6,6 @@ import {
   Image,
   Alert,
   ScrollView,
-  KeyboardAvoidingView,
 } from "react-native";
 import * as Location from "expo-location";
 import { useWeatherStore } from "@/store/weatherStore";
