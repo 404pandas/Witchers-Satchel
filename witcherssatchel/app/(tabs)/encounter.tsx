@@ -18,6 +18,7 @@ export default function EncounterScreen() {
     win: boolean;
     message: string;
   }>(null);
+  const [selectedPotions, setSelectedPotions] = useState<any[]>([]);
 
   useEffect(() => {
     loadPotions();
@@ -46,10 +47,19 @@ export default function EncounterScreen() {
     setMonster(random);
   };
 
+  // Toggle potion selection
+  const togglePotion = (potion: any) => {
+    setSelectedPotions((prev) =>
+      prev.includes(potion)
+        ? prev.filter((p) => p.id !== potion.id)
+        : [...prev, potion]
+    );
+  };
+
   /** ✔ SIGN COMBAT: win if sign matches vulnerability */
-  const useSign = (sign: string) => {
+  const handleSign = (sign: string) => {
     if (!monster) return;
-    console.log(monster);
+
     const vuln =
       monster?.signVulnerability ||
       monster?.sign_weakness ||
@@ -59,17 +69,40 @@ export default function EncounterScreen() {
       monster?.stats?.signVulnerability ||
       null;
 
-    console.log("VULN:", vuln);
-
     if (!vuln) {
       alert("⚠️ This monster has no sign vulnerability listed.");
       return;
     }
 
-    if (vuln.toLowerCase() === sign.toLowerCase()) {
-      alert("🎉 Victory! Correct sign!");
-    } else {
-      alert(`💀 Defeated! The correct sign was ${vuln}.`);
+    const win = vuln.toLowerCase() === sign.toLowerCase();
+    alert(
+      win
+        ? "🎉 Victory! Correct sign!"
+        : `💀 Defeated! Correct sign was ${vuln}.`
+    );
+
+    setResult({
+      win,
+      message: win ? "You succeeded!" : `Monster's weakness was ${vuln}`,
+    });
+
+    if (selectedPotions.length > 0) {
+      // Consume potions: remove selected potions from state
+      const remainingPotions = potions.filter(
+        (p) => !selectedPotions.find((sp) => sp.id === p.id)
+      );
+      setPotions(remainingPotions);
+      setSelectedPotions([]);
+
+      // Update AsyncStorage
+      try {
+        AsyncStorage.setItem(
+          "witchers-satchell-potions-store",
+          JSON.stringify({ state: { potions: remainingPotions } })
+        );
+      } catch (err) {
+        console.error("Error updating potions:", err);
+      }
     }
   };
 
@@ -91,7 +124,6 @@ export default function EncounterScreen() {
         <Text style={[theme.commonStyles.scriptText, styles.monsterName]}>
           {monster.beastName}
         </Text>
-
         <Image
           source={{ uri: monster.imageUrl }}
           style={styles.monsterImage}
@@ -115,30 +147,46 @@ export default function EncounterScreen() {
       <Text style={[theme.commonStyles.boldTitle, styles.sectionTitle]}>
         Your Potions
       </Text>
-
       <View style={styles.potionList}>
         {potions.length === 0 ? (
           <Text style={styles.noPotions}>No potions stored.</Text>
         ) : (
           potions.map((potion) => (
-            <Text key={potion.id} style={styles.potionItem}>
-              • {potion.name}
-            </Text>
+            <TouchableOpacity
+              key={potion.id}
+              onPress={() => togglePotion(potion)}
+              style={{
+                backgroundColor: selectedPotions.includes(potion)
+                  ? "#555"
+                  : "transparent",
+                paddingVertical: 6,
+                paddingHorizontal: 10,
+                borderRadius: 8,
+                marginVertical: 2,
+              }}
+            >
+              <Text style={styles.potionItem}>• {potion.name}</Text>
+            </TouchableOpacity>
           ))
         )}
       </View>
+
+      {selectedPotions.length > 0 && (
+        <Text style={{ color: "#F2C800", marginLeft: 20, marginBottom: 10 }}>
+          Potions being used: {selectedPotions.map((p) => p.name).join(", ")}
+        </Text>
+      )}
 
       {/* Signs */}
       <Text style={[theme.commonStyles.boldTitle, styles.sectionTitle]}>
         Cast a Sign
       </Text>
-
       <View style={styles.signList}>
         {SIGNS.map((sign) => (
           <TouchableOpacity
             key={sign}
             style={styles.signButton}
-            onPress={() => useSign(sign)}
+            onPress={() => handleSign(sign)}
           >
             <Text style={styles.signText}>{sign}</Text>
           </TouchableOpacity>
