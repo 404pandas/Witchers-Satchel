@@ -1,11 +1,4 @@
-import {
-  Text,
-  View,
-  StyleSheet,
-  Button,
-  TouchableOpacity,
-  FlatList,
-} from "react-native";
+import { Text, TouchableOpacity, FlatList } from "react-native";
 import { theme } from "@/theme";
 import { useUserStore } from "@/store/userStore";
 import { usePotionStore } from "@/store/potionStore";

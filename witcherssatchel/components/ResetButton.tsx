@@ -1,14 +1,7 @@
 import React from "react";
-import {
-  Linking,
-  Platform,
-  TouchableOpacity,
-  Text,
-  StyleSheet,
-} from "react-native";
+import { Linking, Platform, TouchableOpacity, StyleSheet } from "react-native";
 import * as IntentLauncher from "expo-intent-launcher";
 import * as Application from "expo-application";
-import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 
 export function ResetButton() {
