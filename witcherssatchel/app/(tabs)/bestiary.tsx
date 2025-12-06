@@ -63,10 +63,17 @@ export default function Bestiary() {
       </View>
       <View>
         <TouchableOpacity
-          style={theme.commonStyles.buttonRed}
+          style={[
+            theme.commonStyles.buttonRed,
+            { width: "80%", alignSelf: "center", marginBottom: 12 },
+          ]}
           onPress={() => router.push("/encounter")}
         >
-          <Text style={theme.commonStyles.buttonText}>Random Encounter</Text>
+          <Text
+            style={[theme.commonStyles.buttonText, { textAlign: "center" }]}
+          >
+            Random Encounter
+          </Text>
         </TouchableOpacity>
       </View>
       <ScrollView
@@ -90,7 +97,7 @@ export default function Bestiary() {
           <ScrollView
             key={monster.beastName}
             contentContainerStyle={[
-              styles.card,
+              theme.commonStyles.monsterCard,
               {
                 height: CARD_HEIGHT,
                 width: CARD_WIDTH,
@@ -112,7 +119,7 @@ export default function Bestiary() {
               </Text>
               <Image
                 source={{ uri: monster.imageUrl }}
-                style={styles.image}
+                style={theme.commonStyles.image}
                 resizeMode="contain"
               />
               <View style={styles.statsContainer}>
@@ -221,7 +228,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     marginHorizontal: 16,
-    marginBottom: 12,
   },
   letter: {
     fontSize: 18,
@@ -244,14 +250,6 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colorRed,
     top: -8,
   },
-  card: {
-    backgroundColor: theme.colorWhite,
-    borderRadius: 16,
-    padding: 16,
-    alignItems: "center",
-    marginVertical: 24,
-  },
-  image: { width: "100%", height: 200, borderRadius: 12, marginBottom: 12 },
   name: {
     color: theme.colorRed,
     marginBottom: 8,

@@ -1,0 +1,993 @@
+[
+  {
+    "beastName": "Alghoul",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/alghoul.png",
+    "stats": {
+      "vitality": 8,
+      "attack": 10,
+      "defense": 1,
+      "speed": 10,
+      "intelligence": 5
+    },
+    "signVulnerability": "Axii",
+    "loot": ["Dark Crystal", "Essence of Death"]
+  },
+  {
+    "beastName": "Arachas",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/arachas.png",
+    "stats": {
+      "vitality": 4,
+      "attack": 5,
+      "defense": 3,
+      "speed": 1,
+      "intelligence": 5
+    },
+    "signVulnerability": "Igni",
+    "loot": [
+      "Ancient Relic",
+      "Wraith Essence",
+      "Dark Crystal",
+      "Essence of Death"
+    ]
+  },
+  {
+    "beastName": "Armored Arachas",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/armoredarachas.png",
+    "stats": {
+      "vitality": 2,
+      "attack": 9,
+      "defense": 3,
+      "speed": 2,
+      "intelligence": 8
+    },
+    "signVulnerability": "Quen",
+    "loot": ["Specter Dust", "Alchemy Ingredient"]
+  },
+  {
+    "beastName": "Bear",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/bear.png",
+    "stats": {
+      "vitality": 2,
+      "attack": 9,
+      "defense": 3,
+      "speed": 2,
+      "intelligence": 6
+    },
+    "signVulnerability": "Quen",
+    "loot": ["Monster Bone", "Monster Eye"]
+  },
+  {
+    "beastName": "Beast Beauclair",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/beast_beauclair.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 3,
+      "defense": 7,
+      "speed": 1,
+      "intelligence": 5
+    },
+    "signVulnerability": "Quen",
+    "loot": ["Ancient Relic", "Vampire Fang"]
+  },
+  {
+    "beastName": "Berserker",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/berserker.png",
+    "stats": {
+      "vitality": 6,
+      "attack": 4,
+      "defense": 9,
+      "speed": 10,
+      "intelligence": 8
+    },
+    "signVulnerability": "Axii",
+    "loot": ["Essence of Death", "Dark Crystal"]
+  },
+  {
+    "beastName": "Botchling",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/botchling.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 1,
+      "defense": 7,
+      "speed": 3,
+      "intelligence": 4
+    },
+    "signVulnerability": "Yrden",
+    "loot": ["Essence of Death", "Dragon Scale", "Vampire Fang", "Rare Herb"]
+  },
+  {
+    "beastName": "Bruxa",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/bruxa.png",
+    "stats": {
+      "vitality": 3,
+      "attack": 8,
+      "defense": 3,
+      "speed": 10,
+      "intelligence": 4
+    },
+    "signVulnerability": "Axii",
+    "loot": ["Monster Eye", "Mutagen Sample"]
+  },
+  {
+    "beastName": "Caretaker",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/caretaker.png",
+    "stats": {
+      "vitality": 6,
+      "attack": 4,
+      "defense": 6,
+      "speed": 4,
+      "intelligence": 2
+    },
+    "signVulnerability": "Axii",
+    "loot": ["Specter Dust", "Monster Hide", "Essence of Death"]
+  },
+  {
+    "beastName": "Chort",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/chort.png",
+    "stats": {
+      "vitality": 7,
+      "attack": 2,
+      "defense": 5,
+      "speed": 5,
+      "intelligence": 4
+    },
+    "signVulnerability": "Axii",
+    "loot": ["Monster Blood", "Wraith Essence"]
+  },
+  {
+    "beastName": "Cloud Giant",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/cloud_giant.png",
+    "stats": {
+      "vitality": 4,
+      "attack": 2,
+      "defense": 7,
+      "speed": 9,
+      "intelligence": 9
+    },
+    "signVulnerability": "Igni",
+    "loot": ["Monster Hide", "Wraith Essence", "Monster Blood", "Dark Crystal"]
+  },
+  {
+    "beastName": "Crones",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/crones.png",
+    "stats": {
+      "vitality": 3,
+      "attack": 3,
+      "defense": 1,
+      "speed": 7,
+      "intelligence": 10
+    },
+    "signVulnerability": "Yrden",
+    "loot": ["Monster Claw", "Rare Herb", "Monster Blood"]
+  },
+  {
+    "beastName": "Cyclops",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/cyclops.png",
+    "stats": {
+      "vitality": 6,
+      "attack": 7,
+      "defense": 9,
+      "speed": 3,
+      "intelligence": 2
+    },
+    "signVulnerability": "Aard",
+    "loot": ["Ancient Relic", "Ghost Essence"]
+  },
+  {
+    "beastName": "Dagonet",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/dagonet.png",
+    "stats": {
+      "vitality": 3,
+      "attack": 7,
+      "defense": 8,
+      "speed": 3,
+      "intelligence": 7
+    },
+    "signVulnerability": "Axii",
+    "loot": ["Dragon Scale", "Rare Herb"]
+  },
+  {
+    "beastName": "Dettlaff Vampire",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/dettlaff_vampire.png",
+    "stats": {
+      "vitality": 1,
+      "attack": 10,
+      "defense": 8,
+      "speed": 4,
+      "intelligence": 2
+    },
+    "signVulnerability": "Igni",
+    "loot": ["Ghost Essence", "Essence of Death", "Rare Herb", "Dark Crystal"]
+  },
+  {
+    "beastName": "Devil By The Well",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/devilbythewell.png",
+    "stats": {
+      "vitality": 7,
+      "attack": 7,
+      "defense": 6,
+      "speed": 4,
+      "intelligence": 1
+    },
+    "signVulnerability": "Aard",
+    "loot": ["Dark Crystal", "Dragon Scale", "Rare Herb", "Monster Eye"]
+  },
+  {
+    "beastName": "Drowner",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/drowner.png",
+    "stats": {
+      "vitality": 6,
+      "attack": 1,
+      "defense": 2,
+      "speed": 1,
+      "intelligence": 2
+    },
+    "signVulnerability": "Aard",
+    "loot": ["Dragon Scale", "Rare Herb", "Monster Eye"]
+  },
+  {
+    "beastName": "Earth Elemental",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/earthelemental.png",
+    "stats": {
+      "vitality": 3,
+      "attack": 9,
+      "defense": 9,
+      "speed": 7,
+      "intelligence": 1
+    },
+    "signVulnerability": "Quen",
+    "loot": ["Rare Herb", "Vampire Fang"]
+  },
+  {
+    "beastName": "Ekhidna",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/ekhidna.png",
+    "stats": {
+      "vitality": 6,
+      "attack": 3,
+      "defense": 7,
+      "speed": 5,
+      "intelligence": 1
+    },
+    "signVulnerability": "Aard",
+    "loot": ["Monster Claw", "Vampire Fang", "Ancient Relic"]
+  },
+  {
+    "beastName": "Ekimmara",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/ekimmara.png",
+    "stats": {
+      "vitality": 8,
+      "attack": 10,
+      "defense": 1,
+      "speed": 1,
+      "intelligence": 6
+    },
+    "signVulnerability": "Yrden",
+    "loot": ["Specter Dust", "Monster Bone", "Wraith Essence", "Monster Eye"]
+  },
+  {
+    "beastName": "Endregadrone",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/endregadrone.png",
+    "stats": {
+      "vitality": 1,
+      "attack": 2,
+      "defense": 5,
+      "speed": 4,
+      "intelligence": 7
+    },
+    "signVulnerability": "Aard",
+    "loot": ["Ghost Essence", "Monster Hide", "Dark Crystal", "Rare Herb"]
+  },
+  {
+    "beastName": "Endrega Warrior",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/endregawarrior.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 4,
+      "defense": 6,
+      "speed": 4,
+      "intelligence": 10
+    },
+    "signVulnerability": "Igni",
+    "loot": ["Monster Hide", "Ghost Essence", "Monster Eye", "Ancient Relic"]
+  },
+  {
+    "beastName": "Endrega Worker",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/endregaworker.png",
+    "stats": {
+      "vitality": 2,
+      "attack": 3,
+      "defense": 4,
+      "speed": 5,
+      "intelligence": 7
+    },
+    "signVulnerability": "Aard",
+    "loot": ["Monster Bone", "Ancient Relic", "Alchemy Ingredient"]
+  },
+  {
+    "beastName": "Erynia",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/erynia.png",
+    "stats": {
+      "vitality": 8,
+      "attack": 1,
+      "defense": 1,
+      "speed": 1,
+      "intelligence": 7
+    },
+    "signVulnerability": "Igni",
+    "loot": ["Monster Bone", "Mutagen Sample"]
+  },
+  {
+    "beastName": "Fiend",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/fiend.png",
+    "stats": {
+      "vitality": 8,
+      "attack": 9,
+      "defense": 4,
+      "speed": 3,
+      "intelligence": 4
+    },
+    "signVulnerability": "Quen",
+    "loot": ["Rare Herb", "Mutagen Sample", "Vampire Fang"]
+  },
+  {
+    "beastName": "Fire Elemental",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/fireelemental.png",
+    "stats": {
+      "vitality": 3,
+      "attack": 4,
+      "defense": 10,
+      "speed": 1,
+      "intelligence": 9
+    },
+    "signVulnerability": "Igni",
+    "loot": [
+      "Alchemy Ingredient",
+      "Dragon Scale",
+      "Vampire Fang",
+      "Ghost Essence"
+    ]
+  },
+  {
+    "beastName": "Foglet",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/foglet.png",
+    "stats": {
+      "vitality": 1,
+      "attack": 4,
+      "defense": 9,
+      "speed": 1,
+      "intelligence": 4
+    },
+    "signVulnerability": "Aard",
+    "loot": ["Essence of Death", "Alchemy Ingredient", "Specter Dust"]
+  },
+  {
+    "beastName": "Forktail",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/forktail.png",
+    "stats": {
+      "vitality": 4,
+      "attack": 2,
+      "defense": 1,
+      "speed": 2,
+      "intelligence": 8
+    },
+    "signVulnerability": "Quen",
+    "loot": ["Monster Bone", "Rare Herb", "Essence of Death"]
+  },
+  {
+    "beastName": "Fugas",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/fugas.png",
+    "stats": {
+      "vitality": 2,
+      "attack": 6,
+      "defense": 5,
+      "speed": 9,
+      "intelligence": 5
+    },
+    "signVulnerability": "Igni",
+    "loot": ["Vampire Fang", "Monster Blood"]
+  },
+  {
+    "beastName": "Gael",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/gael.png",
+    "stats": {
+      "vitality": 6,
+      "attack": 7,
+      "defense": 6,
+      "speed": 4,
+      "intelligence": 6
+    },
+    "signVulnerability": "Igni",
+    "loot": ["Wraith Essence", "Monster Blood", "Monster Eye"]
+  },
+  {
+    "beastName": "Gargoyle",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/gargoyle.png",
+    "stats": {
+      "vitality": 7,
+      "attack": 2,
+      "defense": 7,
+      "speed": 4,
+      "intelligence": 3
+    },
+    "signVulnerability": "Quen",
+    "loot": ["Monster Blood", "Ancient Relic", "Dark Crystal"]
+  },
+  {
+    "beastName": "Ghoul",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/ghoul.png",
+    "stats": {
+      "vitality": 3,
+      "attack": 10,
+      "defense": 6,
+      "speed": 3,
+      "intelligence": 5
+    },
+    "signVulnerability": "Aard",
+    "loot": ["Dark Crystal", "Vampire Fang", "Mutagen Sample", "Rare Herb"]
+  },
+  {
+    "beastName": "Godling",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/godling.png",
+    "stats": {
+      "vitality": 6,
+      "attack": 6,
+      "defense": 2,
+      "speed": 10,
+      "intelligence": 2
+    },
+    "signVulnerability": "Quen",
+    "loot": ["Monster Hide", "Ancient Relic"]
+  },
+  {
+    "beastName": "Golem",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/golem.png",
+    "stats": {
+      "vitality": 3,
+      "attack": 1,
+      "defense": 10,
+      "speed": 1,
+      "intelligence": 7
+    },
+    "signVulnerability": "Axii",
+    "loot": [
+      "Monster Blood",
+      "Alchemy Ingredient",
+      "Wraith Essence",
+      "Essence of Death"
+    ]
+  },
+  {
+    "beastName": "Gravehag",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/gravehag.png",
+    "stats": {
+      "vitality": 7,
+      "attack": 5,
+      "defense": 5,
+      "speed": 7,
+      "intelligence": 5
+    },
+    "signVulnerability": "Axii",
+    "loot": ["Rare Herb", "Monster Bone"]
+  },
+  {
+    "beastName": "Griffin",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/griffin.png",
+    "stats": {
+      "vitality": 3,
+      "attack": 6,
+      "defense": 5,
+      "speed": 9,
+      "intelligence": 7
+    },
+    "signVulnerability": "Axii",
+    "loot": [
+      "Wraith Essence",
+      "Monster Eye",
+      "Dragon Scale",
+      "Essence of Death"
+    ]
+  },
+  {
+    "beastName": "Hagubman",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/hagubman.png",
+    "stats": {
+      "vitality": 7,
+      "attack": 7,
+      "defense": 3,
+      "speed": 3,
+      "intelligence": 2
+    },
+    "signVulnerability": "Yrden",
+    "loot": ["Monster Bone", "Dragon Scale", "Specter Dust", "Ghost Essence"]
+  },
+  {
+    "beastName": "Harpy",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/harpy.png",
+    "stats": {
+      "vitality": 6,
+      "attack": 3,
+      "defense": 5,
+      "speed": 6,
+      "intelligence": 10
+    },
+    "signVulnerability": "Yrden",
+    "loot": ["Dark Crystal", "Essence of Death"]
+  },
+  {
+    "beastName": "Harrisi",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/harrisi.png",
+    "stats": {
+      "vitality": 6,
+      "attack": 4,
+      "defense": 9,
+      "speed": 7,
+      "intelligence": 2
+    },
+    "signVulnerability": "Axii",
+    "loot": ["Dark Crystal", "Mutagen Sample"]
+  },
+  {
+    "beastName": "Higher Vampire",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/highervampire.png",
+    "stats": {
+      "vitality": 4,
+      "attack": 4,
+      "defense": 7,
+      "speed": 9,
+      "intelligence": 6
+    },
+    "signVulnerability": "Igni",
+    "loot": ["Alchemy Ingredient", "Ghost Essence"]
+  },
+  {
+    "beastName": "Hound Of The Wild Hunt",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/houndofthewildhunt.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 9,
+      "defense": 6,
+      "speed": 1,
+      "intelligence": 1
+    },
+    "signVulnerability": "Axii",
+    "loot": ["Dragon Scale", "Alchemy Ingredient"]
+  },
+  {
+    "beastName": "Howler",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/howler.png",
+    "stats": {
+      "vitality": 9,
+      "attack": 1,
+      "defense": 4,
+      "speed": 5,
+      "intelligence": 1
+    },
+    "signVulnerability": "Axii",
+    "loot": ["Vampire Fang", "Ghost Essence"]
+  },
+  {
+    "beastName": "Hym",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/hym.png",
+    "stats": {
+      "vitality": 4,
+      "attack": 5,
+      "defense": 7,
+      "speed": 2,
+      "intelligence": 10
+    },
+    "signVulnerability": "Yrden",
+    "loot": [
+      "Mutagen Sample",
+      "Dragon Scale",
+      "Essence of Death",
+      "Monster Bone"
+    ]
+  },
+  {
+    "beastName": "Ice Giant",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/icegiant.png",
+    "stats": {
+      "vitality": 8,
+      "attack": 10,
+      "defense": 3,
+      "speed": 7,
+      "intelligence": 7
+    },
+    "signVulnerability": "Igni",
+    "loot": ["Monster Claw", "Vampire Fang", "Dragon Scale", "Rare Herb"]
+  },
+  {
+    "beastName": "Ice Troll",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/icetroll.png",
+    "stats": {
+      "vitality": 3,
+      "attack": 1,
+      "defense": 9,
+      "speed": 9,
+      "intelligence": 3
+    },
+    "signVulnerability": "Quen",
+    "loot": ["Alchemy Ingredient", "Monster Blood"]
+  },
+  {
+    "beastName": "Jenny O The Woods",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/jennyothewoods.png",
+    "stats": {
+      "vitality": 10,
+      "attack": 9,
+      "defense": 7,
+      "speed": 5,
+      "intelligence": 8
+    },
+    "signVulnerability": "Igni",
+    "loot": [
+      "Monster Blood",
+      "Essence of Death",
+      "Monster Claw",
+      "Mutagen Sample"
+    ]
+  },
+  {
+    "beastName": "Katakan",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/katakan.png",
+    "stats": {
+      "vitality": 6,
+      "attack": 5,
+      "defense": 9,
+      "speed": 7,
+      "intelligence": 8
+    },
+    "signVulnerability": "Igni",
+    "loot": [
+      "Monster Blood",
+      "Monster Hide",
+      "Monster Claw",
+      "Essence of Death"
+    ]
+  },
+  {
+    "beastName": "Leshen",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/leshen.png",
+    "stats": {
+      "vitality": 7,
+      "attack": 1,
+      "defense": 6,
+      "speed": 2,
+      "intelligence": 5
+    },
+    "signVulnerability": "Aard",
+    "loot": ["Wraith Essence", "Monster Blood", "Essence of Death"]
+  },
+  {
+    "beastName": "Nekker",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/nekker.png",
+    "stats": {
+      "vitality": 7,
+      "attack": 5,
+      "defense": 1,
+      "speed": 7,
+      "intelligence": 5
+    },
+    "signVulnerability": "Axii",
+    "loot": ["Ghost Essence", "Dark Crystal"]
+  },
+  {
+    "beastName": "Night Wraith",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/nightwraith.png",
+    "stats": {
+      "vitality": 4,
+      "attack": 2,
+      "defense": 5,
+      "speed": 4,
+      "intelligence": 2
+    },
+    "signVulnerability": "Axii",
+    "loot": ["Specter Dust", "Rare Herb", "Vampire Fang"]
+  },
+  {
+    "beastName": "Noon Wraith",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/noonwraith.png",
+    "stats": {
+      "vitality": 3,
+      "attack": 6,
+      "defense": 7,
+      "speed": 10,
+      "intelligence": 3
+    },
+    "signVulnerability": "Aard",
+    "loot": ["Mutagen Sample", "Monster Hide", "Vampire Fang", "Dragon Scale"]
+  },
+  {
+    "beastName": "Panther",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/panther.png",
+    "stats": {
+      "vitality": 9,
+      "attack": 6,
+      "defense": 4,
+      "speed": 6,
+      "intelligence": 6
+    },
+    "signVulnerability": "Quen",
+    "loot": ["Vampire Fang", "Mutagen Sample", "Monster Bone"]
+  },
+  {
+    "beastName": "Protofleder",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/protofleder.png",
+    "stats": {
+      "vitality": 7,
+      "attack": 2,
+      "defense": 6,
+      "speed": 5,
+      "intelligence": 10
+    },
+    "signVulnerability": "Igni",
+    "loot": ["Monster Hide", "Wraith Essence", "Ghost Essence", "Rare Herb"]
+  },
+  {
+    "beastName": "Rock Troll",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/rocktroll.png",
+    "stats": {
+      "vitality": 4,
+      "attack": 8,
+      "defense": 5,
+      "speed": 10,
+      "intelligence": 8
+    },
+    "signVulnerability": "Quen",
+    "loot": [
+      "Mutagen Sample",
+      "Ancient Relic",
+      "Ghost Essence",
+      "Alchemy Ingredient"
+    ]
+  },
+  {
+    "beastName": "Rotfiend",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/rotfiend.png",
+    "stats": {
+      "vitality": 2,
+      "attack": 6,
+      "defense": 4,
+      "speed": 4,
+      "intelligence": 6
+    },
+    "signVulnerability": "Aard",
+    "loot": ["Wraith Essence", "Dragon Scale"]
+  },
+  {
+    "beastName": "Royal Wyvern",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/royalwyvern.png",
+    "stats": {
+      "vitality": 3,
+      "attack": 9,
+      "defense": 8,
+      "speed": 8,
+      "intelligence": 3
+    },
+    "signVulnerability": "Yrden",
+    "loot": ["Essence of Death", "Monster Eye", "Specter Dust"]
+  },
+  {
+    "beastName": "Siren",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/siren.png",
+    "stats": {
+      "vitality": 10,
+      "attack": 3,
+      "defense": 1,
+      "speed": 9,
+      "intelligence": 7
+    },
+    "signVulnerability": "Quen",
+    "loot": ["Monster Claw", "Monster Eye"]
+  },
+  {
+    "beastName": "Succubus",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/succubus.png",
+    "stats": {
+      "vitality": 2,
+      "attack": 5,
+      "defense": 9,
+      "speed": 1,
+      "intelligence": 1
+    },
+    "signVulnerability": "Quen",
+    "loot": ["Rare Herb", "Alchemy Ingredient", "Dragon Scale", "Monster Eye"]
+  },
+  {
+    "beastName": "Sylvan",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/sylvan.png",
+    "stats": {
+      "vitality": 8,
+      "attack": 3,
+      "defense": 10,
+      "speed": 7,
+      "intelligence": 5
+    },
+    "signVulnerability": "Aard",
+    "loot": ["Monster Hide", "Wraith Essence", "Rare Herb", "Monster Claw"]
+  },
+  {
+    "beastName": "The Apiarian Phantom",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/theapiarianphantom.png",
+    "stats": {
+      "vitality": 1,
+      "attack": 9,
+      "defense": 10,
+      "speed": 3,
+      "intelligence": 6
+    },
+    "signVulnerability": "Axii",
+    "loot": ["Monster Blood", "Monster Eye"]
+  },
+  {
+    "beastName": "The Dragon Of Fyresdal",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/thedragonoffyresdal.png",
+    "stats": {
+      "vitality": 3,
+      "attack": 6,
+      "defense": 9,
+      "speed": 8,
+      "intelligence": 8
+    },
+    "signVulnerability": "Axii",
+    "loot": ["Monster Bone", "Ancient Relic"]
+  },
+  {
+    "beastName": "The Razane",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/therazane.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 1,
+      "defense": 8,
+      "speed": 4,
+      "intelligence": 2
+    },
+    "signVulnerability": "Axii",
+    "loot": ["Ghost Essence", "Rare Herb", "Monster Claw"]
+  },
+  {
+    "beastName": "The White Lady",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/thewhitelady.png",
+    "stats": {
+      "vitality": 9,
+      "attack": 2,
+      "defense": 10,
+      "speed": 8,
+      "intelligence": 10
+    },
+    "signVulnerability": "Aard",
+    "loot": [
+      "Mutagen Sample",
+      "Dark Crystal",
+      "Alchemy Ingredient",
+      "Monster Blood"
+    ]
+  },
+  {
+    "beastName": "Toad Prince",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/toad_prince.png",
+    "stats": {
+      "vitality": 3,
+      "attack": 7,
+      "defense": 4,
+      "speed": 6,
+      "intelligence": 7
+    },
+    "signVulnerability": "Quen",
+    "loot": ["Mutagen Sample", "Specter Dust", "Alchemy Ingredient"]
+  },
+  {
+    "beastName": "Ulfhedinn",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/ulfhedinn.png",
+    "stats": {
+      "vitality": 1,
+      "attack": 7,
+      "defense": 4,
+      "speed": 2,
+      "intelligence": 6
+    },
+    "signVulnerability": "Yrden",
+    "loot": ["Dark Crystal", "Mutagen Sample", "Dragon Scale"]
+  },
+  {
+    "beastName": "Venomous Arachas",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/venomousarachas.png",
+    "stats": {
+      "vitality": 6,
+      "attack": 9,
+      "defense": 6,
+      "speed": 6,
+      "intelligence": 6
+    },
+    "signVulnerability": "Axii",
+    "loot": [
+      "Dragon Scale",
+      "Essence of Death",
+      "Monster Eye",
+      "Alchemy Ingredient"
+    ]
+  },
+  {
+    "beastName": "Waterhag",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/waterhag.png",
+    "stats": {
+      "vitality": 5,
+      "attack": 5,
+      "defense": 2,
+      "speed": 2,
+      "intelligence": 7
+    },
+    "signVulnerability": "Quen",
+    "loot": ["Monster Claw", "Rare Herb", "Monster Eye"]
+  },
+  {
+    "beastName": "Werewolf",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/werewolf.png",
+    "stats": {
+      "vitality": 6,
+      "attack": 5,
+      "defense": 8,
+      "speed": 10,
+      "intelligence": 3
+    },
+    "signVulnerability": "Axii",
+    "loot": ["Specter Dust", "Dragon Scale"]
+  },
+  {
+    "beastName": "Whamawham",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/whamawham.png",
+    "stats": {
+      "vitality": 9,
+      "attack": 3,
+      "defense": 6,
+      "speed": 6,
+      "intelligence": 9
+    },
+    "signVulnerability": "Axii",
+    "loot": ["Wraith Essence", "Essence of Death", "Monster Bone"]
+  },
+  {
+    "beastName": "Wild Boar",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/wild_boar.png",
+    "stats": {
+      "vitality": 6,
+      "attack": 6,
+      "defense": 4,
+      "speed": 4,
+      "intelligence": 10
+    },
+    "signVulnerability": "Aard",
+    "loot": ["Vampire Fang", "Dark Crystal", "Monster Blood", "Monster Bone"]
+  },
+  {
+    "beastName": "Wolf",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/wolf.png",
+    "stats": {
+      "vitality": 4,
+      "attack": 3,
+      "defense": 7,
+      "speed": 10,
+      "intelligence": 8
+    },
+    "signVulnerability": "Quen",
+    "loot": [
+      "Dragon Scale",
+      "Ancient Relic",
+      "Alchemy Ingredient",
+      "Mutagen Sample"
+    ]
+  },
+  {
+    "beastName": "Wyvern",
+    "imageUrl": "https://github.com/diwashrestha/WitcherAPI/raw/master/image/monsters/wyvern.png",
+    "stats": {
+      "vitality": 10,
+      "attack": 5,
+      "defense": 8,
+      "speed": 5,
+      "intelligence": 8
+    },
+    "signVulnerability": "Yrden",
+    "loot": ["Rare Herb", "Vampire Fang"]
+  }
+]

@@ -10,6 +10,7 @@ import {
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import bestiary from "@/assets/beastiary.json";
 import { theme } from "@/theme";
+import { router } from "expo-router";
 
 export default function EncounterScreen() {
   const [potions, setPotions] = useState<any[]>([]);
@@ -74,12 +75,9 @@ export default function EncounterScreen() {
       return;
     }
 
-    const win = vuln.toLowerCase() === sign.toLowerCase();
-    alert(
-      win
-        ? "🎉 Victory! Correct sign!"
-        : `💀 Defeated! Correct sign was ${vuln}.`
-    );
+    // ✅ Automatic win if any potion is selected
+    const win =
+      selectedPotions.length > 0 || vuln.toLowerCase() === sign.toLowerCase();
 
     setResult({
       win,
@@ -115,28 +113,29 @@ export default function EncounterScreen() {
       style={styles.container}
       contentContainerStyle={{ paddingBottom: 40 }}
     >
-      <Text style={[theme.commonStyles.boldTitle, styles.header]}>
-        Random Encounter
-      </Text>
-
       {/* Monster */}
-      <View style={styles.monsterCard}>
-        <Text style={[theme.commonStyles.scriptText, styles.monsterName]}>
+      <View style={theme.commonStyles.monsterCard}>
+        <Text
+          style={[
+            theme.commonStyles.scriptText,
+            theme.commonStyles.monsterName,
+          ]}
+        >
           {monster.beastName}
         </Text>
         <Image
           source={{ uri: monster.imageUrl }}
-          style={styles.monsterImage}
+          style={theme.commonStyles.image}
           resizeMode="contain"
         />
 
-        <View style={styles.stats}>
+        <View style={theme.commonStyles.stats}>
           {Object.entries(monster.stats).map(([key, value]) => {
             if (key === "loot") return null;
             return (
-              <Text key={key} style={styles.statLine}>
+              <Text key={key} style={theme.commonStyles.keyName}>
                 {key.toUpperCase()}:{" "}
-                <Text style={styles.statValue}>{String(value)}</Text>
+                <Text style={theme.commonStyles.value}>{String(value)}</Text>
               </Text>
             );
           })}
@@ -144,8 +143,28 @@ export default function EncounterScreen() {
       </View>
 
       {/* Potions */}
-      <Text style={[theme.commonStyles.boldTitle, styles.sectionTitle]}>
-        Your Potions
+      <View
+        style={{
+          flexDirection: "row",
+          alignItems: "center",
+          marginLeft: 20,
+          justifyContent: "space-around",
+        }}
+      >
+        <Text style={[theme.commonStyles.boldTitle, { color: "#cc0000" }]}>
+          Your Potions
+        </Text>
+        <Text
+          style={[theme.commonStyles.boldTitle, { color: "#cc0000" }]}
+          onPress={() => {
+            router.push("/new");
+          }}
+        >
+          +
+        </Text>
+      </View>
+      <Text style={{ color: "#cc0000", marginLeft: 20 }}>
+        (Use one of your potions to guarantee a win!)
       </Text>
       <View style={styles.potionList}>
         {potions.length === 0 ? (
@@ -172,13 +191,13 @@ export default function EncounterScreen() {
       </View>
 
       {selectedPotions.length > 0 && (
-        <Text style={{ color: "#F2C800", marginLeft: 20, marginBottom: 10 }}>
+        <Text style={{ color: "#cc0000", marginLeft: 20, marginBottom: 10 }}>
           Potions being used: {selectedPotions.map((p) => p.name).join(", ")}
         </Text>
       )}
 
       {/* Signs */}
-      <Text style={[theme.commonStyles.boldTitle, styles.sectionTitle]}>
+      <Text style={[theme.commonStyles.boldTitle, { color: "#cc0000" }]}>
         Cast a Sign
       </Text>
       <View style={styles.signList}>
@@ -215,7 +234,10 @@ export default function EncounterScreen() {
 
       {/* Re-Roll */}
       <TouchableOpacity
-        style={theme.commonStyles.buttonRed}
+        style={[
+          theme.commonStyles.buttonRed,
+          { width: "80%", alignSelf: "center" },
+        ]}
         onPress={rollMonster}
       >
         <Text style={theme.commonStyles.buttonText}>Roll New Encounter</Text>
@@ -226,49 +248,6 @@ export default function EncounterScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#010302" },
-  header: {
-    textAlign: "center",
-    color: "#F2C800",
-    marginTop: 20,
-    marginBottom: 10,
-    fontSize: 32,
-  },
-  monsterCard: {
-    backgroundColor: theme.colorWhite,
-    marginHorizontal: 16,
-    marginVertical: 12,
-    borderRadius: 16,
-    padding: 16,
-    alignItems: "center",
-  },
-  monsterName: {
-    fontSize: 28,
-    color: theme.colorRed,
-    marginBottom: 10,
-  },
-  monsterImage: {
-    width: "100%",
-    height: 220,
-    borderRadius: 16,
-  },
-  stats: {
-    marginTop: 14,
-    width: "100%",
-  },
-  statLine: {
-    fontSize: 18,
-    color: "#333",
-    marginBottom: 4,
-  },
-  statValue: {
-    color: theme.colorRed,
-    fontWeight: "bold",
-  },
-  sectionTitle: {
-    marginTop: 20,
-    marginLeft: 16,
-    color: "#F2C800",
-  },
   potionList: {
     marginHorizontal: 20,
     marginVertical: 10,
@@ -301,7 +280,7 @@ const styles = StyleSheet.create({
     borderColor: "#555",
   },
   signText: {
-    color: "#F2C800",
+    color: "#cc0000",
     fontSize: 20,
     textAlign: "center",
   },

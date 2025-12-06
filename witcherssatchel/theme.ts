@@ -1,4 +1,4 @@
-import { View, ViewStyle } from "react-native";
+import { ImageStyle, TextStyle, View, ViewStyle } from "react-native";
 
 export const theme = {
   colorRed: "#ff0000",
@@ -45,6 +45,7 @@ export const theme = {
       fontSize: 16,
       fontWeight: "600",
       color: "#ffffff",
+      textAlign: "center",
     } as ViewStyle,
     boldTitle: {
       fontSize: 28,
@@ -124,5 +125,29 @@ export const theme = {
       fontWeight: "600",
       color: "#ff0000",
     } as ViewStyle,
+    monsterCard: {
+      backgroundColor: "#FFFFFF",
+      marginHorizontal: 16,
+      marginVertical: 12,
+      borderRadius: 16,
+      padding: 16,
+      alignItems: "center",
+    } as ViewStyle,
+    monsterName: {
+      fontSize: 28,
+      color: "#ff000",
+      marginBottom: 10,
+    } as TextStyle,
+
+    stats: {
+      marginTop: 14,
+      width: "100%",
+    } as ViewStyle,
+    image: {
+      width: "100%",
+      height: 200,
+      borderRadius: 12,
+      marginBottom: 12,
+    } as ImageStyle,
   },
 };

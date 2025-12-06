@@ -82,6 +82,18 @@ export default function Routing() {
           headerShown: false,
         }}
       />
+
+      <Tabs.Screen
+        name="encounter"
+        options={{
+          title: "Encounter",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="skull" size={size} color={color} />
+          ),
+          tabBarShowLabel: false,
+          headerShown: false,
+        }}
+      />
     </Tabs>
   );
 }
