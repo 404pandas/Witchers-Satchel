@@ -31,6 +31,7 @@ It combines **practical utility tools** with **monster-hunting fun** to create a
 - **Dice Roller**: A rolling kit with all the popular D&D dice. Tracks roll history to persist through app closure.
 - **Potion Tracker**: A tracking system to keep track of how often you have stirred a potion. Create, Read, and Delete functionality.
 - **Media Player**: A fully functioning media player loaded with the only song you need to hear.
+- **Encounter Practice**: A random encounter generator that pairs you with random monsters to guess their sign vulnerability. Interacts with potion system to allow for instant wins.
 
 ### 🎓 From Kadi’s Course
 
@@ -117,6 +118,7 @@ APK:
 - [Weather](#weather)
 - [Media Player](#media-player)
 - [Sign Camera](#sign-camera)
+- [Encounter Pratice](#encounter-pratice)
 
 ### Talley
 
@@ -156,6 +158,10 @@ TODO- ADD IMAGES
 TODO- ADD IMAGES
 
 ### Sign Camera
+
+TODO- ADD IMAGES
+
+### Encounter Practice
 
 TODO- ADD IMAGES
 
