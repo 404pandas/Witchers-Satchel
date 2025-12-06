@@ -197,9 +197,6 @@ export default function EncounterScreen() {
       )}
 
       {/* Signs */}
-      <Text style={[theme.commonStyles.boldTitle, { color: "#cc0000" }]}>
-        Cast a Sign
-      </Text>
       <View style={styles.signList}>
         {SIGNS.map((sign) => (
           <TouchableOpacity
