@@ -111,6 +111,13 @@ Video:
 APK:
 [Click here to view](https://drive.google.com/file/d/1HW5KuxDl4CQWw3dUxndutXRZqcKIh2os/view?usp=sharing)
 
+Stage 4 Completed 12/12/25
+
+Video:
+[Click here to view]()
+APK:
+[Click here to view](https://drive.google.com/file/d/1zKUcUOarXYaVNvJ99WRzo5soTOJvTTKz/view?usp=drive_link)
+
 - [Talley](#talley)
 - [Satchel](#satchel)
 - [Bestiary](#bestiary)
