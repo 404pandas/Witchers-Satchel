@@ -19,6 +19,8 @@ import axii from "@/assets/animations/axii.json";
 
 import { ResetButton } from "@/components/ResetButton";
 
+import * as tf from "@tensorflow/tfjs";
+
 const animations: Record<string, any> = {
   Igni: igni,
   Aard: aard,
@@ -37,10 +39,15 @@ export default function SignRecognitionScreen() {
   const borderAnim = useRef(new Animated.Value(0)).current;
   const flipAnim = useRef(new Animated.Value(0)).current;
 
-  // Request camera permission on mount
+  // Request camera permission on mount and load Tensorflow
   useEffect(() => {
     (async () => {
-      if (!permission?.granted) await requestPermission();
+      if (!permission?.granted) {
+        await requestPermission();
+      }
+
+      await tf.ready();
+      console.log("TensorFlow.js is ready:", tf.getBackend());
     })();
   }, []);
 
