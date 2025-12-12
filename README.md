@@ -32,6 +32,8 @@ It combines **practical utility tools** with **monster-hunting fun** to create a
 - **Potion Tracker**: A tracking system to keep track of how often you have stirred a potion. Create, Read, and Delete functionality.
 - **Media Player**: A fully functioning media player loaded with the only song you need to hear.
 - **Encounter Practice**: A random encounter generator that pairs you with random monsters to guess their sign vulnerability. Interacts with potion system to allow for instant wins.
+- **Camera** Camera with overlay options to take a picture of yourself with your favorite signs. COMING SOON- Tensorflow
+- **Gwent Viewer** Complete list of Gwent cards powered by the [Gwent API](https://api.gwent.one/) to help build your Gwent decks.
 
 ### 🎓 From Kadi’s Course
 
