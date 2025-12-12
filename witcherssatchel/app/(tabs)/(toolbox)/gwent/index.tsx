@@ -190,10 +190,6 @@ const styles = StyleSheet.create({
     fontSize: 12,
     marginBottom: 8,
   },
-  ability: {
-    color: "#ddd",
-    marginTop: 6,
-  },
 
   /* --- MODAL STYLES --- */
   modalBackdrop: {
