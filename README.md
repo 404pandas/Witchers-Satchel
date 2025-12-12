@@ -124,24 +124,24 @@ APK:
 
 ### Talley
 
-<img src="https://github.com/user-attachments/assets/f6672393-531d-45ea-9560-7db9ef8b7281" width="300" alt="Talley screen showing character stats" />
-<img src="https://github.com/user-attachments/assets/ce104c20-02fb-40ee-bc03-048a3d8ec8bc" width="300" alt="Talley detail screen with additional character information" />
+<img src="https://github.com/user-attachments/assets/f6672393-531d-45ea-9560-7db9ef8b7281" width="200" alt="Talley screen showing character stats" />
+<img src="https://github.com/user-attachments/assets/ce104c20-02fb-40ee-bc03-048a3d8ec8bc" width="200" alt="Talley detail screen with additional character information" />
 
 ### Satchel
 
-<img src="https://github.com/user-attachments/assets/1742d043-0b46-4379-bc30-f4e22f8013fc" width="300" alt="Satchel screen showing inventory items" />
-<img src="https://github.com/user-attachments/assets/11c4e0f2-285e-4f9f-b9d0-36b9af4a1055" width="300" alt="Satchel screen with expanded item details" />
+<img src="https://github.com/user-attachments/assets/1742d043-0b46-4379-bc30-f4e22f8013fc" width="200" alt="Satchel screen showing inventory items" />
+<img src="https://github.com/user-attachments/assets/11c4e0f2-285e-4f9f-b9d0-36b9af4a1055" width="200" alt="Satchel screen with expanded item details" />
 
 ### Bestiary
 
-<img src="https://github.com/user-attachments/assets/406e53a7-d754-49bc-a3a1-cacc2bf1c540" width="300" alt="Bestiary screen showing creature list" />
+<img src="https://github.com/user-attachments/assets/406e53a7-d754-49bc-a3a1-cacc2bf1c540" width="200" alt="Bestiary screen showing creature list" />
 
 ### Timer
 
-<img src="https://github.com/user-attachments/assets/970f7b81-6471-443f-ab00-77303daed446" width="300" alt="Timer screen overview" />
-<img src="https://github.com/user-attachments/assets/211ace8c-da8b-4f70-a726-49530a2c5772" width="300" alt="Timer settings screen" />
-<img src="https://github.com/user-attachments/assets/b8619b24-44ab-47a4-a86f-3c85cace633d" width="300" alt="Timer running with countdown view" />
-<img src="https://github.com/user-attachments/assets/141e69f9-37ad-428a-807b-03cffe38c2e7" width="300" alt="Timer completed screen" />
+<img src="https://github.com/user-attachments/assets/970f7b81-6471-443f-ab00-77303daed446" width="200" alt="Timer screen overview" />
+<img src="https://github.com/user-attachments/assets/211ace8c-da8b-4f70-a726-49530a2c5772" width="200" alt="Timer settings screen" />
+<img src="https://github.com/user-attachments/assets/b8619b24-44ab-47a4-a86f-3c85cace633d" width="200" alt="Timer running with countdown view" />
+<img src="https://github.com/user-attachments/assets/141e69f9-37ad-428a-807b-03cffe38c2e7" width="200" alt="Timer completed screen" />
 
 ### Dice Roller
 
