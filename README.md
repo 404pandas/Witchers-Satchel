@@ -176,6 +176,7 @@ TODO- ADD IMAGES
 - Confetti, haptics, and dark magic powered by Expo & React Native.
 - Weather API provided by [OpenWeather](https://openweathermap.org/api/one-call-3#current)
 - Dice rolling animation from [Lottie Files](https://lottiefiles.com/iwb5945qedidagn9)
+- Gwent API provided by [Gwent API](https://api.gwent.one/)
 
 ---
 
