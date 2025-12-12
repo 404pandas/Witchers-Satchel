@@ -6,6 +6,7 @@ import Entypo from "@expo/vector-icons/Entypo";
 import { theme } from "@/theme";
 
 import { Pressable } from "react-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 export default function Routing() {
   const pathname = usePathname();
@@ -193,6 +194,15 @@ export default function Routing() {
               </Link>
             );
           },
+        }}
+      />
+      <Tabs.Screen
+        name="gwent"
+        options={{
+          title: "Gwent Viewer",
+          tabBarIcon: ({ size, color }) => (
+            <MaterialCommunityIcons name="cards" size={size} color={color} />
+          ),
         }}
       />
     </Tabs>

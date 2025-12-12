@@ -19,7 +19,7 @@ import axii from "@/assets/animations/axii.json";
 
 import { ResetButton } from "@/components/ResetButton";
 
-import * as tf from "@tensorflow/tfjs";
+// import * as tf from "@tensorflow/tfjs";
 
 const animations: Record<string, any> = {
   Igni: igni,
@@ -46,8 +46,8 @@ export default function SignRecognitionScreen() {
         await requestPermission();
       }
 
-      await tf.ready();
-      console.log("TensorFlow.js is ready:", tf.getBackend());
+      // await tf.ready();
+      // console.log("TensorFlow.js is ready:", tf.getBackend());
     })();
   }, []);
 
