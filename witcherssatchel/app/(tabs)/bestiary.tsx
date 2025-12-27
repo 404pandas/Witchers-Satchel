@@ -187,13 +187,13 @@ export default function Bestiary() {
                     theme.commonStyles.scriptText,
                   ]}
                 >
-                  {monster.stats.signVulnerability}
+                  {monster.signVulnerability}
                 </Text>
               </Text>
               <Text style={theme.commonStyles.keyName}>Loot:{"\u00A0"} </Text>
               <ScrollView>
                 <FlatList
-                  data={monster.stats.loot}
+                  data={monster.loot}
                   keyExtractor={(item, index) => item + index}
                   renderItem={({ item }) => (
                     <Text

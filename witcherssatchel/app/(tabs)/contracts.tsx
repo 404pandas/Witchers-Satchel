@@ -1,14 +1,16 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   View,
   Text,
   FlatList,
   StyleSheet,
   TouchableOpacity,
+  Modal,
 } from "react-native";
-import { useContractsStore } from "@/store/contractStore";
+import { Contract, useContractsStore } from "@/store/contractStore";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { theme } from "@/theme";
+import { useRouter } from "expo-router";
 
 const difficultyColor = (difficulty: string) => {
   switch (difficulty) {
@@ -24,8 +26,13 @@ const difficultyColor = (difficulty: string) => {
 };
 
 export default function ContractsBoardScreen() {
+  const [selectedContract, setSelectedContract] = useState<Contract | null>(
+    null
+  );
   const { contracts, availableContracts, generateContracts, acceptContract } =
     useContractsStore();
+
+  const router = useRouter();
 
   const available = availableContracts();
 
@@ -71,41 +78,111 @@ export default function ContractsBoardScreen() {
           const diffColor = difficultyColor(item.difficulty);
 
           return (
-            <View style={styles.card}>
-              {/* Header */}
-              <View style={styles.rowBetween}>
-                <Text style={styles.monster}>{item.monsterName}</Text>
-                <Text style={[styles.difficulty, { color: diffColor }]}>
-                  {item.difficulty}
-                </Text>
+            <TouchableOpacity
+              activeOpacity={0.9}
+              onPress={() => setSelectedContract(item)}
+            >
+              <View style={styles.card}>
+                {/* Header */}
+                <View style={styles.rowBetween}>
+                  <Text style={styles.monster}>{item.monsterName}</Text>
+                  <Text style={[styles.difficulty, { color: diffColor }]}>
+                    {item.difficulty}
+                  </Text>
+                </View>
+
+                {/* Location */}
+                <Text style={styles.location}>📍 {item.location}</Text>
+
+                {/* Meta */}
+                <View style={[styles.rowBetween, { marginTop: 14 }]}>
+                  <Text style={styles.meta}>💰 {item.reward} crowns</Text>
+                  <Text style={styles.meta}>
+                    🜂 Vulnerable to {item.vulnerability}
+                  </Text>
+                </View>
               </View>
-
-              {/* Location */}
-              <Text style={styles.location}>📍 {item.location}</Text>
-
-              {/* Meta */}
-              <View style={[styles.rowBetween, { marginTop: 14 }]}>
-                <Text style={styles.meta}>💰 {item.reward} crowns</Text>
-                <Text style={styles.meta}>
-                  🜂 Vulnerable to {item.vulnerability}
-                </Text>
-              </View>
-
-              {/* Accept */}
-              <TouchableOpacity
-                style={[theme.commonStyles.button, { borderColor: diffColor }]}
-                onPress={() => acceptContract(item.id)}
-              >
-                <Text
-                  style={[theme.commonStyles.buttonText, { color: diffColor }]}
-                >
-                  Accept Contract
-                </Text>
-              </TouchableOpacity>
-            </View>
+            </TouchableOpacity>
           );
         }}
       />
+      <Modal
+        visible={!!selectedContract}
+        transparent
+        animationType="slide"
+        onRequestClose={() => setSelectedContract(null)}
+      >
+        <View style={styles.modalOverlay}>
+          <View style={styles.modalCard}>
+            {selectedContract && (
+              <>
+                <Text style={styles.modalTitle}>
+                  {selectedContract.monsterName}
+                </Text>
+
+                <Text style={styles.modalText}>
+                  📍 Location: {selectedContract.location}
+                </Text>
+
+                <Text style={styles.modalText}>
+                  🜂 Vulnerable to: {selectedContract.vulnerability}
+                </Text>
+
+                <Text style={styles.modalText}>
+                  💰 Reward: {selectedContract.reward} crowns
+                </Text>
+
+                <Text
+                  style={[
+                    styles.modalDifficulty,
+                    {
+                      color: difficultyColor(selectedContract.difficulty),
+                    },
+                  ]}
+                >
+                  {selectedContract.difficulty}
+                </Text>
+
+                {/* Actions */}
+                <TouchableOpacity
+                  style={[
+                    theme.commonStyles.button,
+                    {
+                      borderColor: difficultyColor(selectedContract.difficulty),
+                    },
+                  ]}
+                  onPress={() => {
+                    acceptContract(selectedContract.id);
+
+                    router.push({
+                      pathname: "/encounter",
+                      params: {
+                        contractId: selectedContract.id,
+                        monsterName: selectedContract.monsterName,
+                        vulnerability: selectedContract.vulnerability,
+                        difficulty: selectedContract.difficulty,
+                      },
+                    });
+
+                    setSelectedContract(null);
+                  }}
+                >
+                  <Text style={theme.commonStyles.buttonText}>
+                    Accept Contract
+                  </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                  style={[theme.commonStyles.button, styles.cancelButton]}
+                  onPress={() => setSelectedContract(null)}
+                >
+                  <Text style={theme.commonStyles.buttonText}>Close</Text>
+                </TouchableOpacity>
+              </>
+            )}
+          </View>
+        </View>
+      </Modal>
     </SafeAreaView>
   );
 }
@@ -117,7 +194,7 @@ const styles = StyleSheet.create({
     fontSize: 32,
     textAlign: "center",
     marginVertical: 20,
-    color: "#F2C800",
+    color: theme.colorDarkerRed,
     fontWeight: "700",
   },
   empty: {
@@ -154,11 +231,6 @@ const styles = StyleSheet.create({
     color: "#aaa",
     fontSize: 14,
   },
-  metaRow: {
-    marginTop: 10,
-    flexDirection: "row",
-    justifyContent: "space-between",
-  },
   meta: {
     color: "#ccc",
     fontSize: 13,
@@ -170,5 +242,46 @@ const styles = StyleSheet.create({
   },
   footer: {
     marginTop: 20,
+  },
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: "rgba(0,0,0,0.7)",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
+  modalCard: {
+    width: "90%",
+    backgroundColor: "#111",
+    borderRadius: 16,
+    padding: 20,
+    borderWidth: 1,
+    borderColor: "#333",
+  },
+
+  modalTitle: {
+    fontSize: 24,
+    fontWeight: "700",
+    color: "#F2C800",
+    marginBottom: 12,
+    textAlign: "center",
+  },
+
+  modalText: {
+    color: "#ccc",
+    fontSize: 16,
+    marginBottom: 6,
+  },
+
+  modalDifficulty: {
+    marginTop: 10,
+    fontSize: 14,
+    fontWeight: "700",
+    textAlign: "center",
+  },
+
+  cancelButton: {
+    marginTop: 10,
+    borderColor: "#555",
   },
 });

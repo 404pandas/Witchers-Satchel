@@ -11,6 +11,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import bestiary from "@/assets/beastiary.json";
 import { theme } from "@/theme";
 import { router } from "expo-router";
+import { useLocalSearchParams } from "expo-router";
 
 export default function EncounterScreen() {
   const [potions, setPotions] = useState<any[]>([]);
@@ -20,6 +21,13 @@ export default function EncounterScreen() {
     message: string;
   }>(null);
   const [selectedPotions, setSelectedPotions] = useState<any[]>([]);
+  const { contractId, monsterName, vulnerability, difficulty } =
+    useLocalSearchParams<{
+      contractId: string;
+      monsterName: string;
+      vulnerability: SignType;
+      difficulty: ContractDifficulty;
+    }>();
 
   useEffect(() => {
     loadPotions();
@@ -44,6 +52,21 @@ export default function EncounterScreen() {
 
   const rollMonster = () => {
     setResult(null);
+
+    if (monsterName) {
+      // Look up the monster from the bestiary using the search param
+      const found = bestiary.find(
+        (m) => m.beastName.toLowerCase() === monsterName.toLowerCase()
+      );
+      if (found) {
+        console.log(found);
+        setMonster(found);
+        return;
+      }
+      // If the monsterName param exists but wasn't found, fallback to random
+    }
+
+    // Random monster fallback
     const random = bestiary[Math.floor(Math.random() * bestiary.length)];
     setMonster(random);
   };
@@ -68,6 +91,7 @@ export default function EncounterScreen() {
       monster?.weakness ||
       monster?.vulnerability ||
       monster?.stats?.signVulnerability ||
+      vulnerability ||
       null;
 
     if (!vuln) {
@@ -140,6 +164,12 @@ export default function EncounterScreen() {
             );
           })}
         </View>
+        {contractId && (
+          <>
+            <Text>Contract ID: </Text>
+            <Text>{contractId}</Text>
+          </>
+        )}
       </View>
 
       {/* Potions */}
