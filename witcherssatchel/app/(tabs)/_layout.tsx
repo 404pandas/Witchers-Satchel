@@ -11,7 +11,6 @@ import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { Pressable } from "react-native";
 
 export default function Routing() {
-  const pathname = usePathname();
   const hasFinishedOnboarding = useUserStore(
     (state) => state.hasFinishedOnboarding
   );
@@ -89,6 +88,17 @@ export default function Routing() {
           title: "Encounter",
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="skull" size={size} color={color} />
+          ),
+          tabBarShowLabel: false,
+          headerShown: false,
+        }}
+      />
+      <Tabs.Screen
+        name="contracts"
+        options={{
+          title: "Witcher Contracts",
+          tabBarIcon: () => (
+            <FontAwesome5 name="file-contract" size={24} color="black" />
           ),
           tabBarShowLabel: false,
           headerShown: false,
