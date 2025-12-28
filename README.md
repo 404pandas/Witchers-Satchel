@@ -182,8 +182,12 @@ TODO- ADD IMAGES
 TODO- ADD IMAGES
 
 ### Encounter Practice
+<img width="200" alt="Random Encounter top view" src="https://github.com/user-attachments/assets/56d53aef-79e5-4482-8f4f-7e14ad83a0b4" />
+<img width="200" alt="Randon Encounter bottom view" src="https://github.com/user-attachments/assets/7d800594-e8d4-4a05-8fb2-f4469e7e8131" />
+<img width="200" alt="Random Encounter loss" src="https://github.com/user-attachments/assets/482ade7b-bc94-476d-8954-1b71a15ae18e" />
+<img width="200" alt="Random Encounter win" src="https://github.com/user-attachments/assets/36787eb6-c076-4207-a97a-dfa3455184de" />
 
-TODO- ADD IMAGES
+
 
 ### Contract Viewer
 
