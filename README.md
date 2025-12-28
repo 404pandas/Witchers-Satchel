@@ -139,6 +139,7 @@ APK:
 - [Sign Camera](#sign-camera)
 - [Encounter Pratice](#encounter-pratice)
 - [Contract Viewer](#contract-viewer)
+- [Gwent Viewer](#gwent-viewer)
 
 ### Talley
 
@@ -163,7 +164,11 @@ APK:
 
 ### Dice Roller
 
-TODO- ADD IMAGES
+<img width="200" alt="Pre-roll" src="https://github.com/user-attachments/assets/efefd703-d6a4-40f4-80c1-9ff24a1a3f55" />
+<img width="200" alt="Mid-roll" src="https://github.com/user-attachments/assets/5e28bc9a-13fc-4255-ac6a-82c1175fd980" />
+<img width="200" alt="Post-roll" src="https://github.com/user-attachments/assets/7fe12727-1e1f-469e-a1c0-947fd46eb258" />
+
+
 
 ### Calculator
 
@@ -187,15 +192,15 @@ TODO- ADD IMAGES
 <img width="200" alt="Random Encounter loss" src="https://github.com/user-attachments/assets/482ade7b-bc94-476d-8954-1b71a15ae18e" />
 <img width="200" alt="Random Encounter win" src="https://github.com/user-attachments/assets/36787eb6-c076-4207-a97a-dfa3455184de" />
 
-
-
 ### Contract Viewer
 
 <img width="200" alt="Contracts screen" src="https://github.com/user-attachments/assets/eaa6cd0e-a1ba-4718-b83c-30bc18705c9b" />
 <img width="200" alt="Contract modal" src="https://github.com/user-attachments/assets/073a51bc-9c53-4658-9332-810166f4d4f8" />
 <img width="200" alt="Encounter from specific contract" src="https://github.com/user-attachments/assets/2a9831f7-27b9-47f5-ad24-c96fc771170d" />
 
+### Gwent Viewer
 
+TODO- ADD IMAGES
 
 ---
 
