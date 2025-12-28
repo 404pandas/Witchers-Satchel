@@ -168,19 +168,19 @@ APK:
 <img width="200" alt="Mid-roll" src="https://github.com/user-attachments/assets/5e28bc9a-13fc-4255-ac6a-82c1175fd980" />
 <img width="200" alt="Post-roll" src="https://github.com/user-attachments/assets/7fe12727-1e1f-469e-a1c0-947fd46eb258" />
 
-
-
 ### Calculator
 
-TODO- ADD IMAGES
+<img width="200" alt="Calculator in use" src="https://github.com/user-attachments/assets/5e92bb5b-1788-40e9-8ca2-026970fca7e6" />
+<img width="200" alt="Calculator history" src="https://github.com/user-attachments/assets/db06c0f0-b001-41de-96b6-343683f86ba1" />
 
 ### Weather
 
-TODO- ADD IMAGES
+<img width="200" alt="Weather" src="https://github.com/user-attachments/assets/5edb75a3-6754-4a79-ac6a-8585b2146dfc" />
 
 ### Media Player
 
-TODO- ADD IMAGES
+<img width="200" alt="Media player playing song" src="https://github.com/user-attachments/assets/2b4a248d-3d48-474d-ad9a-9a69a226373d" />
+
 
 ### Sign Camera
 
