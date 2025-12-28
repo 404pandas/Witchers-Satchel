@@ -138,6 +138,7 @@ APK:
 - [Media Player](#media-player)
 - [Sign Camera](#sign-camera)
 - [Encounter Pratice](#encounter-pratice)
+- [Contract Viewer](#contract-viewer)
 
 ### Talley
 
@@ -183,6 +184,14 @@ TODO- ADD IMAGES
 ### Encounter Practice
 
 TODO- ADD IMAGES
+
+### Contract Viewer
+
+<img width="200" alt="Contracts screen" src="https://github.com/user-attachments/assets/eaa6cd0e-a1ba-4718-b83c-30bc18705c9b" />
+<img width="200" alt="Contract modal" src="https://github.com/user-attachments/assets/073a51bc-9c53-4658-9332-810166f4d4f8" />
+<img width="200" alt="Encounter from specific contract" src="https://github.com/user-attachments/assets/2a9831f7-27b9-47f5-ad24-c96fc771170d" />
+
+
 
 ---
 
