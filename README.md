@@ -34,6 +34,7 @@ It combines **practical utility tools** with **monster-hunting fun** to create a
 - **Encounter Practice**: A random encounter generator that pairs you with random monsters to guess their sign vulnerability. Interacts with potion system to allow for instant wins.
 - **Camera** Camera with overlay options to take a picture of yourself with your favorite signs. COMING SOON- Tensorflow
 - **Gwent Viewer** Complete list of Gwent cards powered by the [Gwent API](https://api.gwent.one/) to help build your Gwent decks.
+- **Contracts** Specifically force an encounter based on a list of generated contracts. Accepting a contract brings the specific monster's details into the encounter screen.
 
 ### 🎓 From Kadi’s Course
 
@@ -101,7 +102,7 @@ Video:
 [Click here to view](https://dms.licdn.com/playlist/vid/v2/D4E05AQEH4Vj4Nvc4WQ/mp4-720p-30fp-crf28/B4EZqIFRfHGYB0-/0/1763219696636?e=1765346400&v=beta&t=Rt9ElxpvBjR6kK0J_kQWk1J6ZG4wHDt3HTI9vd679Ao)
 
 APK:
-[Click here to view](https://drive.google.com/file/d/1_hQYmNwwirsRJc22GjplBl1hT0gi-A5q/view?usp=sharing)
+Depreceated
 
 Stage 3 Completed 12/3/25
 
@@ -109,14 +110,23 @@ Video:
 [Click here to view](https://drive.google.com/file/d/1Qxlsncfi8tnrSBWKcK8v3hkc0TzQ8KYB/view?usp=drive_link)
 
 APK:
-[Click here to view](https://drive.google.com/file/d/1HW5KuxDl4CQWw3dUxndutXRZqcKIh2os/view?usp=sharing)
+Depreceated
 
 Stage 4 Completed 12/12/25
 
 Video:
 [Click here to view]()
+
 APK:
 [Click here to view](https://drive.google.com/file/d/16c5IJsBTo5FVNyRrXGKxgjr_7KCaRjp6/view?usp=sharing)
+
+Stage 5 Completed 12/28/25
+
+Video:
+[Click here to view]()
+
+APK:
+[Click here to view](https://drive.google.com/file/d/1VOOqtIK9zVhd7EXsmNNcm7oQquWfu68O/view?usp=sharing)
 
 - [Talley](#talley)
 - [Satchel](#satchel)
